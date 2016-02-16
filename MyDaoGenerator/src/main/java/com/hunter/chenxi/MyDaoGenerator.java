@@ -19,9 +19,9 @@ public class MyDaoGenerator {
     }
 
     private static void initUserBean(Schema schema) {
-        Entity userBean = schema.addEntity("User");// ����
-        //userBean.setTableName("user"); // ���ԶԱ�������
-        userBean.addLongProperty("id").primaryKey().index();// ��������
+        Entity userBean = schema.addEntity("User");//
+        //userBean.setTableName("user"); //
+        userBean.addLongProperty("id").primaryKey().index();//
         userBean.addStringProperty("name");
         userBean.addStringProperty("password");
         userBean.addStringProperty("nickname");

@@ -13,6 +13,9 @@ import com.hunter.chenxi.vo.response.UserInfo;
 
 import butterknife.Bind;
 
+/*
+ * FastAndroid 自带例子，先不删除，以便参考学习
+ */
 public class FastAndroid_MainActivity extends BaseActivity implements ILoginView {
    /* @Bind(R.id.title_bar)
     TitleBar titleBar;

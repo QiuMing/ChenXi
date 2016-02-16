@@ -1,4 +1,4 @@
-package com.hunter.chenxi.ui.activity;
+package com.hunter.chenxi.ui.fragment;
 
 /**
  * Created by Ming on 2016/2/16.

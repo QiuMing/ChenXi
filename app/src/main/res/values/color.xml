@@ -17,7 +17,7 @@
     <color name="green_price">#28D33C</color>
     <color name="red_hint">#FF5F5F</color>
     <color name="main_blue">#00A3FF</color>
-    <color name="login_button">#3391DA</color>
+    <color name="login_button">#0097A7</color>
 
     <color name="order_unpaid">#00A3FF</color>
     <color name="order_paid">#28D33C</color>
