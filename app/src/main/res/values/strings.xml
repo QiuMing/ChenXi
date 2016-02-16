@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FastAndroid</string>
+    <string name="app_name">晨曦</string>
+
+    <!-- 页面名称 -->
+    <string name="main_navigation_home">首页</string>
+    <string name="main_navigation_im">伙伴</string>
+    <string name="main_navigation_interest">工具</string>
+    <string name="main_navigation_user">商店</string>
 </resources>
