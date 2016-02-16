@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">FastAndroid</string>
+    <string name="login_User">电话/邮箱</string>
+    <string name="login_Login">登录</string>
+    <string name="login_err">忘记密码</string>
+    <string name="login_new">新建用户</string>
+    <string name="login_Pass">密码</string>
+    <string name="login_Remember">记住我</string>
+    <string name="login_signin">新用户注册</string>
 </resources>

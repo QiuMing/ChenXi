@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/cn.app.sunshine.myqq"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+    <!--圆形头像-->
+    <com.hunter.chenxi.ui.custom.CircleImageView
+        android:id="@+id/circleHead"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp"
+        android:src="#FFC107"
+        app:civ_border_color="#fff"
+        app:civ_border_width="2dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/textName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/white"
+            android:hint="@string/login_User" />
+
+        <Button
+            android:id="@+id/btnTextName"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignRight="@+id/textName"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/textPass"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+
+            android:layout_marginTop="3dp"
+            android:background="@color/white"
+            android:hint="@string/login_Pass"
+
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btnTextPass"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignRight="@+id/textPass"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="#ccc"
+            android:gravity="center"
+            android:visibility="gone" />
+    </RelativeLayout>
+    <Button
+
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/login_button"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/login_Login"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+   <!-- 记住我  新建用户-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+
+        <CheckBox
+            android:id="@+id/checkBoxRememberme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/checkBoxRememberme"
+            android:text="@string/login_Remember"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/textNewUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:text="@string/login_signin"
+            android:textColor="#FFFFFF" />
+
+
+    </RelativeLayout>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="忘记密码？"
+        android:textSize="10sp"
+        android:textColor="#00c"
+        android:layout_gravity="center"/>
+
+    <!--第三方登录预留-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+         >
+<TextView
+    android:layout_centerInParent="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="第三方登录预留区域"
+    android:textSize="20sp"/>
+    </RelativeLayout>
+
+</LinearLayout>
