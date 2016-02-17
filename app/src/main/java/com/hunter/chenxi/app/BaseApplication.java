@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -39,6 +40,9 @@ public class BaseApplication extends Application {
      */
     public static float screenDensity;
 
+    private static BaseApplication baseAPP;
+    private static int mainTid;
+    private static Handler handler;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -49,6 +53,10 @@ public class BaseApplication extends Application {
 
         initImageLoader();
         initScreenSize();
+
+        baseAPP = this;
+        mainTid = android.os.Process.myTid();
+        handler = new Handler();
     }
 
     /**
@@ -124,6 +132,26 @@ public class BaseApplication extends Application {
         screenWidth = curMetrics.widthPixels;
         screenHeight = curMetrics.heightPixels;
         screenDensity = curMetrics.density;
+    }
+    /**
+     * 获取程序的上下文
+     */
+    public static Context getApplication() {
+        return baseAPP;
+    }
+
+    /**
+     * 得到handler
+     */
+    public static Handler getHandler() {
+        return handler;
+    }
+
+    /**
+     * 得到主线程ID
+     */
+    public static int getMainTid() {
+        return mainTid;
     }
 
 }

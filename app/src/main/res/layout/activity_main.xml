@@ -4,16 +4,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.hunter.chenxi.ui.custom.TitleBar
-        android:id="@+id/title_bar"
+    <include layout="@layout/layout_main_header" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="0dip"
+        android:layout_weight="1.0"
+        android:background="#ffffffff" />
 
-    <TextView
-        android:id="@+id/tv_content"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+    <!--这两个button  先放这，方便测试-->
+    <Button
+        android:id="@+id/temp_btnlogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btn_selected"
+        android:text="登录"
+        android:textColor="#fff"
+        android:textSize="24sp" />
 
+    <Button
+        android:id="@+id/temp_btnsingin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btn_selected"
+        android:text="注册"
+        android:textColor="#fff"
+        android:textSize="24sp" />
 
-
+    <include layout="@layout/layout_main_footer" />
 </LinearLayout>
