@@ -38,5 +38,17 @@
         android:textSize="24sp"
         android:textColor="#fff" />
 
+    <!--<Button
+        android:id="@+id/temp_btnsingin"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/login_button"
+        android:text="注册"
+        android:textSize="24sp"
+        android:textColor="#fff" />-->
+
     <include layout="@layout/layout_main_footer" />
 </LinearLayout>

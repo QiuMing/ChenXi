@@ -4,8 +4,9 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+   >
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none">
@@ -27,13 +28,15 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/setting_item_selector">
 
+
                 <ImageView
                     android:id="@+id/head"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_width="80.0dip"
                     android:layout_height="80.0dip"
-                    android:src="@drawable/head" />
+                    android:src="@drawable/user_logo" />
+
                 <TextView
                     android:textSize="18.0dip"
                     android:id="@+id/tvname"
@@ -41,7 +44,7 @@
                     android:layout_toRightOf="@+id/head"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="菲儿" />
+                    android:text="xq明" />
                 <TextView
                     android:id="@+id/tvmsg"
                     android:textSize="14.0dip"
@@ -49,7 +52,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_below="@+id/tvname"
                     android:layout_toRightOf="@+id/head"
-                    android:text="微信号：dada20150625" />
+                    android:text="健康等级：良" />
 
                 <ImageView
                     android:layout_marginRight="15dp"
@@ -192,5 +195,23 @@
                 android:layout_width="fill_parent"
                 android:layout_height="1.0dip" />
         </LinearLayout>
-    </ScrollView>-->
+
+    </ScrollView>
+
+    <LinearLayout
+        android:gravity="center"
+        android:padding="20.0dip"
+        android:layout_width="fill_parent"
+        android:layout_height="80.0dip"
+        >
+
+        <Button
+            android:textColor="#ffffff"
+            android:id="@+id/logout"
+            android:background="@drawable/btn_bg_red2"
+            android:padding="10.0dip"
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:text="退出登录" />
+    </LinearLayout>
 </LinearLayout>

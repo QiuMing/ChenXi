@@ -16,6 +16,8 @@ import com.hunter.chenxi.base.BaseFragment;
 import com.hunter.chenxi.presenter.impl.LoginPresenterImpl;
 import com.hunter.chenxi.presenter.interfaces.ILoginPresenter;
 import com.hunter.chenxi.ui.custom.TitleBar;
+import com.hunter.chenxi.ui.fragment.UserCenterFragment;
+import com.hunter.chenxi.ui.fragment.UserCenterFragment2;
 import com.hunter.chenxi.ui.view.interfaces.ILoginView;
 import com.hunter.chenxi.vo.request.LoginRequest;
 import com.hunter.chenxi.vo.response.UserInfo;
@@ -42,11 +44,13 @@ public class MainActivity  extends BaseActivity   {
     @Bind(R.id.temp_btnsingin)
     Button btnSigin;
 
+
+
     private Fragment homeFragment   = new Fragment();
     private Fragment imFragment     = new Fragment();
     private Fragment interestFragment = new Fragment();
-    private Fragment memberFragment     = new Fragment();
-    private List<Fragment> fragmentList = Arrays.asList(homeFragment, imFragment, interestFragment, memberFragment);
+    private Fragment userCenterFragment     = new UserCenterFragment2();
+    private List<Fragment> fragmentList = Arrays.asList(homeFragment, imFragment, interestFragment, userCenterFragment);
 
     @Override
     public void initContentView() {
