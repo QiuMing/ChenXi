@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -16,24 +15,24 @@ import com.hunter.chenxi.utils.NumberUtils;
 import com.hunter.chenxi.utils.Utils;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
-public class RegisterActivity extends BaseActivity implements View.OnClickListener {
+public class RegisterActivity extends BaseActivity {
     @Bind(R.id.btnNext)
     Button next;
-    @Bind(R.id.BtnSendVerification)
-    Button btnVerification;
+    @Bind(R.id.BtnSendVerify)
+    Button btnverlfy;
     @Bind(R.id.textTel)
     EditText tel;
-    @Bind(R.id.textVerification)
-    EditText textVerification;
+    @Bind(R.id.textVerify)
+    EditText textVerify;
     @Bind(R.id.textPass)
     EditText texrPass;
 
     private boolean isGetVerification = false;
-    private static String APPKEY = "bdd5b912c5a4";
-    private static String APPSECRET = "168684c94a48523d64c3fc65fc1ae767";
 
     @Override
     public void initContentView() {
@@ -42,8 +41,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void initPresenter() {
-        SMSSDK.initSDK(RegisterActivity.this, APPKEY, APPSECRET, true);
-        SMSSDK.registerEventHandler(eh); //注册短信回调
     }
 
     EventHandler eh = new EventHandler() {
@@ -54,7 +51,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             msg.arg2 = result;
             msg.obj = data;
             mHandler.sendMessage(msg);
-
         }
 
     };
@@ -95,11 +91,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void initView() {
-        next.setOnClickListener(RegisterActivity.this);
-        btnVerification.setOnClickListener(RegisterActivity.this);
-        textVerification.setEnabled(false);
-    }
+        ButterKnife.bind(this);
 
+        textVerify.setEnabled(false);
+        btnverlfy.getLayoutParams().height = Utils.sp2px(20 + 20);
+
+    }
 
     @Override
     protected void onDestroy() {
@@ -107,30 +104,29 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         SMSSDK.unregisterAllEventHandler();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-
-            case R.id.btnNext:
-                if (checkFromData()) {
-                    SMSSDK.submitVerificationCode("86", tel.getText().toString(), textVerification
-                            .getText().toString());
-                }
-                break;
-            case R.id.BtnSendVerification:
-                isGetVerification = true;
-                textVerification.setEnabled(true);
-                if (new NumberUtils(tel.getText().toString()).getFacilitatorType() == -1) {
-                    Utils.toast("请输入手机号码");
-                    return;
-                }
-                SMSSDK.getVerificationCode("86", tel.getText().toString());//发送验证码
-                //60s倒计时
-                myCountDownTimer(3);
-                break;
+    @OnClick(R.id.btnNext)
+    public void btnNext_onClick() {
+        if (checkFromData()) {
+            SMSSDK.submitVerificationCode("86", tel.getText().toString(), textVerify
+                    .getText().toString());
         }
-
+        startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
+        finish();
     }
+
+    @OnClick(R.id.BtnSendVerify)
+    public void BtnSendVerify_onClick() {
+        isGetVerification = true;
+        textVerify.setEnabled(true);
+        if (new NumberUtils(tel.getText().toString()).getFacilitatorType() == -1) {
+            Utils.toast("请输入手机号码");
+            return;
+        }
+        SMSSDK.getVerificationCode("86", tel.getText().toString());//发送验证码
+        //60s倒计时
+        myCountDownTimer(3);
+    }
+
 
     /**
      * 倒计时多少秒
@@ -141,16 +137,16 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         new CountDownTimer(s * 1000, 1000) {
             @Override
             public void onTick(long l) {
-                btnVerification.setEnabled(false);
-                btnVerification.setBackgroundResource(R.color.edittext_border_gray);
-                btnVerification.setText("" + l / 1000 + "秒后获取");
+                btnverlfy.setEnabled(false);
+                btnverlfy.setBackgroundResource(R.color.edittext_border_gray);
+                btnverlfy.setText("" + l / 1000 + "秒后获取");
             }
 
             @Override
             public void onFinish() {
-                btnVerification.setEnabled(true);
-                btnVerification.setText("获取验证码");
-                btnVerification.setBackgroundResource(R.drawable.btn_selected);
+                btnverlfy.setEnabled(true);
+                btnverlfy.setText("获取验证码");
+                btnverlfy.setBackgroundResource(R.drawable.btn_selected);
             }
         }.start();
     }
@@ -164,7 +160,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private boolean checkFromData() {
         boolean notNull = !TextUtils.isEmpty(tel.getText().toString()) &&
                 !TextUtils.isEmpty(texrPass.getText().toString()) &&
-                !TextUtils.isEmpty(textVerification.getText().toString()) && isGetVerification;
+                !TextUtils.isEmpty(textVerify.getText().toString()) && isGetVerification;
 
         if (notNull) {
             if (new NumberUtils(tel.getText().toString()).getFacilitatorType() == -1)

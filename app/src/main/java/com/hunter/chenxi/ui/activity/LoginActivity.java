@@ -1,7 +1,6 @@
 package com.hunter.chenxi.ui.activity;
 
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -9,11 +8,14 @@ import android.widget.TextView;
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.base.BaseActivity;
 import com.hunter.chenxi.ui.view.interfaces.ILoginView;
+import com.hunter.chenxi.utils.Utils;
 import com.hunter.chenxi.vo.response.UserInfo;
 
 import java.util.HashMap;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
@@ -21,7 +23,7 @@ import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
 import cn.sharesdk.wechat.friends.Wechat;
 
-public class LoginActivity extends BaseActivity implements ILoginView, PlatformActionListener, View.OnClickListener {
+public class LoginActivity extends BaseActivity implements ILoginView, PlatformActionListener {
     @Bind(R.id.imgbtnQQ)
     ImageButton qq;
 
@@ -46,21 +48,21 @@ public class LoginActivity extends BaseActivity implements ILoginView, PlatformA
 
     @Override
     public void initView() {
-        qq.setOnClickListener(LoginActivity.this);
-        weChat.setOnClickListener(LoginActivity.this);
-        sina.setOnClickListener(LoginActivity.this);
-        login.setOnClickListener(LoginActivity.this);
-        forgetPass.setOnClickListener(LoginActivity.this);
+        ButterKnife.bind(this);
     }
 
     @Override
     public void initPresenter() {
-        ShareSDK.initSDK(getApplication());
+        ButterKnife.bind(this);
     }
 
     @Override
     public void loginCallback(UserInfo userInfo) {
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     @Override
@@ -84,39 +86,50 @@ public class LoginActivity extends BaseActivity implements ILoginView, PlatformA
         Log.e("a", "onCancel");
     }
 
-    @Override
-    public void onClick(View view) {
 
-        switch (view.getId()) {
-            case R.id.imgbtnQQ:
-                pf = ShareSDK.getPlatform(LoginActivity.this, QQ.NAME);
-                thirdPartyLogin(pf);
-                break;
-            case R.id.imgbtnWeChat:
-                pf = ShareSDK.getPlatform(LoginActivity.this, Wechat.NAME);
-                thirdPartyLogin(pf);
-                break;
-            case R.id.imgbtnSinaWeibo:
-                pf = ShareSDK.getPlatform(LoginActivity.this, SinaWeibo.NAME);
-                thirdPartyLogin(pf);
-                break;
-            case R.id.btnLogin:
-                Log.e("a", "Login");
-                break;
-            case R.id.textForgetPass:
-                Log.e("a", "Forget the pass");
-                break;
-        }
+    @OnClick(R.id.btnLogin)
+    public void btnLogin_onClick() {
+        Utils.toast("登录");
+        //输入内容不为空，登录  逻辑
     }
+
+    @OnClick(R.id.imgbtnWeChat)
+    public void imgbtnWeChat_onClick() {
+        pf = ShareSDK.getPlatform(this, Wechat.NAME);
+        thirdPartyLogin(pf);
+    }
+
+    @OnClick(R.id.imgbtnQQ)
+    public void imgbtnQQ_onClick() {
+        pf = ShareSDK.getPlatform(this, QQ.NAME);
+        thirdPartyLogin(pf);
+    }
+
+    @OnClick(R.id.imgbtnSinaWeibo)
+    public void imgbtnSina_onClick() {
+        pf = ShareSDK.getPlatform(this, SinaWeibo.NAME);
+        thirdPartyLogin(pf);
+    }
+
+    @OnClick(R.id.textForgetPass)
+    public void textForgetPass_onClick() {
+        Utils.toast("忘记密码");
+    }
+
 
     /**
      * 第三方平台授权
      */
     private void thirdPartyLogin(Platform pf) {
-        if (pf.isAuthValid()) return;
-        //授权
-        pf.SSOSetting(true);
-        pf.setPlatformActionListener(LoginActivity.this);
+        if (pf.isAuthValid()) {
+            //获取UserInfo 逻辑
+            Log.d("第三方登录", "已经授权,");
+            return;
+        }
+
+        //pf.SSOSetting(true);
+        pf.setPlatformActionListener(this);
         pf.showUser(null);
+//        pf.authorize();
     }
 }

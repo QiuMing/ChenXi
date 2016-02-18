@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.base.BaseActivity;
+import com.hunter.chenxi.utils.Utils;
 
 import butterknife.Bind;
 
@@ -63,12 +64,15 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
     }
 
+    //这个用的时候再改
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.imgHead:
+                Utils.toast("imgHead");
                 break;
             case R.id.textName:
+                Utils.toast("textName");
                 break;
             case R.id.textSex:
                 break;

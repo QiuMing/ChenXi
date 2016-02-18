@@ -152,7 +152,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@drawable/ssdk_oks_logo_wechat_selected" />
+            android:background="@drawable/ssdk_oks_logo_wechat_selected"
+           />
 
         <ImageButton
             android:id="@+id/imgbtnSinaWeibo"
