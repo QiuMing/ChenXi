@@ -1,26 +1,13 @@
 package com.hunter.chenxi.ui.activity;
 
-import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.widget.Button;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.base.BaseActivity;
-import com.hunter.chenxi.base.BaseFragment;
-import com.hunter.chenxi.presenter.impl.LoginPresenterImpl;
-import com.hunter.chenxi.presenter.interfaces.ILoginPresenter;
-import com.hunter.chenxi.ui.custom.TitleBar;
+import com.hunter.chenxi.ui.fragment.HomeFragment;
 import com.hunter.chenxi.ui.fragment.UserCenterFragment;
-import com.hunter.chenxi.ui.fragment.UserCenterFragment2;
-import com.hunter.chenxi.ui.view.interfaces.ILoginView;
-import com.hunter.chenxi.vo.request.LoginRequest;
-import com.hunter.chenxi.vo.response.UserInfo;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,18 +25,10 @@ public class MainActivity  extends BaseActivity   {
     @Bind(R.id.foot_bar_group)
     RadioGroup group;
 
-    @Bind(R.id.temp_btnlogin)
-    Button btnLogin;
-
-    @Bind(R.id.temp_btnsingin)
-    Button btnSigin;
-
-
-
-    private Fragment homeFragment   = new Fragment();
+    private Fragment homeFragment   = new HomeFragment();
     private Fragment imFragment     = new Fragment();
     private Fragment interestFragment = new Fragment();
-    private Fragment userCenterFragment     = new UserCenterFragment2();
+    private Fragment userCenterFragment     = new UserCenterFragment();
     private List<Fragment> fragmentList = Arrays.asList(homeFragment, imFragment, interestFragment, userCenterFragment);
 
     @Override
@@ -61,31 +40,6 @@ public class MainActivity  extends BaseActivity   {
     @Override
     public void initView() {
         initFootBar();
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-                MainActivity.this.finish();
-            }
-
-        });
-
-        btnSigin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
-                MainActivity.this.finish();
-
-                //Toast.makeText(MainActivity.this, "实现了点击", Toast.LENGTH_SHORT).show();
-            }
-
-        });
     }
 
     @Override
