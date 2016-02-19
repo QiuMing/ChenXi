@@ -81,12 +81,30 @@ public class Utils {
     }
 
     /**
-     * pxz转换dip
+     * px转换dip
      */
 
     public static int px2dip(int px) {
         final float scale = getResource().getDisplayMetrics().density;
         return (int) (px / scale + 0.5f);
+    }
+
+
+
+    /**
+     * 将px值转换为sp值，保证文字大小不变
+     */
+    public static int px2sp(float pxValue) {
+        final float fontScale = getResource().getDisplayMetrics().scaledDensity;
+        return (int) (pxValue / fontScale + 0.5f);
+    }
+
+    /**
+     * 将sp值转换为px值
+     */
+    public static int sp2px(float spValue) {
+        final float fontScale = getResource().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
     }
 
     public static int getDimens(int homePictureHeight) {

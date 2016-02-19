@@ -6,6 +6,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.util.DisplayMetrics;
+import android.util.Log;
+
+import com.hunter.chenxi.ui.activity.RegisterActivity;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
@@ -18,6 +21,9 @@ import com.squareup.leakcanary.LeakCanary;
 
 import java.io.File;
 import java.util.Locale;
+
+import cn.sharesdk.framework.ShareSDK;
+import cn.smssdk.SMSSDK;
 
 /**
  * 自定义应用入口
@@ -43,6 +49,10 @@ public class BaseApplication extends Application {
     private static BaseApplication baseAPP;
     private static int mainTid;
     private static Handler handler;
+
+    private static String APPKEY = "bdd5b912c5a4";
+    private static String APPSECRET = "168684c94a48523d64c3fc65fc1ae767";
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -57,6 +67,10 @@ public class BaseApplication extends Application {
         baseAPP = this;
         mainTid = android.os.Process.myTid();
         handler = new Handler();
+        ShareSDK.initSDK(this);
+        SMSSDK.initSDK(this, APPKEY, APPSECRET, true);
+//        boolean mobDBFile = getApplicationContext().deleteDatabase("ThrowalbeLog.db");
+//        Log.e("test", mobDBFile + "");
     }
 
     /**
@@ -133,6 +147,7 @@ public class BaseApplication extends Application {
         screenHeight = curMetrics.heightPixels;
         screenDensity = curMetrics.density;
     }
+
     /**
      * 获取程序的上下文
      */
