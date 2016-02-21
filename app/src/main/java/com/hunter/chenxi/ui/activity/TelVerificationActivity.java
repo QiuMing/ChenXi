@@ -14,7 +14,7 @@ public class TelVerificationActivity extends BaseActivity {
 
     @Override
     public void initContentView() {
-        setContentView(R.layout.activity_telverification);
+        setContentView(R.layout.activity_tel_verify);
     }
 
 
