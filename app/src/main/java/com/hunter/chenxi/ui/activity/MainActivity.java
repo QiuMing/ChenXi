@@ -2,23 +2,13 @@ package com.hunter.chenxi.ui.activity;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.base.BaseActivity;
-import com.hunter.chenxi.base.BaseFragment;
-import com.hunter.chenxi.presenter.impl.LoginPresenterImpl;
-import com.hunter.chenxi.presenter.interfaces.ILoginPresenter;
-import com.hunter.chenxi.ui.custom.TitleBar;
-import com.hunter.chenxi.ui.view.interfaces.ILoginView;
-import com.hunter.chenxi.vo.request.LoginRequest;
-import com.hunter.chenxi.vo.response.UserInfo;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,9 +16,9 @@ import java.util.List;
 import butterknife.Bind;
 
 /**
- *主Activity 包含多个fragment
+ * 主Activity 包含多个fragment
  */
-public class MainActivity  extends BaseActivity   {
+public class MainActivity extends BaseActivity {
 
     //底部导航当前指向
     private static int currSel = 0;
@@ -42,16 +32,15 @@ public class MainActivity  extends BaseActivity   {
     @Bind(R.id.temp_btnsingin)
     Button btnSigin;
 
-    private Fragment homeFragment   = new Fragment();
-    private Fragment imFragment     = new Fragment();
+    private Fragment homeFragment = new Fragment();
+    private Fragment imFragment = new Fragment();
     private Fragment interestFragment = new Fragment();
-    private Fragment memberFragment     = new Fragment();
+    private Fragment memberFragment = new Fragment();
     private List<Fragment> fragmentList = Arrays.asList(homeFragment, imFragment, interestFragment, memberFragment);
 
     @Override
     public void initContentView() {
         setContentView(R.layout.activity_main);
-
     }
 
     @Override
@@ -93,10 +82,18 @@ public class MainActivity  extends BaseActivity   {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
-                    case R.id.foot_bar_home: currSel = 0; break;
-                    case R.id.foot_bar_im: currSel = 1; break;
-                    case R.id.foot_bar_interest: currSel = 2; break;
-                    case R.id.main_footbar_user: currSel = 3; break;
+                    case R.id.foot_bar_home:
+                        currSel = 0;
+                        break;
+                    case R.id.foot_bar_im:
+                        currSel = 1;
+                        break;
+                    case R.id.foot_bar_interest:
+                        currSel = 2;
+                        break;
+                    case R.id.main_footbar_user:
+                        currSel = 3;
+                        break;
                 }
                 addFragmentToStack(currSel);
                /* if(currSel == 3) {
