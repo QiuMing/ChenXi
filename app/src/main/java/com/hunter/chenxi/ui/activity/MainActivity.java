@@ -52,9 +52,8 @@ public class MainActivity  extends BaseActivity   {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.foot_bar_home: currSel = 0; break;
-                    case R.id.foot_bar_im: currSel = 1; break;
-                    case R.id.foot_bar_interest: currSel = 2; break;
-                    case R.id.main_footbar_user: currSel = 3; break;
+                    case R.id.foot_bar_interest: currSel = 1; break;
+                    case R.id.main_footbar_user: currSel = 2; break;
                 }
                 addFragmentToStack(currSel);
                /* if(currSel == 3) {
