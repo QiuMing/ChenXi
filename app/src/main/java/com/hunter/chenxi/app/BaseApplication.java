@@ -64,9 +64,9 @@ public class BaseApplication extends Application {
         initImageLoader();
         initScreenSize();
 
-        baseAPP = this;
-        mainTid = android.os.Process.myTid();
-        handler = new Handler();
+            baseAPP = this;
+            mainTid = android.os.Process.myTid();
+            handler = new Handler();
         ShareSDK.initSDK(this);
         SMSSDK.initSDK(this, APPKEY, APPSECRET, true);
 //        boolean mobDBFile = getApplicationContext().deleteDatabase("ThrowalbeLog.db");

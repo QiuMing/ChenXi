@@ -212,7 +212,7 @@ public class PlatformGridView extends LinearLayout implements
 		this.hiddenPlatforms = hiddenPlatforms;
 	}
 
-	/** Set the Click event of the custom icon */
+	/** Set the Click Events of the custom icon */
 	public void setCustomerLogos(ArrayList<CustomerLogo> customers) {
 		this.customers = customers;
 	}

@@ -1,7 +1,5 @@
 package com.hunter.chenxi.utils;
 
-import android.text.Editable;
-
 /**
  * 号码验证工具类
  *
