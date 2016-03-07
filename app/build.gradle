@@ -48,18 +48,15 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:support-v4:22.2.1'
     compile 'com.android.support:design:22.2.1'
-
-
     compile files('libs/MobCommons.jar')
     compile files('libs/MobTools.jar')
     compile files('libs/ShareSDK-Core-2.6.6.jar')
     compile files('libs/ShareSDK-QQ-2.6.6.jar')
     compile files('libs/ShareSDK-SinaWeibo-2.6.6.jar')
-    compile files('libs/ShareSDK-Wechat-2.6.6.jar')
-    compile files('libs/ShareSDK-Wechat-Core-2.6.6.jar')
-    compile files('libs/ShareSDK-Wechat-Moments-2.6.6.jar')
     compile files('libs/universal-image-loader-1.9.3.jar')
     //compile name: 'SMSSDK-2.0.1', ext: 'aar'
     //compile name: 'SMSSDKGUI-2.0.1', ext: 'aar'
     compile files('libs/SMSSDK-2.0.0.jar')
+    compile files('libs/ShareSDK-QZone-2.6.6.jar')
+    compile files('libs/ShareSDK-Wechat-Favorite-2.6.6.jar')
 }

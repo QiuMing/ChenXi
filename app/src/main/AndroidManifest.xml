@@ -14,6 +14,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.SHUTDOWN" />
+    <uses-permission android:name="android.permission.REBOOT" />
     <!-- 找到替换的，不要任由横线出现 -->
     <uses-permission android:name="android.permission.GET_TASKS" />
 
@@ -69,13 +71,13 @@
         </activity>
 
         <!-- 微信分享回调 -->
+
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
     </application>
 
 </manifest>

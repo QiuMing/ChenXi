@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.hunter.chenxi.R;
+import com.hunter.chenxi.app.BaseApplication;
 import com.hunter.chenxi.base.BaseActivity;
 import com.hunter.chenxi.utils.NumberUtils;
 import com.hunter.chenxi.utils.Utils;
@@ -31,8 +32,8 @@ public class RegisterActivity extends BaseActivity {
     EditText textVerify;
     @Bind(R.id.textPass)
     EditText texrPass;
-
     private boolean isGetVerification = false;
+
 
     @Override
     public void initContentView() {
@@ -41,6 +42,20 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     public void initPresenter() {
+        SMSSDK.initSDK(this, BaseApplication.APPKEY, BaseApplication.APPSECRET, true);
+        SMSSDK.registerEventHandler(eh);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SMSSDK.registerEventHandler(eh);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        SMSSDK.unregisterEventHandler(eh);
     }
 
     EventHandler eh = new EventHandler() {
@@ -64,7 +79,6 @@ public class RegisterActivity extends BaseActivity {
             Object data = msg.obj;
 
             Log.e("Event", "Event=" + even + "   result=" + result);
-            Utils.toast("Event=" + even + "   result=" + result);
             switch (even) {
                 case SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE:
                     if (result == SMSSDK.RESULT_COMPLETE) {
@@ -83,9 +97,10 @@ public class RegisterActivity extends BaseActivity {
                         Utils.toast("获取验证码失败");
                     }
                     break;
+                default:
+                    ((Throwable) data).printStackTrace();
             }
 
-            ((Throwable) data).printStackTrace();
         }
     };
 
@@ -110,8 +125,8 @@ public class RegisterActivity extends BaseActivity {
             SMSSDK.submitVerificationCode("86", tel.getText().toString(), textVerify
                     .getText().toString());
         }
-        startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
-        finish();
+//        startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
+//        finish();
     }
 
     @OnClick(R.id.BtnSendVerify)
@@ -122,7 +137,7 @@ public class RegisterActivity extends BaseActivity {
             Utils.toast("请输入手机号码");
             return;
         }
-        SMSSDK.getVerificationCode("86", tel.getText().toString());//发送验证码
+        SMSSDK.getVerificationCode("86", tel.getText().toString().trim());//发送验证码
         //60s倒计时
         myCountDownTimer(3);
     }
@@ -163,8 +178,10 @@ public class RegisterActivity extends BaseActivity {
                 !TextUtils.isEmpty(textVerify.getText().toString()) && isGetVerification;
 
         if (notNull) {
-            if (new NumberUtils(tel.getText().toString()).getFacilitatorType() == -1)
+            if (new NumberUtils(tel.getText().toString()).getFacilitatorType() == -1) {
                 Utils.toast("请检查手机号码");
+                return false;
+            }
 
             //根据需求预留的功能：检测密码级别是否过低  这里简单判断下
             if (texrPass.getText().toString().length() < 6) {

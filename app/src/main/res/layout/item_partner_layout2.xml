@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_partner_layout2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:paddingLeft="3dp"
     android:paddingRight="3dp"
-    android:paddingTop="5dp">
+    android:paddingTop="5dp"
+    android:visibility="gone">
 
     <TextView
-        android:id="@+id/item_partner_describe"
+        android:id="@+id/item_partner_title2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:ellipsize="end"
         android:lines="1"
         android:maxLength="17"
@@ -19,17 +24,17 @@
         android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/item_partner_mess"
+        android:id="@+id/item_partner_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toLeftOf="@+id/item_text_right"
+        android:layout_toLeftOf="@+id/item_text_right2"
         android:text="更多"
         android:textColor="@color/red"
         android:textSize="17sp"
         android:visibility="visible" />
 
     <ImageView
-        android:id="@+id/item_text_right"
+        android:id="@+id/item_text_right2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -39,19 +44,13 @@
 
 
     <ImageView
-        android:id="@+id/item_partner_img"
-        android:layout_width="wrap_content"
+        android:id="@+id/item_partner_banner"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/item_partner_describe"
+        android:layout_below="@+id/item_partner_title2"
         android:layout_centerInParent="true"
         android:layout_margin="5dp"
         android:src="@drawable/partner_photo" />
 
 
-    <ListView
-        android:id="@+id/item_partner_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/item_partner_img"
-        android:background="#fcc"/>
 </RelativeLayout>
