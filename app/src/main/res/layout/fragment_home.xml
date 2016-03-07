@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="?android:selectableItemBackground"
+android:background="?android:selectableItemBackground"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:id="@+id/fragment_home"
+android:orientation="vertical">
+
+
+<!--
+首页使用了一个PullToZoomView  的控件，实现下拉缩放图片的效果，该视图组件由
+header:头部放置内容
+zoom:图片
+content:下方内润
+三部分组成，分别对应 member_*_view.xm  三个文件
+-->
+<com.hunter.chenxi.lib.pulltozoomview.PullToZoomScrollViewEx
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <Button
-    android:id="@+id/temp_btnSingin"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginTop="50dp"
-    android:background="@drawable/btn_selected"
-    android:text="注册"
-    android:textColor="#fff"
-    android:textSize="24sp"
-    android:layout_gravity="center" />
+</com.hunter.chenxi.lib.pulltozoomview.PullToZoomScrollViewEx>
 
-
-    <Button
-        android:id="@+id/temp_btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/btn_selected"
-        android:text="登录"
-        android:textColor="#fff"
-        android:textSize="24sp"
-        android:layout_gravity="center_horizontal|bottom" />
 </LinearLayout>

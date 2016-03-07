@@ -5,11 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.hunter.chenxi.app.BaseApplication;
 
 import org.apache.http.message.BasicNameValuePair;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 
 /**
  * 创建人：SunShine
@@ -90,7 +96,6 @@ public class Utils {
     }
 
 
-
     /**
      * 将px值转换为sp值，保证文字大小不变
      */
@@ -129,8 +134,45 @@ public class Utils {
             }
         activity.startActivity(intent);
     }
+
     public static Drawable getDrawalbe(int id) {
         return getResource().getDrawable(id);
     }
 
+    public static String inputStreamToString(InputStream inputStream) {
+        int b = 0;
+        StringBuilder str = new StringBuilder();
+        try {
+            InputStreamReader inputStreamReader = new InputStreamReader(
+                    inputStream, "utf-8");
+            while ((b = inputStreamReader.read()) != -1) {
+                str = str.append((char) b);
+                //System.out.println((char) b);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return str.toString();
+
+    }
+
+    /**
+     * 根据地址获取流
+     */
+    public static InputStream getImageImputStream(final String s) {
+        final InputStream[] stream = {null};
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    stream[0] = new URL(s).openStream();
+                   Log.e("---",stream[0].read() + "---");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+
+        return stream[0];
+    }
 }

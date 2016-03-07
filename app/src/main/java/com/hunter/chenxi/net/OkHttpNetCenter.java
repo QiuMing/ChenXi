@@ -11,7 +11,10 @@ import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
+import com.squareup.okhttp.RequestBody;
+import com.squareup.okhttp.Response;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
@@ -49,6 +52,29 @@ public class OkHttpNetCenter extends BaseNetCenter {
     @Override
     void removeAllHeaders() {
         baseHeader.clear();
+    }
+
+    public static void main(String[] args) throws IOException {
+        OkHttpClient client = new OkHttpClient();
+        /*Map<String,String> re = new HashMap<>();
+        re.put("", "");
+        Context a = new
+        Request  request = a.get("http","",BaseNetCenter.GET,re);*/
+
+        RequestBody formBody = new FormEncodingBuilder()
+                .add("search", "Jurassic Park")
+                .build();
+        Request request = new Request.Builder()
+                .url("https://en.wikipedia.org/w/index.php")
+                .post(formBody)
+                .build();
+
+        Response response = client.newCall(request).execute();
+        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+        System.out.println(response.body().string());
+
+
     }
 
     /**

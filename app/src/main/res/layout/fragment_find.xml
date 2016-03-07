@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@null">
+
+    <!--发现页面的Fragemnt ,使用PagerSlidingTabStrip 组件实现tab 切换-->
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/slidtabs"
+        android:layout_width="match_parent"
+        android:layout_height="38dip"
+        app:pstsIndicatorColor="#ff33b5e5"
+        app:tabTextColor="@color/black"
+        app:pstsUnderlineHeight="0.5dp"
+        app:pstsUnderlineColor="#DFDFDF"
+        app:pstsTabPaddingLeftRight="12dp"
+        app:pstsIndicatorHeight="2dp"
+        app:pstsDividerColor="#00000000"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

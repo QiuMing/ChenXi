@@ -1,0 +1,133 @@
+﻿{
+    "sliders": [
+        {
+            "title": "赌瘦",
+            "url": "http://status.boohee.com/api/v1/bets/15",
+            "pic_url": "http://up.boohee.cn/house/u/bet/img/bet_banner.png"
+        },
+        {
+            "title": "超模25",
+            "url": "boohee://goods/832",
+            "pic_url": "http://up.boohee.cn/house/u/shop/ad_page/20160219/banner_hb_v2.jpg?imageView/3/w/750/h/1/q/90"
+        },
+        {
+            "title": "超模25",
+            "url": "http://up.boohee.cn/house/u/shop/ad_page/20160224/index.html",
+            "pic_url": "http://up.boohee.cn/house/u/shop/ad_page/20160115/banner_hb_v1.jpg"
+        }
+    ],
+    "blocks": [
+        {
+            "block": [
+                {
+                    "id": 1,
+                    "title": "好友圈",
+                    "desc": "分享乐趣，一起来减肥",
+                    "pic_url": "http://up.boohee.cn/house/u/one/topic/ic_friends_80x80.png",
+                    "link_to": "boohee://friend_timeline/",
+                    "data_type": "text",
+                    "is_new": false,
+                    "data": "11"
+                },
+                {
+                    "id": 2,
+                    "title": "精选动态",
+                    "desc": "最优质的动态在哪里",
+                    "pic_url": "http://up.boohee.cn/house/u/one/topic/ic_hot_80x80.png",
+                    "link_to": "boohee://hot_timeline/",
+                    "data_type": "text",
+                    "is_new": true,
+                    "data": "99+"
+                },
+                {
+                    "id": 3,
+                    "title": "今日热点",
+                    "desc": "离婚以后，我找回了自己",
+                    "pic_url": "http://up.boohee.cn/house/u/one/topic/ic_topic_80x80.png",
+                    "link_to": "boohee://comments/27370414",
+                    "data_type": "point",
+                    "is_new": true,
+                    "data": "New"
+                }
+            ]
+        },
+        {
+            "block": [
+                {
+                    "id": 4,
+                    "title": "我赌我会瘦",
+                    "desc": "减掉就是赚到",
+                    "pic_url": "http://up.boohee.cn/house/u/one/topic/ic_bet_80x80.png",
+                    "link_to": "boohee://bets/home",
+                    "data_type": "point",
+                    "is_new": false,
+                    "data": ""
+                }
+            ]
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "title": "成功故事",
+            "more_url": "boohee://story_list/all",
+            "show_more": true,
+            "banner_link": "http://status.boohee.com/story/0217?id=77",
+            "banner_pic_url": "http://up.boohee.cn/house/u/story/img/0217/banner0.png",
+            "events": [
+                {
+                    "title": "当年肉饼肥妹，如今清纯女神",
+                    "pic_url": "http://up.boohee.cn/house/u/story/img/0210/xiaohuli.png",
+                    "desc": "上班族  60～70Kg  瘦腿",
+                    "url": "http://status.boohee.com/story/0210?id=76"
+                },
+                {
+                    "title": "210斤胖老板减肥记",
+                    "pic_url": "http://up.boohee.cn/house/u/story/img/0203/thumbnail_240x160.jpg",
+                    "desc": "上班族  >70 kg  瘦全身",
+                    "url": "http://status.boohee.com/story/20160202?id=75"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "精选话题",
+            "more_url": "/api/v1/app_square/2/more_home_events",
+            "show_more": true,
+            "banner_link": "",
+            "banner_pic_url": "",
+            "events": [
+                {
+                    "title": "#超模25#",
+                    "pic_url": "http://up.boohee.cn/house/u/one/topic/tm25.png",
+                    "desc": "低热量、高营养、猴减肥！",
+                    "url": "boohee://topic_posts/超模25"
+                },
+                {
+                    "title": "#早餐打卡#",
+                    "pic_url": "http://up.boohee.cn/house/u/one/topic/Breakfast.png",
+                    "desc": "美好的一天从早餐开始",
+                    "url": "boohee://topic_posts/早餐"
+                },
+                {
+                    "title": "#午餐打卡#",
+                    "pic_url": "http://up.boohee.cn/house/u/one/topic/Lunch.png",
+                    "desc": "满足、轻盈两不误",
+                    "url": "boohee://topic_posts/午餐"
+                },
+                {
+                    "title": "#晚餐打卡#",
+                    "pic_url": "http://up.boohee.cn/house/u/one/topic/Dinner.png",
+                    "desc": "晚餐适量更易瘦",
+                    "url": "boohee://topic_posts/晚餐"
+                },
+                {
+                    "title": "#运动打卡#",
+                    "pic_url": "http://up.boohee.cn/house/u/one/topic/Motion_punch.png",
+                    "desc": "激励小伙伴一起运动，活力每一天",
+                    "url": "boohee://topic_posts/运动打卡"
+                }
+            ]
+        }
+    ]
+}

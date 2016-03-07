@@ -59,13 +59,13 @@ public class RegisterActivity extends BaseActivity {
         public void handleMessage(Message msg) {
 
             super.handleMessage(msg);
-            int event = msg.arg1;
+            int even = msg.arg1;
             int result = msg.arg2;
             Object data = msg.obj;
 
-            Log.e("event", "event=" + event + "   result=" + result);
-            Utils.toast("event=" + event + "   result=" + result);
-            switch (event) {
+            Log.e("Event", "Event=" + even + "   result=" + result);
+            Utils.toast("Event=" + even + "   result=" + result);
+            switch (even) {
                 case SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE:
                     if (result == SMSSDK.RESULT_COMPLETE) {
                         Utils.toast("验证成功");

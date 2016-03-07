@@ -7,4 +7,9 @@
     <!-- 底栏字体颜色 -->
     <color name="footer_text_color_normal">#343434</color>
     <color name="footer_text_color_selected">#FF601C</color>
+    <color name="red">#f00</color>
+
+    <color name="gray_light">#DFDFDF</color>
+    <color name="background_color">#ffffffff</color>
+
 </resources>
