@@ -6,6 +6,7 @@ import android.widget.RadioGroup;
 
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.base.BaseActivity;
+import com.hunter.chenxi.ui.fragment.FindPageFragment;
 import com.hunter.chenxi.ui.fragment.HomeFragment;
 import com.hunter.chenxi.ui.fragment.PartnerView;
 import com.hunter.chenxi.ui.fragment.UserCenterFragment;
@@ -16,7 +17,7 @@ import java.util.List;
 import butterknife.Bind;
 
 /**
- * 主Activity 包含多个fragment
+ * 主Activity 包含三个fragment
  */
 public class MainActivity extends BaseActivity {
 
@@ -26,12 +27,11 @@ public class MainActivity extends BaseActivity {
     @Bind(R.id.foot_bar_group)
     RadioGroup group;
 
-
     private Fragment homeFragment = new HomeFragment();
     private Fragment partnerFragment = new PartnerView();
-    private Fragment interestFragment = new Fragment();
+    private Fragment findPageFrament = new FindPageFragment();
     private Fragment userCenterFragment = new UserCenterFragment();
-    private List<Fragment> fragmentList = Arrays.asList(homeFragment, partnerFragment, interestFragment, userCenterFragment);
+    private List<Fragment> fragmentList = Arrays.asList(homeFragment, findPageFrament, userCenterFragment);
 
 
     @Override
@@ -46,6 +46,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initPresenter() {
+
     }
 
     private void initFootBar() {
@@ -53,18 +54,10 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
-                    case R.id.foot_bar_home:
-                        currSel = 0;
-                        break;
-                    case R.id.foot_bar_im:
-                        currSel = 1;
-                        break;
-                    case R.id.foot_bar_interest:
-                        currSel = 2;
-                        break;
-                    case R.id.main_footbar_user:
-                        currSel = 3;
-                        break;
+                    case R.id.foot_bar_home: currSel = 0; break;
+                    case R.id.foot_bar_interest: currSel = 1; break;
+                    case R.id.main_footbar_user: currSel = 2; break;
+
                 }
                 addFragmentToStack(currSel);
                /* if(currSel == 3) {

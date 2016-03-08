@@ -7,7 +7,7 @@
     <string name="main_navigation_home">首页</string>
     <string name="main_navigation_im">伙伴</string>
     <string name="main_navigation_interest">工具</string>
-    <string name="main_navigation_user">商店</string>
+    <string name="main_navigation_user">我</string>
 
 
     <string name="login_User">电话/邮箱</string>

@@ -1,22 +1,20 @@
 package com.hunter.chenxi.ui.fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.hunter.chenxi.R;
+import com.hunter.chenxi.lib.pulltozoomview.PullToZoomScrollViewEx;
 import com.hunter.chenxi.ui.activity.LoginActivity;
 import com.hunter.chenxi.ui.activity.RegisterActivity;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import com.hunter.chenxi.utils.Utils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,19 +25,25 @@ import butterknife.OnClick;
  */
 public class HomeFragment extends Fragment {
 
-    @Bind(R.id.temp_btnLogin)
+    /*@Bind(R.id.temp_btnLogin)
     Button btnLogin;
 
     @Bind(R.id.temp_btnSingin)
     Button btnSigin;
+*/
 
-    @Bind(R.id.temp_btnSleep)
-    Button btnSleep;
 
-    @Bind(R.id.temp_btnPedometer)
-    Button btnPedometer;
+//    @Bind(R.id.tv_test1)
+//    Button btnSleep;
+//
+//    @Bind(R.id.tv_test2)
+//    Button btnPedometer;
 
     private Activity context;
+
+    private View root;
+
+    private PullToZoomScrollViewEx scrollView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,13 +53,61 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        root = inflater.inflate(R.layout.fragment_home, container, false);
 
         context = getActivity();
-        ButterKnife.bind(this, view);
-        return view;
+        //ButterKnife.bind(this, root);
+        return root;
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        scrollView = (PullToZoomScrollViewEx) root.findViewById(R.id.scrollView);
+        View headView = LayoutInflater.from(context).inflate(R.layout.member_head_view, null, false);
+        View zoomView = LayoutInflater.from(context).inflate(R.layout.member_zoom_view, null, false);
+        View contentView = LayoutInflater.from(context).inflate(R.layout.member_content_view, null, false);
+        scrollView.setHeaderView(headView);
+        scrollView.setZoomView(zoomView);
+        scrollView.setScrollContentView(contentView);
+
+        headView.findViewById(R.id.tv_register).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // UIHelper.showLogin(getActivity());
+                Toast.makeText(getActivity(), "You win!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, RegisterActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+        headView.findViewById(R.id.tv_login).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, LoginActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+
+        scrollView.getPullRootView().findViewById(R.id.tv_test1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utils.toast("aa");
+            }
+        });
+
+        scrollView.getPullRootView().findViewById(R.id.tv_test2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Utils.toast("bb");
+            }
+        });
+    }
+
+
+/*
     @OnClick(R.id.temp_btnSingin)
     public void btnSingin_onClick() {
         Intent intent = new Intent(context, RegisterActivity.class);
@@ -68,49 +120,15 @@ public class HomeFragment extends Fragment {
         Intent intent = new Intent(context, LoginActivity.class);
         context.startActivity(intent);
         //Toast.makeText(getActivity(), "You win!", Toast.LENGTH_SHORT).show();
-    }
-
-    @OnClick(R.id.temp_btnSleep)
-    public void btnSleep_onClick() {
-        //获得ServiceManager类
-        try {
-            //获得ServiceManager类
-            Class<?> ServiceManager = Class
-                    .forName("android.os.ServiceManager");
-
-            //获得ServiceManager的getService方法
-            Method getService = ServiceManager.getMethod("getService", java.lang.String.class);
-
-            //调用getService获取RemoteService
-            Object oRemoteService = getService.invoke(null,Context.POWER_SERVICE);
-
-            //获得IPowerManager.Stub类
-            Class<?> cStub = Class
-                    .forName("android.os.IPowerManager$Stub");
-            //获得asInterface方法
-            Method asInterface = cStub.getMethod("asInterface", android.os.IBinder.class);
-            //调用asInterface方法获取IPowerManager对象
-            Object oIPowerManager = asInterface.invoke(null, oRemoteService);
-            //获得shutdown()方法
-            Method shutdown = oIPowerManager.getClass().getMethod("shutdown",boolean.class,boolean.class);
-            //调用shutdown()方法
-            shutdown.invoke(oIPowerManager,false,true);
-
-        } catch (Exception e) {
-            Log.e("TAG", e.toString(), e);
-            e.printStackTrace();
-        }
-
-//        Intent intent = new Intent(Intent.ACTION_REQUEST_SHUTDOWN);
-//        intent.putExtra(Intent.EXTRA_KEY_CONFIRM, false);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        startActivity(intent);
-    }
-
-    @OnClick(R.id.temp_btnPedometer)
-    public void btnPedometer_onClick() {
-//        Intent intent = new Intent(context, LoginActivity.class);
-//        context.startActivity(intent);
-        //Toast.makeText(getActivity(), "You win!", Toast.LENGTH_SHORT).show();
-    }
+    }*/
+//
+//    @OnClick(R.id.tv_test1)
+//    public void tv_test1_onClick() {
+//        Utils.toast("aa");
+//    }
+//
+//    @OnClick(R.id.tv_test2)
+//    public void tv_test2_onClick() {
+//        Utils.toast("bb");
+//    }
 }

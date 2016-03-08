@@ -29,6 +29,7 @@ public class PartnerView extends Fragment implements IPartnerView {
 
     private Activity context;
     private PartnerPresenter partnerPresenter;
+
     @Bind(R.id.list_partner)
     ListView partner;
 

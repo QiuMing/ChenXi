@@ -71,13 +71,10 @@
                     android:layout_marginLeft="5dp"
                     android:src="@drawable/ic_sex_female" />
             </RelativeLayout>
-            <View
+            <!--<View
                 android:background="#ffeeeeee"
                 android:layout_width="fill_parent"
                 android:layout_height="1.0dip" />
-
-
-
 
             <TextView
                 android:id="@+id/txt_album"
@@ -93,7 +90,7 @@
                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/icon_me_photo"
                 android:drawableRight="@drawable/right"
-                android:text="my_posts" />
+                android:text="my_posts" />-->
             <View
                 android:background="#ffeeeeee"
                 android:layout_width="fill_parent"
