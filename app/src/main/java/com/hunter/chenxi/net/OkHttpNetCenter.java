@@ -2,8 +2,12 @@ package com.hunter.chenxi.net;
 
 import android.content.Context;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.hunter.chenxi.app.AppManager;
 import com.hunter.chenxi.base.BaseRequest;
+import com.hunter.chenxi.bean.SearchShop;
 import com.hunter.chenxi.utils.Logger;
 import com.hunter.chenxi.utils.NetUtils;
 import com.squareup.okhttp.Callback;
@@ -15,8 +19,11 @@ import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
 import java.io.IOException;
+import java.net.CookieManager;
+import java.net.CookiePolicy;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -55,24 +62,67 @@ public class OkHttpNetCenter extends BaseNetCenter {
     }
 
     public static void main(String[] args) throws IOException {
-        OkHttpClient client = new OkHttpClient();
         /*Map<String,String> re = new HashMap<>();
         re.put("", "");
         Context a = new
         Request  request = a.get("http","",BaseNetCenter.GET,re);*/
 
-        RequestBody formBody = new FormEncodingBuilder()
+       /* RequestBody formBody = new FormEncodingBuilder()
                 .add("search", "Jurassic Park")
                 .build();
         Request request = new Request.Builder()
                 .url("https://en.wikipedia.org/w/index.php")
                 .post(formBody)
+                .build();*/
+
+
+        RequestBody formBody = new FormEncodingBuilder()
+                .add("appid","health")
+                .add("cend","30")
+                .add("channel_id","2230739234")
+                .add("cstart","0")
+                .add("cv","3.2.2")
+                .add("fields", "image")
+                .add("fields","down")
+                .add("fields", "image_urls")
+                .add("fields","date")
+                .add("fields","docid")
+                .add("fields","up")
+                .add("fields","like")
+                .add("fields","title")
+                .add("fields","source")
+                .add("fields","comment_count")
+                .add("fields","url")
+                .add("infinite","true")
+                .add("net","wifi")
+                .add("platform","1")
+                .add("refresh", "0")
+                .add("version", "010911").build();
+
+
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+//                .url("http://lxming.pub/boot/getUserListData?pageSize=10&pageNumber=2")
+                .url("http://sye.zhongsou.com/ent/rest?m=dpSearch.recommendShop&p=eyJjaXR5IjoiYmVpamluZyIsImxhdCI6MzkuOTgyMzE0LCJsbmciOjExNi40MDk2NzEsInBubyI6%0AMSwicHNpemUiOjMwLCJzaWQiOjB9%0A?m=dpSearch.recommendShop&p=eyJjaXR5IjoiYmVpamluZyIsImxhdCI6MzkuOTgyMzE0LCJsbmciOjExNi40MDk2NzEsInBubyI6%0AMSwicHNpemUiOjMwLCJzaWQiOjB9%0A")
+
+                        //.post(formBody)
                 .build();
+
+        CookieManager cookieManager = new CookieManager();
+        cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
+        client.setCookieHandler(cookieManager);
 
         Response response = client.newCall(request).execute();
         if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+       // System.out.println("-----------"+response.body().string());
 
-        System.out.println(response.body().string());
+      //  String s = response.body().string();
+     //   System.out.printf(s);
+
+        JSONObject object = JSON.parseObject(response.body().string());
+
+        List<SearchShop> list = JSONArray.parseArray(object.getString("body"), SearchShop.class);
+        System.out.println(JSON.toJSONString(list));
 
 
     }
