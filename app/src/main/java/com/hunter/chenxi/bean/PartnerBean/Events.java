@@ -1,4 +1,4 @@
-package com.hunter.chenxi.vo.PartnerVo;
+package com.hunter.chenxi.bean.PartnerBean;
 
 /**
  * 创建人：SunShine

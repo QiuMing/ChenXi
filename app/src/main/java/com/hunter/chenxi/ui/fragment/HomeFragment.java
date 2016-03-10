@@ -14,6 +14,7 @@ import com.hunter.chenxi.R;
 import com.hunter.chenxi.lib.pulltozoomview.PullToZoomScrollViewEx;
 import com.hunter.chenxi.ui.activity.LoginActivity;
 import com.hunter.chenxi.ui.activity.RegisterActivity;
+import com.hunter.chenxi.ui.activity.StepCounterActivity;
 import com.hunter.chenxi.utils.Utils;
 
 import butterknife.Bind;
@@ -94,14 +95,15 @@ public class HomeFragment extends Fragment {
         scrollView.getPullRootView().findViewById(R.id.tv_test1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utils.toast("aa");
+
+                Utils.toast("待开发...");
             }
         });
 
         scrollView.getPullRootView().findViewById(R.id.tv_test2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Utils.toast("bb");
+                startActivity(new Intent(Utils.getContext(), StepCounterActivity.class));
             }
         });
     }

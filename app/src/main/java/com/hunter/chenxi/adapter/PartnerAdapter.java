@@ -11,11 +11,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hunter.chenxi.R;
+import com.hunter.chenxi.bean.PartnerBean.Block;
+import com.hunter.chenxi.bean.PartnerBean.Categories;
+import com.hunter.chenxi.bean.PartnerBean.Events;
+import com.hunter.chenxi.bean.PartnerBean.Sliders;
 import com.hunter.chenxi.utils.DownImage;
-import com.hunter.chenxi.vo.PartnerVo.Block;
-import com.hunter.chenxi.vo.PartnerVo.Categories;
-import com.hunter.chenxi.vo.PartnerVo.Events;
-import com.hunter.chenxi.vo.PartnerVo.Sliders;
 
 import java.util.LinkedList;
 

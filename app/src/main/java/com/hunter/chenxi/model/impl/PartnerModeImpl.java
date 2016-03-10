@@ -3,12 +3,12 @@ package com.hunter.chenxi.model.impl;
 
 import android.util.Log;
 
+import com.hunter.chenxi.bean.PartnerBean.Block;
+import com.hunter.chenxi.bean.PartnerBean.Categories;
+import com.hunter.chenxi.bean.PartnerBean.Events;
+import com.hunter.chenxi.bean.PartnerBean.Sliders;
 import com.hunter.chenxi.model.interfaces.IPartnerMode;
 import com.hunter.chenxi.utils.Utils;
-import com.hunter.chenxi.vo.PartnerVo.Block;
-import com.hunter.chenxi.vo.PartnerVo.Categories;
-import com.hunter.chenxi.vo.PartnerVo.Events;
-import com.hunter.chenxi.vo.PartnerVo.Sliders;
 
 import org.json.JSONArray;
 import org.json.JSONException;
