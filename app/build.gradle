@@ -58,6 +58,8 @@ dependencies {
     compile 'in.srain.cube:ultra-ptr:1.0.11'
     //头像下拉缩放
     // compile 'com.github.frank-zhu:pullzoomview:1.0.0'
+    //启动页
+    compile 'com.github.chenupt.android:springindicator:1.0.2@aar'
 
 
     compile files('libs/MobCommons.jar')
