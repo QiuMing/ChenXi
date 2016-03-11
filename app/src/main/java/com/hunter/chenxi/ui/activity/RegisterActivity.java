@@ -1,6 +1,7 @@
 package com.hunter.chenxi.ui.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
@@ -83,6 +84,13 @@ public class RegisterActivity extends BaseActivity {
                 case SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE:
                     if (result == SMSSDK.RESULT_COMPLETE) {
                         Utils.toast("验证成功");
+                        // 用户数据本地化
+                        Utils.saveStringData("usertel", tel.getText().toString().trim());
+                        Utils.saveStringData("userpass", texrPass.getText().toString());
+                        Utils.saveBooleanData("loginde", true);
+                        //TODO 用户数据发送到服务器
+
+
                         startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
                         finish();
                     } else {
@@ -107,10 +115,8 @@ public class RegisterActivity extends BaseActivity {
     @Override
     public void initView() {
         ButterKnife.bind(this);
-
         textVerify.setEnabled(false);
         btnverlfy.getLayoutParams().height = Utils.sp2px(20 + 20);
-
     }
 
     @Override
@@ -122,6 +128,7 @@ public class RegisterActivity extends BaseActivity {
     @OnClick(R.id.btnNext)
     public void btnNext_onClick() {
         if (checkFromData()) {
+            //86固定为中国了，根据以后需求更改
             SMSSDK.submitVerificationCode("86", tel.getText().toString(), textVerify
                     .getText().toString());
         }

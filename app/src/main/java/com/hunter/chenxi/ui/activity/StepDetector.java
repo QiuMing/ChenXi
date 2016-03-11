@@ -7,6 +7,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
 
+import com.hunter.chenxi.utils.Utils;
+/**计步器核心*/
 public class StepDetector implements SensorEventListener {
 
     public static int CURRENT_SETP = 0;
@@ -40,13 +42,8 @@ public class StepDetector implements SensorEventListener {
         mYOffset = h * 0.5f;
         mScale[0] = -(h * 0.5f * (1.0f / (SensorManager.STANDARD_GRAVITY * 2)));
         mScale[1] = -(h * 0.5f * (1.0f / (SensorManager.MAGNETIC_FIELD_EARTH_MAX)));
-        if (StepDetectorSettings.sharedPreferences == null) {
-            StepDetectorSettings.sharedPreferences = context.getSharedPreferences(
-                    StepDetectorSettings.SETP_SHARED_PREFERENCES,
-                    Context.MODE_PRIVATE);
-        }
-        SENSITIVITY = StepDetectorSettings.sharedPreferences.getInt(
-                StepDetectorSettings.SENSITIVITY_VALUE, 3);
+
+        SENSITIVITY = Utils.getIntData(StepDetectorSettings.SENSITIVITY_VALUE, 3);
     }
 
 

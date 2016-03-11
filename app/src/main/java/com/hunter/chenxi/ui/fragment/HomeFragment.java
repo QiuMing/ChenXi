@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hunter.chenxi.R;
+import com.hunter.chenxi.ui.activity.UserInfoActivity;
 import com.hunter.chenxi.ui.custom.pulltozoomview.PullToZoomScrollViewEx;
 import com.hunter.chenxi.ui.activity.LoginActivity;
 import com.hunter.chenxi.ui.activity.RegisterActivity;
@@ -63,8 +64,14 @@ public class HomeFragment extends Fragment {
         headView.findViewById(R.id.tv_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, LoginActivity.class);
-                context.startActivity(intent);
+                Utils.toast("" + Utils.getBooleanData("loginde", false));
+                if (!Utils.getBooleanData("loginde", false)) {
+                    Intent intent = new Intent(context, LoginActivity.class);
+                    context.startActivity(intent);
+                } else {
+                    Utils.toast("登录成功");
+                    startActivity(new Intent(Utils.getContext(), UserInfoActivity.class));
+                }
             }
         });
 

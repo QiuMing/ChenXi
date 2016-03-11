@@ -3,6 +3,7 @@ package com.hunter.chenxi.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -24,6 +25,8 @@ import java.net.URL;
 public class Utils {
 
     public static Toast mToast;
+    public static SharedPreferences sharedPreferences = getContext().getSharedPreferences("userdata", Context.MODE_PRIVATE);
+    public static SharedPreferences.Editor edit = sharedPreferences.edit();
 
     /**
      * Toast显示
@@ -175,4 +178,88 @@ public class Utils {
 
         return stream[0];
     }
+
+    /**
+     * 得到一个格式化的时间
+     *
+     * @param time 时间 毫秒
+     * @return 时：分：秒：毫秒
+     */
+    public static String getFormatTime(long time) {
+        time = time / 1000;
+        long second = time % 60;
+        long minute = (time % 3600) / 60;
+        long hour = time / 3600;
+
+        // 毫秒秒显示两位
+        // String strMillisecond = "" + (millisecond / 10);
+        // 秒显示两位
+        String strSecond = ("00" + second)
+                .substring(("00" + second).length() - 2);
+        // 分显示两位
+        String strMinute = ("00" + minute)
+                .substring(("00" + minute).length() - 2);
+        // 时显示两位
+        String strHour = ("00" + hour).substring(("00" + hour).length() - 2);
+
+        return strHour + ":" + strMinute + ":" + strSecond;
+        // + strMillisecond;
+    }
+    /**
+     *
+     * @param key
+     * @param value
+     */
+    public static void saveStringData(String key,String value){
+        edit.putString(key,value);
+        edit.commit();
+    }
+
+    /**
+     *
+     * @param key
+     * @return
+     */
+    public static String getStringData(String key,String def){
+        return sharedPreferences.getString(key,def);
+    }
+
+    /**
+     *
+     * @param key
+     * @param value
+     */
+    public static void saveIntgData(String key,int value){
+        edit.putInt(key, value);
+        edit.commit();
+    }
+
+    /**
+     *
+     * @param key
+     * @return
+     */
+    public static int getIntData(    String key,int def){
+        return sharedPreferences.getInt(key, def);
+    }
+
+    /**
+     *
+     * @param key
+     * @param value
+     */
+    public static void saveBooleanData(String key,boolean value){
+        edit.putBoolean(key, value);
+        edit.commit();
+    }
+
+    /**
+     *
+     * @param key
+     * @return
+     */
+    public static boolean getBooleanData(    String key,boolean def){
+        return sharedPreferences.getBoolean(key, def);
+    }
+
 }

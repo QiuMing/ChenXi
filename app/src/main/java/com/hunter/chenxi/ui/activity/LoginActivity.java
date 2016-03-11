@@ -1,5 +1,6 @@
 package com.hunter.chenxi.ui.activity;
 
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -7,9 +8,7 @@ import android.widget.TextView;
 
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.base.BaseActivity;
-import com.hunter.chenxi.ui.view.interfaces.ILoginView;
 import com.hunter.chenxi.utils.Utils;
-import com.hunter.chenxi.vo.response.UserInfo;
 
 import java.util.HashMap;
 
@@ -20,11 +19,10 @@ import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
-import cn.sharesdk.tencent.qq.QQ;
 import cn.sharesdk.tencent.qzone.QZone;
 import cn.sharesdk.wechat.friends.Wechat;
 
-public class LoginActivity extends BaseActivity implements ILoginView, PlatformActionListener {
+public class LoginActivity extends BaseActivity implements PlatformActionListener {
     @Bind(R.id.imgbtnQQ)
     ImageButton qq;
 
@@ -39,6 +37,12 @@ public class LoginActivity extends BaseActivity implements ILoginView, PlatformA
 
     @Bind(R.id.textForgetPass)
     TextView forgetPass;
+
+    @Bind(R.id.textName)
+    TextView name;
+
+    @Bind(R.id.textPass)
+    TextView pass;
 
     private Platform pf;//第三方登录平台
 
@@ -55,11 +59,16 @@ public class LoginActivity extends BaseActivity implements ILoginView, PlatformA
     @Override
     public void initPresenter() {
         ButterKnife.bind(this);
+        if (Utils.getBooleanData("loginde", false)) {
+            //登录 请求服务器
+            Utils.getStringData("userpass", "userpass is null");
+            Utils.getStringData("usertel", "usertel is null");
+
+            //跳转
+            startActivity(new Intent(Utils.getContext(), UserInfoActivity.class));
+        }
     }
 
-    @Override
-    public void loginCallback(UserInfo userInfo) {
-    }
 
     @Override
     protected void onDestroy() {
@@ -68,8 +77,12 @@ public class LoginActivity extends BaseActivity implements ILoginView, PlatformA
 
     @Override
     public void onComplete(Platform platform, int action, HashMap<String, Object> res) {
-        Log.e("a", "onComplete");
+        Utils.saveBooleanData("loginde", true);
+        Utils.toast(pf.getDb().getUserName() + "  欢迎您");
+        finish();
+        startActivity(new Intent(Utils.getContext(), UserInfoActivity.class));
 
+        Log.e("a", "onComplete");
         Log.e("sharesdk use_id", pf.getDb().getUserId()); //获取用户id
         Log.e("sharesdk use_name", pf.getDb().getUserName());//获取用户名称
         Log.e("sharesdk use_icon", pf.getDb().getUserIcon());//获取用户头像
@@ -79,7 +92,9 @@ public class LoginActivity extends BaseActivity implements ILoginView, PlatformA
 
     @Override
     public void onError(Platform platform, int i, Throwable throwable) {
-        Log.e("a", "onError");
+        Utils.saveBooleanData("loginde", false);
+        Utils.toast("登录失败，请重试");
+        Log.e("a", "onError  " + i);
     }
 
     @Override
@@ -87,11 +102,11 @@ public class LoginActivity extends BaseActivity implements ILoginView, PlatformA
         Log.e("a", "onCancel");
     }
 
-
     @OnClick(R.id.btnLogin)
     public void btnLogin_onClick() {
-        Utils.toast("登录");
-        //输入内容不为空 ，检测本地数据库是否有此用户信息，无则储存
+        String nameStr = name.getText().toString();
+        String passStr = pass.getText().toString();
+        Utils.toast("请求服务器-登录");
     }
 
     @OnClick(R.id.textForgetPass)
