@@ -1,4 +1,4 @@
-package com.hunter.chenxi.lib.loadmore;
+package com.hunter.chenxi.ui.custom;
 
 import android.annotation.TargetApi;
 import android.content.Context;

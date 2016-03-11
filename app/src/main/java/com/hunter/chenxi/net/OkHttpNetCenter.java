@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.hunter.chenxi.app.AppManager;
 import com.hunter.chenxi.base.BaseRequest;
-import com.hunter.chenxi.bean.SearchShop;
+import com.hunter.chenxi.bean.SearchShopBean;
 import com.hunter.chenxi.utils.Logger;
 import com.hunter.chenxi.utils.NetUtils;
 import com.squareup.okhttp.Callback;
@@ -107,7 +107,7 @@ public class OkHttpNetCenter extends BaseNetCenter {
 
         JSONObject object = JSON.parseObject(response.body().string());
 
-        List<SearchShop> list = JSONArray.parseArray(object.getString("body"), SearchShop.class);
+        List<SearchShopBean> list = JSONArray.parseArray(object.getString("body"), SearchShopBean.class);
         System.out.println(JSON.toJSONString(list));
     }
 

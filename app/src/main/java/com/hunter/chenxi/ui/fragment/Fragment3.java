@@ -4,8 +4,6 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,7 +16,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.hunter.chenxi.R;
-import com.hunter.chenxi.bean.SearchShop;
+import com.hunter.chenxi.bean.SearchShopBean;
 import com.hunter.chenxi.net.PersistentCookieStore;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -75,9 +73,7 @@ public class Fragment3 extends Fragment {
 
 		editor.commit();
 
-		//返回STRING_KEY的值
 		Log.d("SP", sp.getString("STRING_KEY", "none"));
-		//如果NOT_EXIST不存在，则返回值为"none"
 		Log.d("SP", sp.getString("NOT_EXIST", "none"));
 		txtView.setText(sp.getString("JSESSIONID", "none"));
 	}
@@ -96,27 +92,7 @@ public class Fragment3 extends Fragment {
 
 		myCookieStore.addCookie(newCookie);
 		RequestParams params = new RequestParams();
-		/*params.put("platform","1");
-		params.put("infinite","true");
-		params.put("cstart","0");
-		params.put("cend","50");
-		params.put("appid","health");
-		params.put("cv","3.2.2");
-		params.put("refresh","1");
-		params.put("channel_id","2230739254");
-		params.put("fields","docid");
-		params.put("fields","date");
-		params.put("fields","image");
-		params.put("fields","image_urls");
-		params.put("fields","like");
-		params.put("fields","source");
-		params.put("fields","title");
-		params.put("fields","url");
-		params.put("fields","comment_count");
-		params.put("fields","up");
-		params.put("fields","down");
-		params.put("version","010911");
-		params.put("net","wifi");*/
+
 
 		params.put("platform","1");
 		params.put("appid","health");
@@ -124,10 +100,7 @@ public class Fragment3 extends Fragment {
 		params.put("version","010911");
 		params.put("net","wifi");
 
-
-		//myClient.post("http://a1.go2yd.com/Website/channel/news-list-for-channel",params ,new AsyncHttpResponseHandler() {
-		myClient.post("http://a1.go2yd.com/Website/proxy/real-time-log",params ,new AsyncHttpResponseHandler() {
-
+ 		myClient.post("http://a1.go2yd.com/Website/proxy/real-time-log",params ,new AsyncHttpResponseHandler() {
 
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -187,7 +160,7 @@ public class Fragment3 extends Fragment {
 
 				JSONObject object = JSON.parseObject(new String(responseBody));
 
-				//list = JSONArray.parseArray(object.getString("body"), SearchShop.class);
+				//list = JSONArray.parseArray(object.getString("body"), SearchShopBean.class);
 
 				Log.e("TAG", "onSuccess json = " + JSON.toJSONString(object.get("result")));
 			}
@@ -198,28 +171,9 @@ public class Fragment3 extends Fragment {
 				Log.e("TAG", "获取数据异常 ", e);
 			}
 		});
-
-		/*myClient.post("http://a1.go2yd.com/Website/channel/best-news",params2,new AsyncHttpResponseHandler() {
-		//myClient.post("http://a1.go2yd.com/Website/proxy/real-time-log", params, new AsyncHttpResponseHandler() {
-
-
-			@Override
-			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-
-				String json = new String(responseBody);
-				Log.e("TAG", "onSuccess json = " + json);
-			}
-
-			@Override
-			public void onFailure(int statusCode, Header[] headers,
-								  byte[] errorResponse, Throwable e) {
-				Log.e("TAG", "获取数据异常 ", e);
-			}
-
-
-		});*/
-
 	}
+
+
 	/**
 	 * 获取标准 Cookie
 	 */
@@ -246,20 +200,6 @@ public class Fragment3 extends Fragment {
 		return sb.toString();
 	}
 
-	@OnClick(R.id.fragment3_Button2)
-	public  void  test_(){
-
-		Log.e("++++++++++++++++++++", "执行test");
-
-		NewsFragment contactFragment = new NewsFragment("http://www.baidu.com");
-		FragmentManager fm = getFragmentManager();
-		FragmentTransaction ft = fm.beginTransaction();
-		ft.add(R.id.fragment_container, contactFragment);
-		ft.commit();
-		//new PageTask().execute();
-	}
-
-
 
 	class PageTask extends AsyncTask<String, Integer, String> {
 
@@ -281,7 +221,7 @@ public class Fragment3 extends Fragment {
 
 				JSONObject object = JSON.parseObject(response.body().string());
 
-				List<SearchShop> list = JSONArray.parseArray(object.getString("body"), SearchShop.class);
+				List<SearchShopBean> list = JSONArray.parseArray(object.getString("body"), SearchShopBean.class);
 				Log.e("++++++++++++",JSON.toJSONString(list));
 				System.out.println(JSON.toJSONString(list));
 				return  JSON.toJSONString(list);

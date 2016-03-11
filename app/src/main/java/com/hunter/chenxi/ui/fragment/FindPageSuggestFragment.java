@@ -16,8 +16,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.hunter.chenxi.R;
-import com.hunter.chenxi.bean.SearchShop;
-import com.hunter.chenxi.lib.loadmore.LoadMoreListView;
+import com.hunter.chenxi.app.Constants;
+import com.hunter.chenxi.bean.SearchShopBean;
+import com.hunter.chenxi.ui.custom.LoadMoreListView;
+import com.hunter.chenxi.utils.PixelUtil;
 import com.joanzapata.android.BaseAdapterHelper;
 import com.joanzapata.android.QuickAdapter;
 import com.squareup.okhttp.OkHttpClient;
@@ -26,8 +28,6 @@ import com.squareup.okhttp.Response;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.net.CookieManager;
-import java.net.CookiePolicy;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,15 +45,15 @@ import in.srain.cube.views.ptr.header.StoreHouseHeader;
  *
  * 使用到ButterKnife 为fragment 绑定 view
  * 使用了下拉刷新加载数据
- * 使用了通用的适配器
- * 使用了Picasso 来管理图片加载
+ * 使用了通用的适配器 QuickAdapter
+ * 使用了Picasso 来管理图片加载以及缓存管理  ，QuickAdapter已经帮我们做好了
  * 继承了AsyncTask 来实现数据在非主线程 中加载
  */
 public class FindPageSuggestFragment  extends Fragment {
 
     private Activity context;
-    private SearchShop param;   //查询参数，用于控制下拉 或者 上啦 时候数据请求加载
-    private int pno = 1;
+    private SearchShopBean param;   //查询参数载体，用于控制下拉 或者 上啦 时候数据请求加载
+    private int pageNumber = 1;
     private boolean isLoadAll;
 
     @Bind(R.id.rotate_header_list_view_frame)
@@ -62,7 +62,7 @@ public class FindPageSuggestFragment  extends Fragment {
     @Bind(R.id.listView)
     LoadMoreListView listView;
 
-    QuickAdapter<SearchShop> adapter;
+    QuickAdapter<SearchShopBean> adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -82,12 +82,12 @@ public class FindPageSuggestFragment  extends Fragment {
     }
 
     void initView() {
-        adapter = new QuickAdapter<SearchShop>(context, R.layout.find_page_list_item) {
+        adapter = new QuickAdapter<SearchShopBean>(context, R.layout.find_page_list_item) {
             @Override
-            protected void convert(BaseAdapterHelper helper, SearchShop shop) {
+            protected void convert(BaseAdapterHelper helper, SearchShopBean shop) {
                 helper.setText(R.id.name, shop.getName())
                         .setText(R.id.address, shop.getAddr())
-                        .setImageUrl(R.id.logo, "http://sye.img.zhongsou.com"+shop.getLogo()); // 自动异步加载图片
+                        .setImageUrl(R.id.logo, "http://sye.img.zhongsou.com"+shop.getLogo()); // QuickAdapter管理自动异步加载图片
             }
         };
 
@@ -96,7 +96,7 @@ public class FindPageSuggestFragment  extends Fragment {
 
         // header custom begin
         final StoreHouseHeader header = new StoreHouseHeader(context);
-        //header.setPadding(0, DeviceUtil.dp2px(context, 15), 0, 0);
+        header.setPadding(0, PixelUtil.dp2px(15,context), 0, 0);
         header.initWithString("ChenXi");
         header.setTextColor(getResources().getColor(R.color.gray));
         mPtrFrame.setHeaderView(header);
@@ -149,40 +149,36 @@ public class FindPageSuggestFragment  extends Fragment {
             public void onScroll(AbsListView view, int firstVisibleItem,
                                  int visibleItemCount, int totalItemCount) {
                 // getLastVisibleItemBitmap(firstVisibleItem+visibleItemCount);
-//                takeScreenShot(context);
+                // takeScreenShot(context);
             }
         });
 
     }
 
     private void initData() {
-        param = new SearchShop();
-        pno = 1;
+        param = new SearchShopBean();
+        pageNumber = 1;
         isLoadAll = false;
     }
 
     private void loadData() {
+        //如果数据加载完毕，则return
         if (isLoadAll) {
+            listView.setLoadMoreViewTextNoMoreData();   //显示已全部加载完
             return;
         }
-        //数据加载，重新渲染listView
-        new GetDataTask().execute();
+         new GetDataTask().execute();
     }
 
 
-    private class GetDataTask extends AsyncTask<Void, Void, String[]> {
-        List<SearchShop> list = new ArrayList<SearchShop>();
+    private class GetDataTask extends AsyncTask<Void, Void, List> {
 
         @Override
-        protected String[] doInBackground(Void... params) {
+        protected List doInBackground(Void... params) {
             OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder()
-                    .url("http://sye.zhongsou.com/ent/rest?m=dpSearch.recommendShop&p=eyJjaXR5IjoiYmVpamluZyIsImxhdCI6MzkuOTgyMzE0LCJsbmciOjExNi40MDk2NzEsInBubyI6%0AMSwicHNpemUiOjMwLCJzaWQiOjB9%0A?m=dpSearch.recommendShop&p=eyJjaXR5IjoiYmVpamluZyIsImxhdCI6MzkuOTgyMzE0LCJsbmciOjExNi40MDk2NzEsInBubyI6%0AMSwicHNpemUiOjMwLCJzaWQiOjB9%0A")
-                    .build();
+            Request request = new Request.Builder().url(Constants.FROM_ANDROID_FINE_URL).build();
 
-            CookieManager cookieManager = new CookieManager();
-            cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
-            client.setCookieHandler(cookieManager);
+            List<SearchShopBean> list = new ArrayList<SearchShopBean>();
 
             try {
                 Response response = client.newCall(request).execute();
@@ -190,30 +186,30 @@ public class FindPageSuggestFragment  extends Fragment {
 
                 JSONObject object = JSON.parseObject(response.body().string());
 
-                 list = JSONArray.parseArray(object.getString("body"), SearchShop.class);
+                list = JSONArray.parseArray(object.getString("body"), SearchShopBean.class);
                 Log.e("test", JSON.toJSONString(list));
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return null;
+            return list;
         }
 
+        //数据加载完后执行UI线程，这是 AsyncTask的 基本用法了
         @Override
-        protected void onPostExecute(String[] result) {
-
-            Log.e("___________","执行UI 线程"+JSON.toJSONString(list));
+        protected void onPostExecute(List list) {
             mPtrFrame.refreshComplete();
             listView.updateLoadMoreViewText(list);
 
-            isLoadAll = list.size() < 30;
-            if(pno == 1) {
+            if(pageNumber == 1) {
                 adapter.clear();
             }
 
+            if(pageNumber==4){
+                isLoadAll = true;
+            }
             adapter.addAll(list);
         }
     }
-
 
 }

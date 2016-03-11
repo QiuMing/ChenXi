@@ -21,7 +21,6 @@ import com.hunter.chenxi.R;
 public class FindPageFragment extends Fragment {
 
     private static String[] TITLES;
-    //private static String[] URLS = new String[]{"", "", "", ""};
 
     private PagerSlidingTabStrip tabs;
     private ViewPager pager;
@@ -63,15 +62,6 @@ public class FindPageFragment extends Fragment {
         @Override
         public Fragment getItem(int position) {
             switch (position) {
-               /* case 0:
-                    return new FindPageSuggestFragment();
-                case 1:
-                    return new FindPageSuggestFragment();
-                case 2:
-                    return new FindPageSuggestFragment();
-
-                default:
-                    return new FindPageSuggestFragment();*/
                 case 0:
                     fragment1 = new Fragment1();
                     return fragment1;

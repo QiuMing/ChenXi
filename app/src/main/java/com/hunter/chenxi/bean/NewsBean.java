@@ -3,7 +3,7 @@ package com.hunter.chenxi.bean;
 /**
  * Created by Ming on 2016/3/10.
  */
-public class New {
+public class NewsBean {
 
     private String ctype ;
     private String impid ;

@@ -7,38 +7,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.hunter.chenxi.R;
-import com.hunter.chenxi.lib.pulltozoomview.PullToZoomScrollViewEx;
+import com.hunter.chenxi.ui.custom.pulltozoomview.PullToZoomScrollViewEx;
 import com.hunter.chenxi.ui.activity.LoginActivity;
 import com.hunter.chenxi.ui.activity.RegisterActivity;
 import com.hunter.chenxi.ui.activity.StepCounterActivity;
 import com.hunter.chenxi.utils.Utils;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
  * Created by Ming on 2016/2/18.
  */
 public class HomeFragment extends Fragment {
-
-    /*@Bind(R.id.temp_btnLogin)
-    Button btnLogin;
-
-    @Bind(R.id.temp_btnSingin)
-    Button btnSigin;
-*/
-
-
-//    @Bind(R.id.tv_test1)
-//    Button btnSleep;
-//
-//    @Bind(R.id.tv_test2)
-//    Button btnPedometer;
 
     private Activity context;
 
@@ -57,7 +37,6 @@ public class HomeFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_home, container, false);
 
         context = getActivity();
-        //ButterKnife.bind(this, root);
         return root;
     }
 
@@ -76,8 +55,6 @@ public class HomeFragment extends Fragment {
         headView.findViewById(R.id.tv_register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // UIHelper.showLogin(getActivity());
-                Toast.makeText(getActivity(), "You win!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, RegisterActivity.class);
                 context.startActivity(intent);
             }
@@ -91,11 +68,9 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
         scrollView.getPullRootView().findViewById(R.id.tv_test1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Utils.toast("待开发...");
             }
         });

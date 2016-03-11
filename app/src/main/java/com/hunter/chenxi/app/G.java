@@ -17,7 +17,7 @@ public class G {
     /**
      * 应用程序名
      */
-    public static final String APPNAME = "FastAndroid";
+    public static final String APPNAME = "ChenXi";
 
     /**
      * 文件根目录

@@ -330,7 +330,7 @@ public class RippleView extends RelativeLayout {
     /**
      * Set Ripple color, default is #FFFFFF
      *
-     * @param rippleColor New color resource
+     * @param rippleColor NewsBean color resource
      */
     @ColorRes
     public void setRippleColor(int rippleColor) {
@@ -348,7 +348,7 @@ public class RippleView extends RelativeLayout {
     /**
      * Set Ripple type, default is RippleType.SIMPLE
      *
-     * @param rippleType New Ripple type for next animation
+     * @param rippleType NewsBean Ripple type for next animation
      */
     public void setRippleType(final RippleType rippleType) {
         this.rippleType = rippleType.ordinal();
@@ -374,7 +374,7 @@ public class RippleView extends RelativeLayout {
     /**
      * Set Ripple padding if you want to avoid some graphic glitch
      *
-     * @param ripplePadding New Ripple padding in pixel, default is 0px
+     * @param ripplePadding NewsBean Ripple padding in pixel, default is 0px
      */
     public void setRipplePadding(int ripplePadding) {
         this.ripplePadding = ripplePadding;
@@ -439,7 +439,7 @@ public class RippleView extends RelativeLayout {
     /**
      * Set framerate for Ripple animation
      *
-     * @param frameRate New framerate value, default is 10
+     * @param frameRate NewsBean framerate value, default is 10
      */
     public void setFrameRate(int frameRate) {
         this.frameRate = frameRate;

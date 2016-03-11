@@ -18,9 +18,10 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.hunter.chenxi.R;
-import com.hunter.chenxi.bean.New;
-import com.hunter.chenxi.lib.loadmore.LoadMoreListView;
+import com.hunter.chenxi.bean.NewsBean;
+import com.hunter.chenxi.ui.custom.LoadMoreListView;
 import com.hunter.chenxi.ui.activity.NewsActivity;
+import com.hunter.chenxi.utils.PixelUtil;
 import com.joanzapata.android.BaseAdapterHelper;
 import com.joanzapata.android.QuickAdapter;
 import com.loopj.android.http.AsyncHttpClient;
@@ -46,8 +47,9 @@ import in.srain.cube.views.ptr.header.StoreHouseHeader;
 public class Fragment2 extends Fragment{
 
 	private Activity context;
-	private New news;
-
+ 	private int pageNumbers = 1;
+	private int pageSize =30;
+	private String requestUrl;
 
 	@Bind(R.id.rotate_header_list_view_frame)
 	PtrClassicFrameLayout mPtrFrame;
@@ -55,7 +57,7 @@ public class Fragment2 extends Fragment{
 	@Bind(R.id.listView)
 	LoadMoreListView listView;
 
-	QuickAdapter<New> adapter;
+	QuickAdapter<NewsBean> adapter;
 
 
 	@Override
@@ -76,23 +78,33 @@ public class Fragment2 extends Fragment{
 	}
 
 	void initData(){
-		adapter = new QuickAdapter<New>(context,R.layout.find_page_list_item) {
+		int cend = pageNumbers * 30;
+		int cstart = cend -pageSize;
+		requestUrl = "http://a1.go2yd.com/Website/channel/best-news?platform=1&infinite=true&cstart="+cstart +
+				 "&push_refresh=0&cend="+cend+"&appid=health&cv=3.2.2&" +
+				 "refresh=0&fields=docid&fields=date&fields=image&fields=image_urls&fields=like&fields=source" +
+				 "&fields=title&fields=url&fields=comment_count&fields=up&fields=down&version=010911&net=wifi" ;
+
+	}
+
+	void initView(){
+		adapter = new QuickAdapter<NewsBean>(context,R.layout.find_page_list_item) {
 			@Override
-			protected void convert(BaseAdapterHelper helper, New item) {
+			protected void convert(BaseAdapterHelper helper, NewsBean item) {
 				helper.setText(R.id.name,item.getTitle())
-				.setText(R.id.address,item.getDate())
-				.setText(R.id.newsUrl, item.getUrl())
-				.setImageUrl(R.id.logo, "http://i3.go2yd.com/image.php?type=webp_180x120&url=" + item.getImage())
-						;
+						.setText(R.id.address,item.getDate())
+						.setText(R.id.newsUrl, item.getUrl())
+						.setImageUrl(R.id.logo, "http://i3.go2yd.com/image.php?type=webp_180x120&url=" + item.getImage())
+				;
 			}
 		};
-
 		listView.setDrawingCacheEnabled(true);
 		listView.setAdapter(adapter);
 
+
 		// header custom begin
 		final StoreHouseHeader header = new StoreHouseHeader(context);
-		//header.setPadding(0, DeviceUtil.dp2px(context, 15), 0, 0);
+		header.setPadding(0, PixelUtil.dp2px(15, context), 0, 0);
 		header.initWithString("ChenXi");
 		header.setTextColor(getResources().getColor(R.color.gray));
 		mPtrFrame.setHeaderView(header);
@@ -153,13 +165,8 @@ public class Fragment2 extends Fragment{
 		});
 	}
 
-	void initView(){
-
-	}
-
 
 	public void  loadData(){
-
 		AsyncHttpClient myClient = new AsyncHttpClient();
 		com.loopj.android.http.PersistentCookieStore myCookieStore = new com.loopj.android.http.PersistentCookieStore(getActivity());
 		myClient.setCookieStore(myCookieStore);
@@ -180,34 +187,26 @@ public class Fragment2 extends Fragment{
 			Log.e("error","error");
 		}
 
-		String  url = "http://a1.go2yd.com/Website/channel/best-news?platform=1&infinite=true&cstart=0&push_refresh=0&cend=6&appid=health&cv=3.2.2&" +
-				"refresh=0&fields=docid&fields=date&fields=image&fields=image_urls&fields=like&fields=source" +
-				"&fields=title&fields=url&fields=comment_count&fields=up&fields=down&version=010911&net=wifi" ;
 
-		myClient.post(null,url,entity,"application/json",new AsyncHttpResponseHandler() {
+		myClient.post(null,requestUrl,entity,"application/json",new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
 				JSONObject object = JSON.parseObject(new String(responseBody));
 
-				List<New> list = JSONArray.parseArray(object.getString("result"), New.class);
+				List<NewsBean> list = JSONArray.parseArray(object.getString("result"), NewsBean.class);
 				mPtrFrame.refreshComplete();
 				listView.updateLoadMoreViewText(list);
 
-				/*isLoadAll = list.size() < 30;
-				if(pno == 1) {
-					adapter.clear();
-				}*/
-
+				pageNumbers++;
 				adapter.addAll(list);
-
-				Log.e("TAG", "onSuccess json = " + JSON.toJSONString(list));
+				Log.i("TAG", "onSuccess json = " + JSON.toJSONString(list));
 			}
 
 			@Override
 			public void onFailure(int statusCode, Header[] headers,
 								  byte[] errorResponse, Throwable e) {
-				Log.e("TAG", "获取数据异常 ", e);
+				Log.i("TAG", "获取数据异常 ", e);
 			}
 		});
 

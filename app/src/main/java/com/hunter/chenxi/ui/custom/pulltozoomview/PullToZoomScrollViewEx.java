@@ -1,4 +1,4 @@
-package com.hunter.chenxi.lib.pulltozoomview;
+package com.hunter.chenxi.ui.custom.pulltozoomview;
 
 import android.content.Context;
 import android.content.res.TypedArray;

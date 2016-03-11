@@ -17,7 +17,6 @@ public class NewsActivity extends BaseActivity {
     @Bind(R.id.webView_news)
     WebView webView;
 
-
     @Override
     public void initContentView() {
         setContentView(R.layout.fragment_news);
