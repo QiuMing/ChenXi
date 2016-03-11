@@ -11,5 +11,6 @@
 
     <color name="gray_light">#DFDFDF</color>
     <color name="background_color">#ffffffff</color>
-
+    <!-- RippleView-->
+    <color name="rippelColor">#FFFFFF</color>
 </resources>

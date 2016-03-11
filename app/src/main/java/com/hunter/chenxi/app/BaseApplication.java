@@ -50,8 +50,9 @@ public class BaseApplication extends Application {
     private static int mainTid;
     private static Handler handler;
 
-    private static String APPKEY = "bdd5b912c5a4";
-    private static String APPSECRET = "168684c94a48523d64c3fc65fc1ae767";
+    public static String APPKEY = "bdd5b912c5a4";
+    public static String APPSECRET = "168684c94a48523d64c3fc65fc1ae767";
+
 
     @Override
     public void onCreate() {
@@ -67,8 +68,8 @@ public class BaseApplication extends Application {
             baseAPP = this;
             mainTid = android.os.Process.myTid();
             handler = new Handler();
-        ShareSDK.initSDK(this);
-        SMSSDK.initSDK(this, APPKEY, APPSECRET, true);
+            ShareSDK.initSDK(this);
+
 //        boolean mobDBFile = getApplicationContext().deleteDatabase("ThrowalbeLog.db");
 //        Log.e("test", mobDBFile + "");
     }

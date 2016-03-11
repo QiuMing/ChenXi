@@ -21,6 +21,7 @@ import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.tencent.qzone.QZone;
 import cn.sharesdk.wechat.friends.Wechat;
 
 public class LoginActivity extends BaseActivity implements ILoginView, PlatformActionListener {
@@ -90,7 +91,12 @@ public class LoginActivity extends BaseActivity implements ILoginView, PlatformA
     @OnClick(R.id.btnLogin)
     public void btnLogin_onClick() {
         Utils.toast("登录");
-        //输入内容不为空，登录  逻辑
+        //输入内容不为空 ，检测本地数据库是否有此用户信息，无则储存
+    }
+
+    @OnClick(R.id.textForgetPass)
+    public void textForgetPass_onClick() {
+        Utils.toast("忘记密码");
     }
 
     @OnClick(R.id.imgbtnWeChat)
@@ -101,7 +107,7 @@ public class LoginActivity extends BaseActivity implements ILoginView, PlatformA
 
     @OnClick(R.id.imgbtnQQ)
     public void imgbtnQQ_onClick() {
-        pf = ShareSDK.getPlatform(this, QQ.NAME);
+        pf = ShareSDK.getPlatform(this, QZone.NAME);
         thirdPartyLogin(pf);
     }
 
@@ -111,12 +117,6 @@ public class LoginActivity extends BaseActivity implements ILoginView, PlatformA
         thirdPartyLogin(pf);
     }
 
-    @OnClick(R.id.textForgetPass)
-    public void textForgetPass_onClick() {
-        Utils.toast("忘记密码");
-    }
-
-
     /**
      * 第三方平台授权
      */
@@ -124,9 +124,10 @@ public class LoginActivity extends BaseActivity implements ILoginView, PlatformA
         if (pf.isAuthValid()) {
             //获取UserInfo 逻辑
             Log.d("第三方登录", "已经授权,");
-            return;
+            pf.removeAccount();
+            //return;
         }
-
+        Log.d("第三方登录", "开始授权,");
         //pf.SSOSetting(true);
         pf.setPlatformActionListener(this);
         pf.showUser(null);
