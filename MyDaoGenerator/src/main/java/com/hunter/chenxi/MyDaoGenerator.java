@@ -19,7 +19,7 @@ public class MyDaoGenerator {
     }
 
     private static void initUserBean(Schema schema) {
-        Entity userBean = schema.addEntity("User");//
+        Entity userBean = schema.addEntity("User2");//
         //userBean.setTableName("user"); //
         userBean.addLongProperty("id").primaryKey().index();//
         userBean.addStringProperty("name");

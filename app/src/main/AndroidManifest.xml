@@ -46,6 +46,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".ui.activity.NewsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"

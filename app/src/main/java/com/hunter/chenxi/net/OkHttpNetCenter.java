@@ -62,20 +62,6 @@ public class OkHttpNetCenter extends BaseNetCenter {
     }
 
     public static void main(String[] args) throws IOException {
-        /*Map<String,String> re = new HashMap<>();
-        re.put("", "");
-        Context a = new
-        Request  request = a.get("http","",BaseNetCenter.GET,re);*/
-
-       /* RequestBody formBody = new FormEncodingBuilder()
-                .add("search", "Jurassic Park")
-                .build();
-        Request request = new Request.Builder()
-                .url("https://en.wikipedia.org/w/index.php")
-                .post(formBody)
-                .build();*/
-
-
         RequestBody formBody = new FormEncodingBuilder()
                 .add("appid","health")
                 .add("cend","30")
@@ -102,7 +88,7 @@ public class OkHttpNetCenter extends BaseNetCenter {
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-//                .url("http://lxming.pub/boot/getUserListData?pageSize=10&pageNumber=2")
+                // .url("http://lxming.pub/boot/getUserListData?pageSize=10&pageNumber=2")
                 .url("http://sye.zhongsou.com/ent/rest?m=dpSearch.recommendShop&p=eyJjaXR5IjoiYmVpamluZyIsImxhdCI6MzkuOTgyMzE0LCJsbmciOjExNi40MDk2NzEsInBubyI6%0AMSwicHNpemUiOjMwLCJzaWQiOjB9%0A?m=dpSearch.recommendShop&p=eyJjaXR5IjoiYmVpamluZyIsImxhdCI6MzkuOTgyMzE0LCJsbmciOjExNi40MDk2NzEsInBubyI6%0AMSwicHNpemUiOjMwLCJzaWQiOjB9%0A")
 
                         //.post(formBody)
@@ -123,8 +109,6 @@ public class OkHttpNetCenter extends BaseNetCenter {
 
         List<SearchShop> list = JSONArray.parseArray(object.getString("body"), SearchShop.class);
         System.out.println(JSON.toJSONString(list));
-
-
     }
 
     /**

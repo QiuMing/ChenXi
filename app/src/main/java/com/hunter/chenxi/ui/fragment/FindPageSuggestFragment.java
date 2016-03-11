@@ -215,21 +215,5 @@ public class FindPageSuggestFragment  extends Fragment {
         }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        Picasso.with(context).resumeTag(context);
-    }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        Picasso.with(context).pauseTag(context);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Picasso.with(context).cancelTag(context);
-    }
 }

@@ -14,7 +14,7 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.hunter.chenxi.app.AppManager;
-import com.hunter.chenxi.net.AsyncHttpNetCenter;
+//import com.hunter.chenxi.net.AsyncHttpNetCenter;
 import com.hunter.chenxi.ui.custom.CustomConfirmDialog;
 
 import butterknife.ButterKnife;
@@ -55,7 +55,7 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
     @Override
     protected void onDestroy() {
         // 清除网络请求队列
-        AsyncHttpNetCenter.getInstance().clearRequestQueue(this);
+      //  AsyncHttpNetCenter.getInstance().clearRequestQueue(this);
         //OkHttpNetCenter.getInstance().clearRequestQueue(this);
 
         // 将该Activity从堆栈移除

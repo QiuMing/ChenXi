@@ -11,6 +11,7 @@
         android:layout_height="60dp"
         android:scaleType="center"
         android:src="@drawable/default_image"/>
+
     <TextView
         android:id="@+id/name"
         android:layout_width="fill_parent"
@@ -38,4 +39,12 @@
         android:text="地址：了多久啊离开封疆大吏减肥大事了"
         android:textColor="@color/gray"
         android:textSize="13.0sp" />
+
+    <TextView
+        android:id="@+id/newsUrl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="地址：了多久啊离开封疆大吏减肥大事了"
+        />
     </RelativeLayout>
