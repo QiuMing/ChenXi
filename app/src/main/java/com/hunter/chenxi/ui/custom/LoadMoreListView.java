@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
@@ -14,8 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
 import com.hunter.chenxi.R;
+import com.hunter.chenxi.app.Constants;
 
 import java.util.List;
 
@@ -125,20 +124,20 @@ public class LoadMoreListView extends ListView implements OnScrollListener {
     }
 
     public void updateLoadMoreViewText(List data) {
-
-        Log.e("data", JSON.toJSONString(data));
         if(getAdapter().getCount() == 0 && data.isEmpty()) {
             setLoadMoreViewTextNoData();
-        } else if(data.size() < 30) {
+        } else if(data.size() < Constants.LIST_ITEM_NUMBERS) {
             setLoadMoreViewTextNoMoreData();
+        }else {
+            setLoadMoreViewTextLoading();
         }
         mIsLoadingMore = false;
     }
 
-    /*public void setLoadMoreViewTextLoading() {
+    public void setLoadMoreViewTextLoading() {
         mTextView.setText(R.string.pull_to_refresh_refreshing_label);
         mProgressBar.setVisibility(VISIBLE);
-    }*/
+    }
 
     public void setLoadMoreViewTextError() {
         mTextView.setText(R.string.pull_to_refresh_net_error_label);

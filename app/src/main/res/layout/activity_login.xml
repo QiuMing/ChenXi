@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/cn.app.sunshine.myqq"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
+    <include layout="@layout/layout_main_header" />
     <!--圆形头像-->
     <com.hunter.chenxi.ui.custom.CircleImageView
         android:id="@+id/circleHead"

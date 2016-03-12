@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include layout="@layout/layout_main_header" />
+
     <in.srain.cube.views.ptr.PtrClassicFrameLayout
         android:id="@+id/rotate_header_web_view_frame"
         xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"

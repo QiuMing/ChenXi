@@ -6,58 +6,45 @@
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/news_image_url"
+        android:id="@+id/logo"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:scaleType="center"
         android:src="@drawable/default_image"/>
 
     <TextView
-        android:id="@+id/news_item_title"
+        android:id="@+id/name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/news_image_url"
+        android:layout_alignTop="@+id/logo"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="2dp"
         android:ellipsize="end"
         android:singleLine="true"
         android:text="俏江南"
         android:textColor="#101010"
-        android:layout_toRightOf="@+id/news_image_url"
+        android:layout_toRightOf="@+id/logo"
         android:textSize="16.0sp" />
 
     <TextView
-        android:id="@+id/news_item_source"
+        android:id="@+id/address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/news_image_url"
+        android:layout_alignBottom="@+id/logo"
         android:layout_marginBottom="3dp"
         android:layout_marginLeft="10dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:layout_toRightOf="@+id/news_image_url"
-        android:text="来源：凤凰网"
+        android:layout_toRightOf="@+id/logo"
+        android:text="地址：了多久啊离开封疆大吏减肥大事了"
         android:textColor="@color/gray"
         android:textSize="13.0sp" />
 
     <TextView
-        android:id="@+id/news_itme_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/news_image_url"
-        android:layout_marginBottom="3dp"
-        android:layout_marginLeft="30dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:layout_toRightOf="@+id/news_item_source"
-        android:text="2016-03-12 08:21:21"
-        android:textColor="@color/gray"
-        android:textSize="13.0sp" />
-
-    <TextView
-        android:id="@+id/news_content_url"
+        android:id="@+id/newsUrl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:text="地址：了多久啊离开封疆大吏减肥大事了"
         />
-    </RelativeLayout>
+</RelativeLayout>

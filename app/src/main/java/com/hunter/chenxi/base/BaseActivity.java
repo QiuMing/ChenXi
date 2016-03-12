@@ -5,21 +5,21 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
 import android.widget.Toast;
 
 import com.hunter.chenxi.app.AppManager;
-//import com.hunter.chenxi.net.AsyncHttpNetCenter;
 import com.hunter.chenxi.ui.custom.CustomConfirmDialog;
 
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity extends FragmentActivity implements IBaseView {
+//import com.hunter.chenxi.net.AsyncHttpNetCenter;
+
+public abstract class BaseActivity extends AppCompatActivity implements IBaseView {
     private ProgressDialog mProgressDialog;
     FragmentManager fragmentManager;
 
@@ -40,9 +40,11 @@ public abstract class BaseActivity extends FragmentActivity implements IBaseView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         // 隐藏标题栏
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
         initContentView();
         // 将该Activity加入堆栈
         AppManager.getAppManager().addActivity(this);

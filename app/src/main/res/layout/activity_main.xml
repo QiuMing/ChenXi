@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_main_header" />
+    <include layout="@layout/view_toolbar_with_title_view" />
 
     <FrameLayout
         android:id="@+id/fragment_container"

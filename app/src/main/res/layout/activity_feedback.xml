@@ -4,14 +4,8 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <!--<TextView
-        android:text="用户反馈"
-        android:layout_width="fill_parent"
-        android:layout_height="40dip"
-        android:background="#363433"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        android:textSize="20sp"/>-->
+
+    <include layout="@layout/layout_main_header" />
 
     <TextView
         android:id="@+id/textHeadTitle"

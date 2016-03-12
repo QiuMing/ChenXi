@@ -82,7 +82,7 @@ public class FindPageSuggestFragment  extends Fragment {
     }
 
     void initView() {
-        adapter = new QuickAdapter<SearchShopBean>(context, R.layout.find_page_list_item) {
+        adapter = new QuickAdapter<SearchShopBean>(context, R.layout.find_page_list_item2) {
             @Override
             protected void convert(BaseAdapterHelper helper, SearchShopBean shop) {
                 helper.setText(R.id.name, shop.getName())

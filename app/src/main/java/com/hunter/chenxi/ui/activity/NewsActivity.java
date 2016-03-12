@@ -19,7 +19,7 @@ public class NewsActivity extends BaseActivity {
 
     @Override
     public void initContentView() {
-        setContentView(R.layout.fragment_news);
+        setContentView(R.layout.activity_news);
     }
 
     @Override

@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp">
+    >
+    <!--android:padding="20dp">-->
 
-
+    <include layout="@layout/layout_main_header" />
     <!-- 手机号-->
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

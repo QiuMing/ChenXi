@@ -48,7 +48,7 @@ public class Fragment2 extends Fragment{
 
 	private Activity context;
  	private int pageNumbers = 1;
-	private int pageSize =30;
+	private int pageSize =12;
 	private String requestUrl;
 
 	@Bind(R.id.rotate_header_list_view_frame)
@@ -78,8 +78,11 @@ public class Fragment2 extends Fragment{
 	}
 
 	void initData(){
+
+		Toast.makeText(getActivity(), "The pageNumber is " + pageNumbers, Toast.LENGTH_SHORT).show();
 		int cend = pageNumbers * 30;
 		int cstart = cend -pageSize;
+		Log.e("Tag","cend "+cend + "  cstart"+cstart);
 		requestUrl = "http://a1.go2yd.com/Website/channel/best-news?platform=1&infinite=true&cstart="+cstart +
 				 "&push_refresh=0&cend="+cend+"&appid=health&cv=3.2.2&" +
 				 "refresh=0&fields=docid&fields=date&fields=image&fields=image_urls&fields=like&fields=source" +
@@ -91,10 +94,10 @@ public class Fragment2 extends Fragment{
 		adapter = new QuickAdapter<NewsBean>(context,R.layout.find_page_list_item) {
 			@Override
 			protected void convert(BaseAdapterHelper helper, NewsBean item) {
-				helper.setText(R.id.name,item.getTitle())
-						.setText(R.id.address,item.getDate())
-						.setText(R.id.newsUrl, item.getUrl())
-						.setImageUrl(R.id.logo, "http://i3.go2yd.com/image.php?type=webp_180x120&url=" + item.getImage())
+				helper.setText(R.id.news_item_title,item.getTitle())
+						.setText(R.id.news_itme_time,item.getDate())
+						.setText(R.id.news_content_url, item.getUrl())
+						.setImageUrl(R.id.news_image_url, "http://i3.go2yd.com/image.php?type=webp_180x120&url=" + item.getImage())
 				;
 			}
 		};
@@ -130,6 +133,7 @@ public class Fragment2 extends Fragment{
 		listView.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
 			@Override
 			public void onLoadMore() {
+				initData();
 				loadData();
 			}
 		});
@@ -138,7 +142,7 @@ public class Fragment2 extends Fragment{
 		listView.setOnItemClickListener(new ListView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-				TextView tvUrl = (TextView) view.findViewById(R.id.newsUrl);
+				TextView tvUrl = (TextView) view.findViewById(R.id.news_content_url);
 				Toast.makeText(getActivity(), "You win!" + tvUrl.getText(), Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(getActivity(), NewsActivity.class);
 				intent.putExtra("url", tvUrl.getText());
@@ -160,7 +164,7 @@ public class Fragment2 extends Fragment{
 			public void onScroll(AbsListView view, int firstVisibleItem,
 								 int visibleItemCount, int totalItemCount) {
 				// getLastVisibleItemBitmap(firstVisibleItem+visibleItemCount);
-//                takeScreenShot(context);
+				//takeScreenShot(context);
 			}
 		});
 	}
@@ -200,7 +204,7 @@ public class Fragment2 extends Fragment{
 
 				pageNumbers++;
 				adapter.addAll(list);
-				Log.i("TAG", "onSuccess json = " + JSON.toJSONString(list));
+				Log.i("TAG", "The pageNumbers is  " +pageNumbers);
 			}
 
 			@Override
