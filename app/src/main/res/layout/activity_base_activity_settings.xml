@@ -31,12 +31,12 @@
 
 
     <SeekBar
-        android:id="@+id/sensitivity"
+        android:id="@+id/seek_sensitivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip"
+        android:layout_marginLeft="35dip"
+        android:layout_marginRight="35dip"
         android:max="10"
         android:maxHeight="5dip"
         android:minHeight="5dip"
@@ -71,7 +71,7 @@
 
 
     <SeekBar
-        android:id="@+id/step_lenth"
+        android:id="@+id/seek_step_lenth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="35dip"
@@ -105,7 +105,7 @@
 
 
     <SeekBar
-        android:id="@+id/weight"
+        android:id="@+id/seek_weight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="35dip"
@@ -133,7 +133,7 @@
         android:paddingTop="15dip">
 
         <Button
-            android:id="@+id/ok"
+            android:id="@+id/btn_ok_step_stting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -147,7 +147,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/cancel"
+            android:id="@+id/btn_cancel_step_stting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"

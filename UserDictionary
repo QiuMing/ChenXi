@@ -1,0 +1,18 @@
+
+ SharedPreferences : "userdata"
+------------用户 注册-----------------
+ 用户电话号："usertel"
+
+ 用户　密码："userpass"
+
+ 登录过："loginde"
+
+------------计步器参数----------------
+ 体     重: "weight_value"
+
+ 步     长: "step_length_value"
+
+ 灵  敏 值: "sensitivity_value"
+
+ 设     置: "userdata"
+-------------------------------------
