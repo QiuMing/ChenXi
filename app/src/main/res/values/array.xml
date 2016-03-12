@@ -8,4 +8,12 @@
 		<item>我的</item>
 	</string-array>
 
+	<!-- Guide -->
+	<array name="guide_indicator_colors">
+		<item>@color/guide_indicator_1</item>
+		<item>@color/guide_indicator_2</item>
+		<item>@color/guide_indicator_3</item>
+		<item>@color/guide_indicator_4</item>
+	</array>
+
 </resources>
