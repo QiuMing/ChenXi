@@ -66,8 +66,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Utils.toast("" + Utils.getBooleanData("loginde", false));
                 if (!Utils.getBooleanData("loginde", false)) {
-                    Intent intent = new Intent(context, LoginActivity.class);
-                    context.startActivity(intent);
+                    startActivity(new Intent(context, LoginActivity.class));
                 } else {
                     Utils.toast("登录成功");
                     startActivity(new Intent(Utils.getContext(), UserInfoActivity.class));

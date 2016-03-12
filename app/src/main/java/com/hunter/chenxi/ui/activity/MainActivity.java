@@ -13,6 +13,7 @@ import com.hunter.chenxi.ui.fragment.FindPageFragment;
 import com.hunter.chenxi.ui.fragment.HomeFragment;
 import com.hunter.chenxi.ui.fragment.PartnerView;
 import com.hunter.chenxi.ui.fragment.UserCenterFragment;
+import com.hunter.chenxi.utils.Utils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -59,9 +60,15 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
-                    case R.id.foot_bar_home: currSel = 0; break;
-                    case R.id.foot_bar_interest: currSel = 1; break;
-                    case R.id.main_footbar_user: currSel = 2; break;
+                    case R.id.foot_bar_home:
+                        currSel = 0;
+                        break;
+                    case R.id.foot_bar_interest:
+                        currSel = 1;
+                        break;
+                    case R.id.main_footbar_user:
+                        currSel = 2;
+                        break;
 
                 }
                 addFragmentToStack(currSel);
@@ -94,13 +101,10 @@ public class MainActivity extends BaseActivity {
      * 判断是否启动引导页面
      */
     private void initGuide() {
-        SharedPreferences sp = getSharedPreferences("chenxi_setting", Context.MODE_PRIVATE);
-        Boolean isFirst = sp.getBoolean("guide", true);
-        if (isFirst) {
-            SharedPreferences.Editor editor = sp.edit();
-            editor.putBoolean("guide", false);
-            editor.apply();
+        if (Utils.getBooleanData("guide", true) || !Utils.getBooleanData("loginde", false)) {
             startActivity(new Intent(this, GuideActivity.class));
         }
+            Utils.saveBooleanData("guide", false);
+
     }
 }

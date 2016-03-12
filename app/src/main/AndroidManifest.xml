@@ -28,6 +28,7 @@
         android:theme="@style/AppTheme.WithoutActionBar">
         <activity
             android:name=".ui.activity.MainActivity"
+
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

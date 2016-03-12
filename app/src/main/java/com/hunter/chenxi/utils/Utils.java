@@ -228,10 +228,11 @@ public class Utils {
      *
      * @param key
      * @param value
+     * @return 是否存储成功
      */
-    public static void saveIntgData(String key,int value){
+    public static boolean saveIntgData(String key,int value){
         edit.putInt(key, value);
-        edit.commit();
+        return edit.commit();
     }
 
     /**
@@ -247,10 +248,11 @@ public class Utils {
      *
      * @param key
      * @param value
+     * @return 是否存储成功
      */
-    public static void saveBooleanData(String key,boolean value){
+    public static boolean saveBooleanData(String key,boolean value){
         edit.putBoolean(key, value);
-        edit.commit();
+        return edit.commit();
     }
 
     /**
