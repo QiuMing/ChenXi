@@ -3,11 +3,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:weightSum="1">
 
     <include layout="@layout/view_toolbar" />
 
     <TextView
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ChenXi"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.25" />
+
+
+    <!--<TextView
         android:id="@+id/textHeadTitle"
         style="@style/main_head_title"
         android:clickable="true"
@@ -19,8 +30,9 @@
         android:text="关于我们"
         android:textColor="#ffffff"
         android:textSize="20.0sp"
-
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_weight="0.22"
+        android:layout_width="295dp" />-->
 
 </LinearLayout>

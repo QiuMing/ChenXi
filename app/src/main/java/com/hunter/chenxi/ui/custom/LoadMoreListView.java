@@ -14,7 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hunter.chenxi.R;
-import com.hunter.chenxi.app.Constants;
 
 import java.util.List;
 
@@ -124,11 +123,18 @@ public class LoadMoreListView extends ListView implements OnScrollListener {
     }
 
     public void updateLoadMoreViewText(List data) {
+        /*
         if(getAdapter().getCount() == 0 && data.isEmpty()) {
             setLoadMoreViewTextNoData();
         } else if(data.size() < Constants.LIST_ITEM_NUMBERS) {
-            setLoadMoreViewTextNoMoreData();
+            setLoadMoreViewTextNoMoreData();   //加载完毕的判断，因为在适配器中去除了一些不完整的item,所以就不考虑这一情况，假设数据无限
         }else {
+            setLoadMoreViewTextLoading();
+        }
+        */
+        if(getAdapter().getCount() == 0 && data.isEmpty()) {
+            setLoadMoreViewTextNoData();
+        }  else {
             setLoadMoreViewTextLoading();
         }
         mIsLoadingMore = false;

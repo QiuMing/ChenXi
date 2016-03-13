@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.hunter.chenxi.R;
@@ -19,10 +20,10 @@ import butterknife.OnClick;
 /**
  * Created by Ming on 2016/2/16.
  */
-public class UserCenterFragment  extends Fragment {
+public class UserCenterFragment extends Fragment {
 
     private Activity context;
-    private  View view;
+    private View view;
 
     @Bind(R.id.txt_card)
     TextView txt_card;
@@ -36,6 +37,9 @@ public class UserCenterFragment  extends Fragment {
     @Bind(R.id.txt_setting)
     TextView txt_setting;
 
+    @Bind(R.id.btn_logout)
+    Button btnLogout;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_user_center,container,false);
@@ -45,7 +49,7 @@ public class UserCenterFragment  extends Fragment {
     }
 
 
-    @OnClick({R.id.txt_card,R.id.txt_money,R.id.txt_collect,R.id.txt_setting})
+    @OnClick({R.id.txt_card,R.id.txt_money,R.id.txt_collect,R.id.txt_setting,R.id.btn_logout})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.txt_card:
@@ -64,7 +68,10 @@ public class UserCenterFragment  extends Fragment {
                 Utils.start_Activity(getActivity(), AboutUsActivity.class,null);
                 Utils.toast("开始跳转");
                 break;
+            case R.id.btn_logout:
+                Utils.saveBooleanData("loginde", false);
+                Utils.toast("退出成功");
+            break;
         }
     }
-
 }

@@ -55,26 +55,24 @@ public class FindPageFragment extends Fragment {
             super(fm);
         }
 
-        Fragment1 fragment1;
-        Fragment2 fragment2;
-        Fragment3 fragment3;
-        FindPageSuggestFragment fragment4;
+        FindPageSecondTabFragment fragment2;
+        FindPageThirdTabFragment fragment3;
+        FindPageFirstTabFragment fragment1;
         @Override
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    fragment1 = new Fragment1();
+                    fragment1 = new FindPageFirstTabFragment();
                     return fragment1;
+
                 case 1:
-                    fragment2 = new Fragment2();
+                    fragment2 = new FindPageSecondTabFragment();
                     return fragment2;
                 case 2:
-                    fragment3 = new Fragment3();
+                    fragment3 = new FindPageThirdTabFragment();
                     return fragment3;
-
                 default:
-                    fragment4 = new FindPageSuggestFragment();
-                    return  fragment4;
+                    return  new FindPageFirstTabFragment();
 
             }
         }

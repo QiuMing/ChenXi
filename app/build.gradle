@@ -60,7 +60,10 @@ dependencies {
     // compile 'com.github.frank-zhu:pullzoomview:1.0.0'
     //启动页
     compile 'com.github.chenupt.android:springindicator:1.0.2@aar'
+    compile name: 'multiplemodel-1.1.0', ext: 'aar'
+    compile 'com.google.guava:guava:18.0'
 
+    compile 'com.daimajia.numberprogressbar:library:1.2@aar'
 
     compile files('libs/MobCommons.jar')
     compile files('libs/MobTools.jar')

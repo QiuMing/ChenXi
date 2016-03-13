@@ -12,6 +12,7 @@
         android:scaleType="center"
         android:src="@drawable/default_image"/>
 
+    <!--android:text="title"-->
     <TextView
         android:id="@+id/news_item_title"
         android:layout_width="fill_parent"
@@ -21,11 +22,11 @@
         android:layout_marginTop="2dp"
         android:ellipsize="end"
         android:singleLine="true"
-        android:text="俏江南"
         android:textColor="#101010"
         android:layout_toRightOf="@+id/news_image_url"
         android:textSize="16.0sp" />
 
+    <!--android:text="来源：凤凰网"-->
     <TextView
         android:id="@+id/news_item_source"
         android:layout_width="wrap_content"
@@ -36,10 +37,10 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:layout_toRightOf="@+id/news_image_url"
-        android:text="来源：凤凰网"
         android:textColor="@color/gray"
         android:textSize="13.0sp" />
 
+    <!-- 时间android:text="2016-03-12 08:21:21"-->
     <TextView
         android:id="@+id/news_itme_time"
         android:layout_width="wrap_content"
@@ -50,7 +51,6 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:layout_toRightOf="@+id/news_item_source"
-        android:text="2016-03-12 08:21:21"
         android:textColor="@color/gray"
         android:textSize="13.0sp" />
 

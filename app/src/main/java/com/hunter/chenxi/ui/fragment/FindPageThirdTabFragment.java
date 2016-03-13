@@ -8,23 +8,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.hunter.chenxi.R;
+import com.hunter.chenxi.app.Constants;
 import com.hunter.chenxi.bean.NewsBean;
-import com.hunter.chenxi.ui.custom.LoadMoreListView;
+import com.hunter.chenxi.net.AsyncHttpClientUtil;
 import com.hunter.chenxi.ui.activity.NewsActivity;
-import com.hunter.chenxi.utils.PixelUtil;
+import com.hunter.chenxi.ui.custom.LoadMoreListView;
 import com.joanzapata.android.BaseAdapterHelper;
 import com.joanzapata.android.QuickAdapter;
-import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.squareup.picasso.Picasso;
 
@@ -42,13 +40,11 @@ import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
-import in.srain.cube.views.ptr.header.StoreHouseHeader;
 
-public class Fragment2 extends Fragment{
+public class FindPageThirdTabFragment extends Fragment{
 
 	private Activity context;
- 	private int pageNumbers = 1;
-	private int pageSize =12;
+	private int pageNumbers ;
 	private String requestUrl;
 
 	@Bind(R.id.rotate_header_list_view_frame)
@@ -58,7 +54,6 @@ public class Fragment2 extends Fragment{
 	LoadMoreListView listView;
 
 	QuickAdapter<NewsBean> adapter;
-
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,22 +66,23 @@ public class Fragment2 extends Fragment{
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		context = getActivity();
-		initData();
+		pageNumbers = 1;
+		initRequestData();
 		initView();
 		loadData();
-
 	}
 
-	void initData(){
 
-		Toast.makeText(getActivity(), "The pageNumber is " + pageNumbers, Toast.LENGTH_SHORT).show();
-		int cend = pageNumbers * 30;
-		int cstart = cend -pageSize;
-		Log.e("Tag","cend "+cend + "  cstart"+cstart);
-		requestUrl = "http://a1.go2yd.com/Website/channel/best-news?platform=1&infinite=true&cstart="+cstart +
-				 "&push_refresh=0&cend="+cend+"&appid=health&cv=3.2.2&" +
-				 "refresh=0&fields=docid&fields=date&fields=image&fields=image_urls&fields=like&fields=source" +
-				 "&fields=title&fields=url&fields=comment_count&fields=up&fields=down&version=010911&net=wifi" ;
+	//这里链接对应健康栏目
+	void initRequestData(){
+		//Toast.makeText(getActivity(), "The pageNumber is " + pageNumbers, Toast.LENGTH_SHORT).show();
+		int cend = pageNumbers * Constants.LIST_ITEM_NUMBERS;
+		int cstart = cend - Constants.LIST_ITEM_NUMBERS;
+		Log.e("Tag", "cend " + cend + "  cstart" + cstart);
+		requestUrl = "http://a1.go2yd.com/Website/channel/news-list-for-channel?platform=1&infinite=true&cstart="+cstart +
+				"&push_refresh=0&cend="+cend+"&appid=health&cv=3.2.2&" +
+				"refresh=0&channel_id=2230739234&fields=docid&fields=date&"+
+				"fields=image&fields=image_urls&fields=like&fields=source&fields=title&fields=url&fields=comment_count&fields=up&fields=down&version=010911";
 
 	}
 
@@ -94,32 +90,44 @@ public class Fragment2 extends Fragment{
 		adapter = new QuickAdapter<NewsBean>(context,R.layout.find_page_list_item) {
 			@Override
 			protected void convert(BaseAdapterHelper helper, NewsBean item) {
-				helper.setText(R.id.news_item_title,item.getTitle())
-						.setText(R.id.news_itme_time,item.getDate())
-						.setText(R.id.news_content_url, item.getUrl())
-						.setImageUrl(R.id.news_image_url, "http://i3.go2yd.com/image.php?type=webp_180x120&url=" + item.getImage())
-				;
+				if(item.getImage()!=null && item.getTitle()!=null) {
+					helper.setText(R.id.news_item_title, item.getTitle())
+							.setText(R.id.news_itme_time, item.getDate())
+							.setText(R.id.news_content_url, item.getUrl())
+							.setText(R.id.news_item_source,item.getSource())
+							.setImageUrl(R.id.news_image_url, "http://i3.go2yd.com/image.php?type=webp_180x120&url=" + item.getImage())
+					;
+				}
 			}
 		};
+
 		listView.setDrawingCacheEnabled(true);
 		listView.setAdapter(adapter);
 
+		listView.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
+			@Override
+			public void onLoadMore() {
+				loadData();
+			}
+		});
 
-		// header custom begin
-		final StoreHouseHeader header = new StoreHouseHeader(context);
-		header.setPadding(0, PixelUtil.dp2px(15, context), 0, 0);
-		header.initWithString("ChenXi");
-		header.setTextColor(getResources().getColor(R.color.gray));
-		mPtrFrame.setHeaderView(header);
-		mPtrFrame.addPtrUIHandler(header);
-		// header custom end
+		listView.setOnItemClickListener(new ListView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+				TextView tvUrl = (TextView) view.findViewById(R.id.news_content_url);
+				Intent intent = new Intent(getActivity(), NewsActivity.class);
+				intent.putExtra("url", tvUrl.getText());
+				startActivity(intent);
+			}
+		});
 
-		// 下拉刷新
+
 		mPtrFrame.setLastUpdateTimeRelateObject(this);
 		mPtrFrame.setPtrHandler(new PtrHandler() {
 			@Override
 			public void onRefreshBegin(PtrFrameLayout frame) {
-				initData();
+				pageNumbers = 1;
+				initRequestData();
 				loadData();
 			}
 
@@ -128,50 +136,11 @@ public class Fragment2 extends Fragment{
 				return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
 			}
 		});
-
-		// 加载更多
-		listView.setOnLoadMoreListener(new LoadMoreListView.OnLoadMoreListener() {
-			@Override
-			public void onLoadMore() {
-				initData();
-				loadData();
-			}
-		});
-
-		// 点击事件
-		listView.setOnItemClickListener(new ListView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-				TextView tvUrl = (TextView) view.findViewById(R.id.news_content_url);
-				Toast.makeText(getActivity(), "You win!" + tvUrl.getText(), Toast.LENGTH_SHORT).show();
-				Intent intent = new Intent(getActivity(), NewsActivity.class);
-				intent.putExtra("url", tvUrl.getText());
-				startActivity(intent);
-			}
-		});
-
-		listView.setOnScrollListener(new AbsListView.OnScrollListener() {
-			@Override
-			public void onScrollStateChanged(AbsListView view, int scrollState) {
-				if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
-					Picasso.with(context).pauseTag(context);
-				} else {
-					Picasso.with(context).resumeTag(context);
-				}
-			}
-
-			@Override
-			public void onScroll(AbsListView view, int firstVisibleItem,
-								 int visibleItemCount, int totalItemCount) {
-				// getLastVisibleItemBitmap(firstVisibleItem+visibleItemCount);
-				//takeScreenShot(context);
-			}
-		});
 	}
 
 
 	public void  loadData(){
-		AsyncHttpClient myClient = new AsyncHttpClient();
+		AsyncHttpClientUtil myClient = AsyncHttpClientUtil.getInstance();
 		com.loopj.android.http.PersistentCookieStore myCookieStore = new com.loopj.android.http.PersistentCookieStore(getActivity());
 		myClient.setCookieStore(myCookieStore);
 
@@ -191,20 +160,19 @@ public class Fragment2 extends Fragment{
 			Log.e("error","error");
 		}
 
-
-		myClient.post(null,requestUrl,entity,"application/json",new AsyncHttpResponseHandler() {
+		myClient.post(null, requestUrl, entity, "application/json", new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
 				JSONObject object = JSON.parseObject(new String(responseBody));
 
 				List<NewsBean> list = JSONArray.parseArray(object.getString("result"), NewsBean.class);
-				mPtrFrame.refreshComplete();
 				listView.updateLoadMoreViewText(list);
-
 				pageNumbers++;
 				adapter.addAll(list);
-				Log.i("TAG", "The pageNumbers is  " +pageNumbers);
+
+				mPtrFrame.refreshComplete();
+				Log.i("TAG", "The pageNumbers is  " + pageNumbers);
 			}
 
 			@Override
@@ -213,24 +181,23 @@ public class Fragment2 extends Fragment{
 				Log.i("TAG", "获取数据异常 ", e);
 			}
 		});
-
 	}
 
-		@Override
-		public void onResume() {
-			super.onResume();
-			Picasso.with(context).resumeTag(context);
-		}
+	@Override
+	public void onResume() {
+		super.onResume();
+		Picasso.with(context).resumeTag(context);
+	}
 
-		@Override
-		public void onPause() {
-			super.onPause();
-			Picasso.with(context).pauseTag(context);
-		}
+	@Override
+	public void onPause() {
+		super.onPause();
+		Picasso.with(context).pauseTag(context);
+	}
 
-		@Override
-		public void onDestroy() {
-			super.onDestroy();
-			Picasso.with(context).cancelTag(context);
-		}
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		Picasso.with(context).cancelTag(context);
+	}
 }

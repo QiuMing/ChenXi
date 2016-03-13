@@ -195,7 +195,7 @@
 
     </com.hunter.chenxi.ui.custom.BounceScrollView>
 
-  <!--  <LinearLayout
+    <LinearLayout
         android:gravity="center"
         android:padding="20.0dip"
         android:layout_width="fill_parent"
@@ -204,11 +204,11 @@
 
         <Button
             android:textColor="#ffffff"
-            android:id="@+id/logout"
+            android:id="@+id/btn_logout"
             android:background="@drawable/btn_bg_red2"
             android:padding="10.0dip"
             android:layout_width="fill_parent"
             android:layout_height="40.0dip"
             android:text="退出登录" />
-    </LinearLayout>-->
+    </LinearLayout>
 </LinearLayout>

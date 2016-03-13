@@ -1,5 +1,8 @@
 package com.hunter.chenxi.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
@@ -42,6 +45,8 @@ public class MainActivity extends BaseActivity {
     @Override
     public void initView() {
         initFootBar();
+
+        initGuide();
     }
 
     @Override
@@ -83,5 +88,19 @@ public class MainActivity extends BaseActivity {
             }
         }
         fragmentTransaction.commitAllowingStateLoss();
+    }
+
+    /**
+     * 判断是否启动引导页面
+     */
+    private void initGuide() {
+        SharedPreferences sp = getSharedPreferences("chenxi_setting", Context.MODE_PRIVATE);
+        Boolean isFirst = sp.getBoolean("guide", true);
+        if (isFirst) {
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean("guide", false);
+            editor.apply();
+            startActivity(new Intent(this, GuideActivity.class));
+        }
     }
 }

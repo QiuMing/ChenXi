@@ -53,7 +53,6 @@ public class AsyncHttpNetCenter extends BaseNetCenter {
         mAsyncHttpClient.setMaxRetriesAndTimeout(MAX_RETRIES, RETRIES_TIMEOUT);
         // 设置响应超时时间
         mAsyncHttpClient.setResponseTimeout(RESPONSE_TIMEOUT);
-
         insertAllHeaders();
     }
 

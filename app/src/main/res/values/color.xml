@@ -25,4 +25,12 @@
     <color name="order_cancel">#FF5858</color>
     <color name="order_complete">#686868</color>
     <color name="black2">#ffeeeeee</color>
+
+    <!-- Guide -->
+    <color name="guide_indicator_1">#55B3C2</color>
+    <color name="guide_indicator_2">#64A4A4</color>
+    <color name="guide_indicator_3">#66D7B9</color>
+    <color name="guide_indicator_4">#FDBC7D</color>
+    <color name="colorGuideIndicator">#607d8b</color>
+    <color name="colorGuideText">#455a64</color>
 </resources>

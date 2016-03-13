@@ -17,14 +17,19 @@
         cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
         cube_ptr:ptr_resistance="1.7">
 
-        <com.hunter.chenxi.ui.custom.LoadMoreListView
+      <com.hunter.chenxi.ui.custom.LoadMoreListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/CommonListViewStyle"/>
+
+       <!-- <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/CommonListViewStyle">
 
-
-        </com.hunter.chenxi.ui.custom.LoadMoreListView>
+        </ListView>-->
 
     </in.srain.cube.views.ptr.PtrClassicFrameLayout>
 </LinearLayout>
