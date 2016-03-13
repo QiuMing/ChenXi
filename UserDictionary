@@ -1,0 +1,20 @@
+
+ SharedPreferences : "userdata"
+------------用户 注册-----------------
+ 用户电话号："usertel" String
+
+ 用户　密码："userpass" String
+
+ 登录过："loginde" boolean
+
+------------计步器参数----------------
+ 体     重: "weight_value" int
+
+ 步     长: "step_length_value" int
+
+ 灵  敏 值: "sensitivity_value" int
+
+ //设     置: "userdata" String
+-------------------------------------
+ 引  导 页："guide" boolean
+

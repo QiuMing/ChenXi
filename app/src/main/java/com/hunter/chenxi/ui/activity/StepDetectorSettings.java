@@ -15,7 +15,7 @@ public class StepDetectorSettings extends BaseActivity {
     public static final String WEIGHT_VALUE = "weight_value";//体重
     public static final String STEP_LENGTH_VALUE = "step_length_value";// 步长
     public static final String SENSITIVITY_VALUE = "sensitivity_value";// 灵敏值
-    public static final String SETP_SHARED_PREFERENCES = "userdata";// 设置
+    //public static final String SETP_SHARED_PREFERENCES = "userdata";// 设置
 
     private Button btn_ok, btn_cancel;
     private TextView tv_sensitivity_vlaue, tv_step_length_vlaue, tv_weight_value;

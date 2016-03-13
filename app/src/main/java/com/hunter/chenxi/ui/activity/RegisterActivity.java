@@ -91,6 +91,8 @@ public class RegisterActivity extends BaseActivity {
                         //TODO 用户数据发送到服务器
 
 
+                        if (GuideActivity.guideActivity != null)
+                            GuideActivity.guideActivity.finish();
                         startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
                         finish();
                     } else {
@@ -146,7 +148,7 @@ public class RegisterActivity extends BaseActivity {
         }
         SMSSDK.getVerificationCode("86", tel.getText().toString().trim());//发送验证码
         //60s倒计时
-        myCountDownTimer(3);
+        myCountDownTimer(60);
     }
 
 

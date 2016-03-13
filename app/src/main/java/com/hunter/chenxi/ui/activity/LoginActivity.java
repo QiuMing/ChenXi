@@ -1,5 +1,6 @@
 package com.hunter.chenxi.ui.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import com.hunter.chenxi.R;
 import com.hunter.chenxi.base.BaseActivity;
 import com.hunter.chenxi.utils.Utils;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import butterknife.Bind;
@@ -17,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.PlatformDb;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qzone.QZone;
@@ -46,6 +49,8 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
 
     private Platform pf;//第三方登录平台
 
+    Intent intent;
+
     @Override
     public void initContentView() {
         setContentView(R.layout.activity_login);
@@ -65,7 +70,7 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
             Utils.getStringData("usertel", "usertel is null");
 
             //跳转
-            startActivity(new Intent(Utils.getContext(), UserInfoActivity.class));
+            startActivity(new Intent(Utils.getContext(), MainActivity.class));
         }
     }
 
@@ -77,17 +82,20 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
 
     @Override
     public void onComplete(Platform platform, int action, HashMap<String, Object> res) {
-        Utils.saveBooleanData("loginde", true);
-        Utils.toast(pf.getDb().getUserName() + "  欢迎您");
-        finish();
-        startActivity(new Intent(Utils.getContext(), UserInfoActivity.class));
-
         Log.e("a", "onComplete");
-        Log.e("sharesdk use_id", pf.getDb().getUserId()); //获取用户id
-        Log.e("sharesdk use_name", pf.getDb().getUserName());//获取用户名称
-        Log.e("sharesdk use_icon", pf.getDb().getUserIcon());//获取用户头像
-        Log.e("sharesdk use_token", pf.getDb().getToken());//获取用户Token
-        Log.e("sharesdk use_Gender", pf.getDb().getUserGender());//获取用户性别
+        PlatformDb db = pf.getDb();
+        Log.e("sharesdk use_id", db.getUserId()); //获取用户id
+        Log.e("sharesdk use_name", db.getUserName());//获取用户名称
+        Log.e("sharesdk use_icon", db.getUserIcon());//获取用户头像
+        Log.e("sharesdk use_token", db.getToken());//获取用户Token
+        Log.e("sharesdk use_Gender", db.getUserGender());//获取用户性别
+
+//        Utils.toast("欢迎您");
+        Utils.saveBooleanData("loginde", true);
+        startActivity(new Intent(Utils.getContext(), UserInfoActivity.class));
+        finish();
+        if (GuideActivity.guideActivity != null)
+            GuideActivity.guideActivity.finish();
     }
 
     @Override

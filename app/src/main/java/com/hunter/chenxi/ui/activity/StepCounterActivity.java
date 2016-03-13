@@ -74,13 +74,13 @@ public class StepCounterActivity extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e("service", "服务：" + StepCounterService.serviceFLAG);
+//        Log.e("service", "服务：" + StepCounterService.serviceFLAG);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e("service", "服务：" + StepCounterService.serviceFLAG);
+//        Log.e("service", "服务：" + StepCounterService.serviceFLAG);
     }
 
 
