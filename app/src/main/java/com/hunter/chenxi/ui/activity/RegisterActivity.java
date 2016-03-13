@@ -1,7 +1,6 @@
 package com.hunter.chenxi.ui.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
@@ -24,17 +23,17 @@ import cn.smssdk.SMSSDK;
 
 public class RegisterActivity extends BaseActivity {
     @Bind(R.id.btnNext)
-    Button next;
-    @Bind(R.id.BtnSendVerify)
-    Button btnverlfy;
+    Button btnNext;
+    @Bind(R.id.btnSendMsgCode)
+    Button btnSendMsgCode;
     @Bind(R.id.textTel)
     EditText tel;
     @Bind(R.id.textVerify)
     EditText textVerify;
-    @Bind(R.id.textPass)
-    EditText texrPass;
-    private boolean isGetVerification = false;
+    @Bind(R.id.textPassword)
+    EditText texrPassword;
 
+    private boolean isGetVerification = false;
 
     @Override
     public void initContentView() {
@@ -86,19 +85,20 @@ public class RegisterActivity extends BaseActivity {
                         Utils.toast("验证成功");
                         // 用户数据本地化
                         Utils.saveStringData("usertel", tel.getText().toString().trim());
-                        Utils.saveStringData("userpass", texrPass.getText().toString());
+                        Utils.saveStringData("userpass", texrPassword.getText().toString());
                         Utils.saveBooleanData("loginde", true);
                         //TODO 用户数据发送到服务器
 
-
                         if (GuideActivity.guideActivity != null)
                             GuideActivity.guideActivity.finish();
+
                         startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
                         finish();
                     } else {
                         Utils.toast("验证失败");
                     }
                     break;
+
                 case SMSSDK.EVENT_GET_VERIFICATION_CODE:
                     if (result == SMSSDK.RESULT_COMPLETE) {
                         Utils.toast("获取验证码成功");
@@ -118,7 +118,7 @@ public class RegisterActivity extends BaseActivity {
     public void initView() {
         ButterKnife.bind(this);
         textVerify.setEnabled(false);
-        btnverlfy.getLayoutParams().height = Utils.sp2px(20 + 20);
+        btnSendMsgCode.getLayoutParams().height = Utils.sp2px(20 + 20);
     }
 
     @Override
@@ -133,13 +133,16 @@ public class RegisterActivity extends BaseActivity {
             //86固定为中国了，根据以后需求更改
             SMSSDK.submitVerificationCode("86", tel.getText().toString(), textVerify
                     .getText().toString());
-        }
-//        startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
-//        finish();
+        }else{
+            Utils.toast("测试主流程为先,进入用户编辑信息页");
+            startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
+            finish();
+         }
+        //finish();
     }
 
-    @OnClick(R.id.BtnSendVerify)
-    public void BtnSendVerify_onClick() {
+    @OnClick(R.id.btnSendMsgCode)
+    public void sendMsgCodeOnClick() {
         isGetVerification = true;
         textVerify.setEnabled(true);
         if (new NumberUtils(tel.getText().toString()).getFacilitatorType() == -1) {
@@ -161,16 +164,16 @@ public class RegisterActivity extends BaseActivity {
         new CountDownTimer(s * 1000, 1000) {
             @Override
             public void onTick(long l) {
-                btnverlfy.setEnabled(false);
-                btnverlfy.setBackgroundResource(R.color.edittext_border_gray);
-                btnverlfy.setText("" + l / 1000 + "秒后获取");
+                btnSendMsgCode.setEnabled(false);
+                btnSendMsgCode.setBackgroundResource(R.color.edittext_border_gray);
+                btnSendMsgCode.setText("" + l / 1000 + "秒后获取");
             }
 
             @Override
             public void onFinish() {
-                btnverlfy.setEnabled(true);
-                btnverlfy.setText("获取验证码");
-                btnverlfy.setBackgroundResource(R.drawable.btn_selected);
+                btnSendMsgCode.setEnabled(true);
+                btnSendMsgCode.setText("获取验证码");
+                btnSendMsgCode.setBackgroundResource(R.drawable.btn_selected);
             }
         }.start();
     }
@@ -183,7 +186,7 @@ public class RegisterActivity extends BaseActivity {
      */
     private boolean checkFromData() {
         boolean notNull = !TextUtils.isEmpty(tel.getText().toString()) &&
-                !TextUtils.isEmpty(texrPass.getText().toString()) &&
+                !TextUtils.isEmpty(texrPassword.getText().toString()) &&
                 !TextUtils.isEmpty(textVerify.getText().toString()) && isGetVerification;
 
         if (notNull) {
@@ -193,7 +196,7 @@ public class RegisterActivity extends BaseActivity {
             }
 
             //根据需求预留的功能：检测密码级别是否过低  这里简单判断下
-            if (texrPass.getText().toString().length() < 6) {
+            if (texrPassword.getText().toString().length() < 6) {
                 Utils.toast("密码不能少于6位");
                 return false;
             }

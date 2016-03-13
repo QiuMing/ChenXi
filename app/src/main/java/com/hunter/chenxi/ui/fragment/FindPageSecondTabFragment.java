@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -73,7 +74,7 @@ public class FindPageSecondTabFragment extends Fragment{
 	}
 
 
-	//这里链接对应心里健康栏目
+	//这里链接对应心理健康栏目
 	void initRequestData(){
 		//Toast.makeText(getActivity(), "The pageNumber is " + pageNumbers, Toast.LENGTH_SHORT).show();
 		int cend = pageNumbers * Constants.LIST_ITEM_NUMBERS;
@@ -179,6 +180,7 @@ public class FindPageSecondTabFragment extends Fragment{
 			public void onFailure(int statusCode, Header[] headers,
 								  byte[] errorResponse, Throwable e) {
 				Log.i("TAG", "获取数据异常 ", e);
+				Toast.makeText(getActivity(), R.string.pleaseCheckTheNetwork, Toast.LENGTH_SHORT).show();
 			}
 		});
 	}

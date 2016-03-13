@@ -18,7 +18,7 @@
     <string name="remember_me">记住我</string>
     <string name="signin">注册</string>
     <string name="ThirdPartyLogin">第三方登录</string>
-
-
+    <string name="pleaseCheckTheNetwork">获取数据异常,请检查网络</string>
+    
 </resources>
 

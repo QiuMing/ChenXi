@@ -127,7 +127,7 @@ public class Utils {
      * @param cls
      * @param name
      */
-    public static void start_Activity(Activity activity, Class<?> cls,
+    public static void start_Activity_with_value(Activity activity, Class<?> cls,
                                       BasicNameValuePair... name) {
         Intent intent = new Intent();
         intent.setClass(activity, cls);
@@ -135,6 +135,18 @@ public class Utils {
             for (int i = 0; i < name.length; i++) {
                 intent.putExtra(name[i].getName(), name[i].getValue());
             }
+        activity.startActivity(intent);
+    }
+
+    /**
+     * 打开Activity
+     *
+     * @param activity
+     * @param cls
+     */
+    public static void start_Activity(Activity activity, Class<?> cls ) {
+        Intent intent = new Intent();
+        intent.setClass(activity, cls);
         activity.startActivity(intent);
     }
 
@@ -150,7 +162,6 @@ public class Utils {
                     inputStream, "utf-8");
             while ((b = inputStreamReader.read()) != -1) {
                 str = str.append((char) b);
-                //System.out.println((char) b);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -260,7 +271,7 @@ public class Utils {
      * @param key
      * @return
      */
-    public static boolean getBooleanData(    String key,boolean def){
+    public static boolean getBooleanData(String key,boolean def){
         return sharedPreferences.getBoolean(key, def);
     }
 

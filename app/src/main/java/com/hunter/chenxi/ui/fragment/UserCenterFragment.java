@@ -65,7 +65,7 @@ public class UserCenterFragment extends Fragment {
                 Utils.toast("待开发...");
                 break;
             case R.id.txt_setting:
-                Utils.start_Activity(getActivity(), AboutUsActivity.class,null);
+                Utils.start_Activity(getActivity(), AboutUsActivity.class);
                 Utils.toast("开始跳转");
                 break;
             case R.id.btn_logout:

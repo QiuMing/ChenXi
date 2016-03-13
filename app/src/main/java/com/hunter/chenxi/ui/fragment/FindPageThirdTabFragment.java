@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -178,6 +179,7 @@ public class FindPageThirdTabFragment extends Fragment{
 			@Override
 			public void onFailure(int statusCode, Header[] headers,
 								  byte[] errorResponse, Throwable e) {
+				Toast.makeText(getActivity(), R.string.pleaseCheckTheNetwork, Toast.LENGTH_SHORT).show();
 				Log.i("TAG", "获取数据异常 ", e);
 			}
 		});
