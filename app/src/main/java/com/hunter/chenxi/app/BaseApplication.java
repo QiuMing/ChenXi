@@ -6,9 +6,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.util.DisplayMetrics;
-import android.util.Log;
 
-import com.hunter.chenxi.ui.activity.RegisterActivity;
+import com.instabug.library.IBGInvocationEvent;
+import com.instabug.library.Instabug;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
@@ -23,7 +23,6 @@ import java.io.File;
 import java.util.Locale;
 
 import cn.sharesdk.framework.ShareSDK;
-import cn.smssdk.SMSSDK;
 
 /**
  * 自定义应用入口
@@ -56,7 +55,12 @@ public class BaseApplication extends Application {
 
     @Override
     public void onCreate() {
+
         super.onCreate();
+
+        new Instabug.Builder(this, "fc7cea91bb7e5761cf66f545fefd1329")
+                .setInvocationEvent(IBGInvocationEvent.IBGInvocationEventShake)
+                .build();
 
         LeakCanary.install(this);
 
