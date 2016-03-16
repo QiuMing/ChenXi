@@ -49,8 +49,9 @@ public class BaseApplication extends Application {
     private static int mainTid;
     private static Handler handler;
 
-    public static String APPKEY = "bdd5b912c5a4";
-    public static String APPSECRET = "168684c94a48523d64c3fc65fc1ae767";
+  
+    public static String APPKEY = "106cbc56fd1bc";
+    public static String APPSECRET = "31c7f41151ccba2e6ebba8d9ecb466a9";
 
 
     @Override
