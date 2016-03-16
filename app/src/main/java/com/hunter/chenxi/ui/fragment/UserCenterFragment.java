@@ -2,10 +2,6 @@ package com.hunter.chenxi.ui.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -25,6 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
+ *
  * Created by Ming on 2016/2/16.
  */
 public class UserCenterFragment extends Fragment {
@@ -58,7 +55,7 @@ public class UserCenterFragment extends Fragment {
 
         ButterKnife.bind(this,view);
 
-        updatePhoto();
+        UserInfoActivity.updatePhoto(imgUserHead);
         return view;
     }
 
@@ -96,7 +93,7 @@ public class UserCenterFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode){
             case REQUEST_CODE_USER_PROFILE:
-                updatePhoto();
+                UserInfoActivity.updatePhoto(imgUserHead);
                 break;
             default:
                 break;
@@ -104,17 +101,4 @@ public class UserCenterFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void updatePhoto(){
-        Bitmap bt = BitmapFactory.decodeFile(UserInfoActivity.HEAD_PATH + "head.jpg");//从Sd中找头像，转换成Bitmap
-        if (bt != null) {
-            @SuppressWarnings("deprecation")
-            Drawable drawable = new BitmapDrawable(bt);//转换成drawable
-            imgUserHead.setImageDrawable(drawable);
-        } else {
-            /**
-             *	如果SD里面没有则需要从服务器取头像，取回来的头像再保存在SD中
-             *
-             */
-        }
-    }
 }

@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.base.BaseActivity;
 import com.hunter.chenxi.ui.custom.SelectPicPopupWindow;
+import com.hunter.chenxi.utils.BitmapUtil;
 import com.hunter.chenxi.utils.Utils;
 
 import java.io.File;
@@ -79,17 +80,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         textPhysical.setOnClickListener(this);
         textAppeal.setOnClickListener(this);
 
-        Bitmap bt = BitmapFactory.decodeFile(HEAD_PATH + "head.jpg");//从Sd中找头像，转换成Bitmap
-        if(bt!=null){
-            @SuppressWarnings("deprecation")
-            Drawable drawable = new BitmapDrawable(bt);//转换成drawable
-            imgHead.setImageDrawable(drawable);
-        }else{
-            /**
-             *	如果SD里面没有则需要从服务器取头像，取回来的头像再保存在SD中
-             *
-             */
-        }
+        updatePhoto(imgHead);
 
     }
 
@@ -164,7 +155,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
                          * 上传服务器代码
                          */
                         setPicToView(head);//保存在SD卡中
-                        imgHead.setImageBitmap(head);//用ImageView显示出来
+                        imgHead.setImageBitmap(BitmapUtil.toRoundCorner(head));//用ImageView显示出来
                     }
                 }
                 break;
@@ -245,5 +236,19 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
             }
         }
     };
+
+    public static void updatePhoto(ImageView img){
+        Bitmap bt = BitmapFactory.decodeFile(UserInfoActivity.HEAD_PATH + "head.jpg");//从Sd中找头像，转换成Bitmap
+        if (bt != null) {
+            @SuppressWarnings("deprecation")
+            Drawable drawable = new BitmapDrawable(BitmapUtil.toRoundCorner(bt));//转换成drawable
+            img.setImageDrawable(drawable);
+        } else {
+            /**
+             *	如果SD里面没有则需要从服务器取头像，取回来的头像再保存在SD中
+             *
+             */
+        }
+    }
 
 }
