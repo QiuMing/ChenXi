@@ -1,10 +1,13 @@
 package com.hunter.chenxi.ui.activity;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.common.collect.Lists;
@@ -20,7 +23,7 @@ import github.chenupt.multiplemodel.viewpager.PagerModelManager;
 import github.chenupt.springindicator.SpringIndicator;
 import github.chenupt.springindicator.viewpager.ScrollerViewPager;
 
-public class GuideActivity extends ActionBarActivity {
+public class GuideActivity extends AppCompatActivity {
 
     ScrollerViewPager viewPager;
     Button btn_register, btn_login;
@@ -32,6 +35,8 @@ public class GuideActivity extends ActionBarActivity {
         setContentView(R.layout.activity_guide);
 
         guideActivity = GuideActivity.this;
+
+        handleMaterialStatusBar();
 
         viewPager = (ScrollerViewPager) findViewById(R.id.view_pager);
         SpringIndicator springIndicator = (SpringIndicator) findViewById(R.id.indicator);
@@ -73,5 +78,24 @@ public class GuideActivity extends ActionBarActivity {
     public void onBackPressed() {
         super.onBackPressed();
         AppManager.getAppManager().finishAllActivity();
+    }
+
+    /**
+     * 状态栏适配
+     */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void handleMaterialStatusBar() {
+        Window window = this.getWindow();
+        // Not supported in APK level lower than 21
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        } else {
+//        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//        window.setStatusBarColor(0x00000000);
+//            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
     }
 }
