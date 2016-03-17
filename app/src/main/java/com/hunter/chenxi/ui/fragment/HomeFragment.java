@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.ui.activity.UserInfoActivity;
@@ -26,6 +27,8 @@ public class HomeFragment extends Fragment {
     private View root;
 
     private PullToZoomScrollViewEx scrollView;
+
+    private ImageView imgUserHead;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,6 +76,9 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+
+        imgUserHead = (ImageView)headView.findViewById(R.id.iv_user_head);
+        UserInfoActivity.updatePhoto(imgUserHead);
 
         scrollView.getPullRootView().findViewById(R.id.tv_test1).setOnClickListener(new View.OnClickListener() {
             @Override
