@@ -6,6 +6,7 @@
     android:paddingTop="20dp"
     android:orientation="horizontal">
 
+    <include layout="@layout/view_toolbar_with_title_view" />
     <android.support.design.widget.TextInputLayout
         android:layout_width="0dp"
         android:layout_weight="4"

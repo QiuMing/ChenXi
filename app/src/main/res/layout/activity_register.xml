@@ -6,7 +6,9 @@
     >
     <!--android:padding="20dp">-->
 
-    <include layout="@layout/layout_main_header" />
+    <!--<include layout="@layout/layout_main_header" />-->
+
+    <include layout="@layout/view_toolbar_with_title_view" />
     <!-- 手机号-->
     <RelativeLayout
         android:layout_width="match_parent"

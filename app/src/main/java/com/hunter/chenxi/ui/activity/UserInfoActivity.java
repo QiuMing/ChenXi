@@ -13,7 +13,6 @@ import butterknife.Bind;
 
 public class UserInfoActivity extends BaseActivity implements View.OnClickListener {
 
-    //   我百度了下  ， 注解式绑定控件 效率低  =.=   没有findView高
     @Bind(R.id.imgHead)
     ImageView imgHead;
     @Bind(R.id.textName)
