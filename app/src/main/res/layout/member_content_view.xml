@@ -4,43 +4,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical"
-    android:paddingTop="50dp">
+    android:orientation="horizontal"
+    android:paddingTop="55dp">
 
+    <!--
+    水波纹效果有bug ,暂时不用
     <com.hunter.chenxi.ui.custom.RippleView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        ripple:rv_zoom="false">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                ripple:rv_zoom="false">
 
-        <Button
-            android:id="@+id/tv_test1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_selected"
-            android:gravity="center_vertical|center_horizontal"
-            android:padding="15dp"
-            android:text="睡眠助手"
-            android:textSize="16.0sp" />
-    </com.hunter.chenxi.ui.custom.RippleView>
+            <Button
+                android:id="@+id/tv_test1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_selected"
+                android:gravity="center_vertical|center_horizontal"
+                android:padding="15dp"
+                android:text="睡眠助手"
+                android:textSize="16.0sp" />
+            </com.hunter.chenxi.ui.custom.RippleView>
 
-    <com.hunter.chenxi.ui.custom.RippleView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        ripple:rv_zoom="true">
-
-        <Button
-            android:id="@+id/tv_test2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_selected"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="计步器"
-            android:textSize="16.0sp" />
+             android:background="@drawable/btn_selected"
+    -->
 
 
-    </com.hunter.chenxi.ui.custom.RippleView>
+
+            <Button
+                android:id="@+id/tv_test1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:text="睡"
+                android:textSize="16.0sp"
+                android:layout_marginLeft="53dp"
+                android:background="@drawable/shape_circle"/>
+
+            <Button
+                android:id="@+id/tv_test2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:text="食"
+                android:background="@drawable/shape_circle"
+                android:textSize="16.0sp"
+                android:layout_marginLeft="15dp" />
+
+            <Button
+                android:id="@+id/tv_test3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/shape_circle"
+                android:text="动"
+                android:textSize="16.0sp"
+                android:layout_marginLeft="15dp" />
 
 </LinearLayout>

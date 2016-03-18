@@ -44,16 +44,9 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     TextView textWeight;
     @Bind(R.id.textBMI)
     TextView textBMI;
-    @Bind(R.id.textProfession)
-    TextView textProfession;
-    @Bind(R.id.textPhysical)
-    TextView textPhysical;
-    @Bind(R.id.textAppeal)
-    TextView textAppeal;
 
     private Bitmap head;//头像Bitmap
     public static final String HEAD_PATH = "/sdcard/chenxi/myHead/";//sd路径
-    //    public static final int REQUEST_CODE_IMAGE_SELECT = 1001;
     public static final int REQUEST_CODE_IMAGE_CROP = 1003;
     public static final int REQUEST_CODE_PICK = 1001;
     public static final int REQUEST_CODE_TAKE = 1002;
@@ -75,9 +68,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         textheight.setOnClickListener(this);
         textWeight.setOnClickListener(this);
         textBMI.setOnClickListener(this);
-        textProfession.setOnClickListener(this);
-        textPhysical.setOnClickListener(this);
-        textAppeal.setOnClickListener(this);
+
 
         updatePhoto(imgHead);
 
@@ -98,8 +89,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.imgHead:
-//                Utils.toast("imgHead");
-                menuWindow = new SelectPicPopupWindow(this, itemsOnClick);
+                 menuWindow = new SelectPicPopupWindow(this, itemsOnClick);
                 menuWindow.showAtLocation(findViewById(R.id.imgHead),
                         Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0);
 
@@ -119,12 +109,6 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
             case R.id.textWeight:
                 break;
             case R.id.textBMI:
-                break;
-            case R.id.textProfession:
-                break;
-            case R.id.textPhysical:
-                break;
-            case R.id.textAppeal:
                 break;
 
         }

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.ui.activity.AboutUsActivity;
 import com.hunter.chenxi.ui.activity.UserInfoActivity;
+import com.hunter.chenxi.ui.activity.UserInfoActivityNew;
 import com.hunter.chenxi.utils.Utils;
 
 import butterknife.Bind;
@@ -67,13 +68,11 @@ public class UserCenterFragment extends Fragment {
                 startActivityForResult(new Intent(getActivity(), UserInfoActivity.class), REQUEST_CODE_USER_PROFILE);
                 break;
             case R.id.txt_card:
-                Utils.toast("待开发...");
-                break;
-            case R.id.tv_register:
-                Utils.toast("待开发...");
+                Utils.toast("待开发...1");
                 break;
             case R.id.txt_money:
-                Utils.toast("待开发...");
+                Utils.start_Activity(getActivity(), UserInfoActivityNew.class);
+                Utils.toast("待开发...3");
                 break;
             case R.id.txt_collect:
                 Utils.toast("待开发...");
@@ -83,7 +82,7 @@ public class UserCenterFragment extends Fragment {
                 Utils.toast("开始跳转");
                 break;
             case R.id.btn_logout:
-                Utils.saveBooleanData("loginde", false);
+                        Utils.saveBooleanData("loginde", false);
                 Utils.toast("退出成功");
             break;
         }
