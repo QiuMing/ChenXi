@@ -32,7 +32,7 @@
 
 
             <Button
-                android:id="@+id/tv_test1"
+                android:id="@+id/btn_seelp"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:text="睡"
@@ -41,7 +41,7 @@
                 android:background="@drawable/shape_circle"/>
 
             <Button
-                android:id="@+id/tv_test2"
+                android:id="@+id/btn_eat"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:text="食"
@@ -50,7 +50,7 @@
                 android:layout_marginLeft="15dp" />
 
             <Button
-                android:id="@+id/tv_test3"
+                android:id="@+id/btn_exercise"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@drawable/shape_circle"

@@ -8,7 +8,6 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-
         android:src="@drawable/ic_img_user_default"
         android:contentDescription="@string/app_name"
         android:layout_marginTop="100dp"
@@ -20,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:paddingBottom="100dp"
+        android:paddingBottom="80dp"
         android:layout_below="@id/iv_user_head"
         android:layout_centerHorizontal="true"
         android:text="13521468432"
@@ -36,7 +35,7 @@
         android:dividerPadding="16dp"
         android:layout_alignParentBottom="true">
 
-        <TextView
+       <TextView
             android:id="@+id/tv_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

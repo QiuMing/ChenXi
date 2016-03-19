@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.ui.activity.AboutUsActivity;
+import com.hunter.chenxi.ui.activity.LoginActivity;
+import com.hunter.chenxi.ui.activity.RegisterActivity;
 import com.hunter.chenxi.ui.activity.UserInfoActivity;
 import com.hunter.chenxi.ui.activity.UserInfoActivityNew;
 import com.hunter.chenxi.utils.Utils;
@@ -48,6 +50,12 @@ public class UserCenterFragment extends Fragment {
     @Bind(R.id.head)
     ImageView imgUserHead;
 
+    @Bind(R.id.btn_test_login)
+    Button btn_test_login;
+
+    @Bind(R.id.btn_test_register)
+    Button btn_test_register;
+
     public static final int REQUEST_CODE_USER_PROFILE = 2001;
 
     @Override
@@ -61,7 +69,10 @@ public class UserCenterFragment extends Fragment {
     }
 
 
-    @OnClick({R.id.view_user,R.id.txt_card,R.id.txt_money,R.id.txt_collect,R.id.txt_setting,R.id.btn_logout})
+
+    @OnClick({R.id.view_user,R.id.txt_card,R.id.txt_money,R.id.txt_collect,R.id.txt_setting,R.id.btn_logout
+    ,R.id.btn_test_register,R.id.btn_test_login
+    })
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.view_user:
@@ -84,7 +95,16 @@ public class UserCenterFragment extends Fragment {
             case R.id.btn_logout:
                         Utils.saveBooleanData("loginde", false);
                 Utils.toast("退出成功");
-            break;
+                break;
+            case R.id.btn_test_register:
+                Utils.start_Activity(getActivity(), LoginActivity.class);
+                break;
+            case R.id.btn_test_login:
+                Utils.start_Activity(getActivity(), RegisterActivity.class);
+                break;
+            default:
+                break;
+
         }
     }
 

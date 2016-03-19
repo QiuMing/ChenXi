@@ -21,8 +21,38 @@
         android:background="@drawable/profile_small"
         app:civ_border_color="#fdfcfc"
         app:civ_border_width="2dp" />
- 
-   
+
+
+    <RadioGroup android:id="@+id/radioGroup"
+        android:contentDescription="性别"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+             <RadioButton
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/radioMale"
+                 android:text="男"
+                 android:layout_marginLeft="30dp"
+                 android:checked="true">
+
+             </RadioButton>
+             <RadioButton
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/radioFemale"
+                 android:layout_marginLeft="70dp"
+                 android:text="女">
+             </RadioButton>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioUnKnow"
+            android:layout_marginLeft="70dp"
+            android:text="未知">
+             </RadioButton>
+    </RadioGroup>
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -62,7 +92,7 @@
         android:layout_marginTop="25dp"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:text="@string/login"
+        android:text="提交"
         android:textColor="@color/black"
         android:background="@drawable/shape_button"
         android:textSize="20sp" />

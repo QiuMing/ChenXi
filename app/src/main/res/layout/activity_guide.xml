@@ -39,31 +39,31 @@
             android:layout_gravity="bottom"
             android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/shape_button"
-            android:text="登陆"
-            android:textColor="#fff"
-            android:textSize="24sp" />
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/shape_button"
+                android:text="登陆"
+                android:textColor="#fff"
+                android:textSize="24sp" />
 
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/shape_button"
-            android:text="注册"
-            android:textColor="#fff"
-            android:textSize="24sp" />
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/shape_button"
+                android:text="注册"
+                android:textColor="#fff"
+                android:textSize="24sp" />
         </LinearLayout>
     </FrameLayout>
 
