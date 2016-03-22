@@ -84,6 +84,17 @@ import github.chenupt.springindicator.viewpager.ScrollerViewPager;
         return Lists.newArrayList(R.drawable.guide_bg_1, R.drawable.guide_bg_2, R.drawable.guide_bg_3, R.drawable.guide_bg_1);
     }
 
+
+    /*  目测 在最后一页显示  登陆注册的 关键 是 控制 PagerManager
+    private PagerManager getModelPagerManager(){
+         List<ItemEntity> list = new ArrayList<ItemEntity>();
+         for (int i = 0; i < titles.length; i++) {
+             ItemEntityUtil.create(titles[i]).setModelView(ItemFragment.class).attach(list);
+         }
+         return PagerManager.begin().addFragments(list).setTitles(titles);
+     }
+     */
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();

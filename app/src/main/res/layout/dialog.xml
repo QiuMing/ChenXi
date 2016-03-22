@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_txt1"
-        android:hint="蔬菜"
+        android:hint="蔬菜g"
     />
 </RelativeLayout>
 

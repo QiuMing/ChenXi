@@ -13,10 +13,21 @@
         <item name="colorPrimaryDark">#3A5FCD</item>
         <item name="android:windowBackground">@android:color/white</item>
         <item name="searchViewStyle">@style/MySearchViewStyle</item>
+
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/gray_button</item> <!--浮动上去后的颜色-->
+        <item name="colorControlHighlight">@color/green_price</item>
+        <item name="colorAccent">@color/colorAccent</item>u
+        <item name="android:textColorHint">@color/colorAccent</item>  <!--提示的颜色-->
+        <item name="android:textColorPrimary">@color/red</item>  <!--输入的文字的颜色-->
     </style>
 
     <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView"></style>
 
+    <!--这里也可以设置textInput 框框的颜色-->
+    <style name="TextAppearence.App.TextInputLayout" parent="@android:style/TextAppearance">
+    <item name="android:textColor">@color/white</item>
+    </style>
     <style name="AppTheme.WithoutActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

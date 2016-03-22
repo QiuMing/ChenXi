@@ -127,7 +127,7 @@
                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/icon_me_money"
                 android:drawableRight="@drawable/right"
-                android:text="wallet" />
+                android:text="用户信息页面" />
             <View
                 android:background="#ffeeeeee"
                 android:layout_width="fill_parent"

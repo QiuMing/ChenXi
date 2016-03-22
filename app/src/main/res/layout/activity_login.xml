@@ -18,26 +18,9 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="30dp"
-        android:background="@drawable/profile_small"
+        android:background="@drawable/user_logo"
         app:civ_border_color="#fdfcfc"
         app:civ_border_width="2dp" />
-  <!--  <com.hunter.chenxi.ui.custom.RoundImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:src="@mipmap/profile_small"
-        android:layout_width="100dp"
-        android:layout_marginLeft="20dp"
-        android:layout_height="100dp"/>-->
-
-<!--    <com.hunter.chenxi.ui.custom.RoundImageView
-        android:src="@drawable/profile_small"
-        android:layout_width="120dp"
-        android:layout_marginLeft="120dp"
-        android:layout_height="100dp"
-        app:borderColor="@color/red"
-        app:border="2dp"
-        app:cornerRadius="10dp" />-->
-
-
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -75,44 +58,10 @@
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
         android:text="@string/login"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:background="@drawable/shape_button"
         android:textSize="20sp" />
     <!-- 记住我  新建用户-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:visibility="gone">
-
-        <CheckBox
-            android:id="@+id/checkBoxRememberme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/checkBoxRememberme"
-            android:text="@string/remember_me"
-            android:textColor="#FFFFFF" />
-
-        <TextView
-            android:id="@+id/textNewUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-            android:text="@string/signin"
-            android:textColor="#FFFFFF" />
-
-
-    </RelativeLayout>
 
     <TextView
         android:id="@+id/textForgetPass"
@@ -120,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="忘记密码？"
-        android:textColor="#00c"
+        android:textColor="@color/black"
         android:textSize="10sp" />
 
     <LinearLayout

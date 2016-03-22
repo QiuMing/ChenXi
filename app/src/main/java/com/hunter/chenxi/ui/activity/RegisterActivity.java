@@ -22,8 +22,8 @@ import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
 public class RegisterActivity extends BaseActivity {
-    @Bind(R.id.btnNext)
-    Button btnNext;
+    @Bind(R.id.btn_do_register)
+    Button btnDoregiser;
     @Bind(R.id.btnSendMsgCode)
     Button btnSendMsgCode;
     @Bind(R.id.textTel)
@@ -127,8 +127,8 @@ public class RegisterActivity extends BaseActivity {
         SMSSDK.unregisterAllEventHandler();
     }
 
-    @OnClick(R.id.btnNext)
-    public void btnNext_onClick() {
+    @OnClick(R.id.btn_do_register)
+    public void btnDoRegister_onClick() {
         if (checkFromData()) {
             //86固定为中国了，根据以后需求更改
             SMSSDK.submitVerificationCode("86", tel.getText().toString(), textVerify

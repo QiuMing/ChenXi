@@ -1,6 +1,5 @@
 package com.hunter.chenxi.ui.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.Button;
@@ -11,7 +10,6 @@ import com.hunter.chenxi.R;
 import com.hunter.chenxi.base.BaseActivity;
 import com.hunter.chenxi.utils.Utils;
 
-import java.io.Serializable;
 import java.util.HashMap;
 
 import butterknife.Bind;
@@ -90,7 +88,7 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
         Log.e("sharesdk use_token", db.getToken());//获取用户Token
         Log.e("sharesdk use_Gender", db.getUserGender());//获取用户性别
 
-//        Utils.toast("欢迎您");
+        //Utils.toast("欢迎您");
         Utils.saveBooleanData("loginde", true);
         startActivity(new Intent(Utils.getContext(), UserInfoActivity.class));
         finish();
@@ -115,6 +113,7 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
         String nameStr = name.getText().toString();
         String passStr = pass.getText().toString();
         Utils.toast("请求服务器-登录");
+        startActivity(new Intent(Utils.getContext(), UserInfoActivityNew.class));
     }
 
     @OnClick(R.id.textForgetPass)
@@ -154,6 +153,6 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
         //pf.SSOSetting(true);
         pf.setPlatformActionListener(this);
         pf.showUser(null);
-//        pf.authorize();
+        //pf.authorize();
     }
 }

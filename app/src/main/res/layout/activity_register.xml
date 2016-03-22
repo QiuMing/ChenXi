@@ -3,12 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/guide_bg_2"
     >
     <!--android:padding="20dp">-->
 
     <!--<include layout="@layout/layout_main_header" />-->
 
-    <include layout="@layout/view_toolbar_with_title_view" />
+    <!--<include layout="@layout/view_toolbar_with_title_view" />-->
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:textColor="#ffffff"
+        android:paddingTop="60dp"
+        android:paddingBottom="30dp"
+        android:textSize="40dp"
+        android:text="注册"
+        android:typeface="serif"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:singleLine="true">
+    </TextView>
+
     <!-- 手机号-->
     <RelativeLayout
         android:layout_width="match_parent"
@@ -92,7 +108,7 @@
             android:gravity="center"
             android:layout_marginRight="2dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/btn_selected"
+            android:background="@drawable/shape_button"
             android:text="获取验证码"
             android:textColor="@color/white"
             android:textSize="17sp" />
@@ -133,7 +149,7 @@
 
 
     <!--下一步-->
-    <Button
+    <!--<Button
         android:id="@+id/btnNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -143,6 +159,21 @@
         android:background="@drawable/btn_selected"
         android:text="下一步"
         android:textColor="#fff"
-        android:textSize="24sp" />
+        android:textSize="24sp" />-->
+
+    <Button
+        android:id="@+id/btn_do_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/login"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_button"
+        android:textSize="20sp" />
 
 </LinearLayout>

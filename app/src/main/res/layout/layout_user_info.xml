@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:background="@drawable/guide_bg_2"
+    android:background="@drawable/guide_bg_1"
     android:orientation="vertical">
 
     <!--<include layout="@layout/layout_main_header" />-->
   <!--  <include layout="@layout/view_toolbar_with_title_view" />-->
     <!--圆形头像-->
-    <com.hunter.chenxi.ui.custom.CircleImageView
-        android:id="@+id/user_picture"
+   <!-- <com.hunter.chenxi.ui.custom.CircleImageView
+        android:id="@+id/txt_user_picture"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center_horizontal"
@@ -20,9 +20,35 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/profile_small"
         app:civ_border_color="#fdfcfc"
+        app:civ_border_width="2dp" />-->
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:textColor="#ffffff"
+        android:paddingTop="60dp"
+        android:paddingBottom="30dp"
+        android:textSize="40dp"
+        android:text="信息完善"
+        android:typeface="serif"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:singleLine="true">
+    </TextView>
+<!-- 头像
+    <com.hunter.chenxi.ui.custom.CircleImageView
+        android:id="@+id/circleHead"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/txt_user_logo"
+        app:civ_border_color="#fdfcfc"
         app:civ_border_width="2dp" />
 
-
+    -->
     <RadioGroup android:id="@+id/radioGroup"
         android:contentDescription="性别"
         android:layout_width="wrap_content"
@@ -53,34 +79,120 @@
             android:text="未知">
              </RadioButton>
     </RadioGroup>
-    <android.support.design.widget.TextInputLayout
+
+    <LinearLayout
+        android:id="@+id/linear_user_height"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
 
-        <EditText
-            android:id="@+id/user_height"
-            android:layout_width="match_parent"
-            android:textColor="@color/white"
-            android:layout_height="40dp"
-            android:shadowColor="@color/white"
-            android:hint="身高" />
-    </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="match_parent">
 
-    <android.support.design.widget.TextInputLayout
+            <EditText
+                android:id="@+id/txt_user_height"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:gravity="center_horizontal"
+                android:layout_height="40dp"
+                android:shadowColor="@color/white"
+                android:hint="身高" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+             android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/unit_height"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:gravity="center_horizontal"
+                android:layout_height="40dp"
+                android:shadowColor="@color/white"
+                android:hint="cm" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_user_weight"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
 
-        <EditText
-            android:id="@+id/user_weight"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="3dp"
-            android:shadowColor="@color/white"
-            android:textColor="@color/white"
-            android:hint="体重"
-            android:inputType="textPassword" />
-    </android.support.design.widget.TextInputLayout>
+        <!--     app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout"-->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8">
 
+            <EditText
+                android:id="@+id/txt_user_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:shadowColor="@color/white"
+
+                android:textColor="@color/white"
+                android:hint="体重"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2">
+            <EditText
+                android:id="@+id/unit_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="kg"
+                android:focusable="false"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/txt_user_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.8">
+            <EditText
+                android:id="@+id/first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="年龄"
+                android:focusable="false"
+                android:inputType="textEmailAddress" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2">
+            <EditText
+                android:id="@+id/last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:hint="岁"
+                android:focusable="false"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_submit_user_info"
@@ -93,37 +205,7 @@
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
         android:text="提交"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:background="@drawable/shape_button"
         android:textSize="20sp" />
-
-
-   <!--  <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_marginTop="30dp"
-       android:gravity="center"
-       android:orientation="horizontal">
-   
-       <View
-           android:layout_width="0dp"
-           android:layout_height="1dp"
-           android:layout_margin="7dp"
-           android:layout_weight="4"
-           android:background="@color/hint_gray" />
-   
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_margin="5dp"
-           android:text="@string/ThirdPartyLogin" />
-   
-       <View
-           android:layout_width="0dp"
-           android:layout_height="1dp"
-           android:layout_margin="7dp"
-           android:layout_weight="4"
-           android:background="@color/hint_gray" />
-   </LinearLayout> -->
-    
 </LinearLayout>
