@@ -50,7 +50,11 @@ public class StepCounterActivity extends BaseActivity {
 
     @Override
     public void initContentView() {
+<<<<<<< HEAD
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
+=======
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+>>>>>>> 1c1ba6a410e14a974d2acdbe06217e6579c5902d
         setContentView(R.layout.activity_step);
     }
 

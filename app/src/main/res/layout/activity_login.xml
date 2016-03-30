@@ -5,9 +5,11 @@
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
+    android:background="@drawable/guide_bg_2"
     android:orientation="vertical">
 
-    <include layout="@layout/layout_main_header" />
+    <!--<include layout="@layout/layout_main_header" />-->
+  <!--  <include layout="@layout/view_toolbar_with_title_view" />-->
     <!--圆形头像-->
     <com.hunter.chenxi.ui.custom.CircleImageView
         android:id="@+id/circleHead"
@@ -16,10 +18,9 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="30dp"
-        android:src="#FFC107"
-        app:civ_border_color="#fff"
+        android:background="@drawable/user_logo"
+        app:civ_border_color="#fdfcfc"
         app:civ_border_width="2dp" />
-
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -54,47 +55,13 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="25dp"
-        android:background="@drawable/btn_selected"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
         android:text="@string/login"
         android:textColor="@color/white"
+        android:background="@drawable/shape_button"
         android:textSize="20sp" />
     <!-- 记住我  新建用户-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:visibility="gone">
-
-        <CheckBox
-            android:id="@+id/checkBoxRememberme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/checkBoxRememberme"
-            android:text="@string/remember_me"
-            android:textColor="#FFFFFF" />
-
-        <TextView
-            android:id="@+id/textNewUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-            android:text="@string/signin"
-            android:textColor="#FFFFFF" />
-
-
-    </RelativeLayout>
 
     <TextView
         android:id="@+id/textForgetPass"
@@ -102,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="忘记密码？"
-        android:textColor="#00c"
+        android:textColor="@color/black"
         android:textSize="10sp" />
 
     <LinearLayout

@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.app.BaseApplication;
@@ -22,14 +23,19 @@ import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
 public class RegisterActivity extends BaseActivity {
-    @Bind(R.id.btnNext)
-    Button btnNext;
+
+    @Bind(R.id.btn_do_register)
+    Button btnDoregiser;
+
     @Bind(R.id.btnSendMsgCode)
     Button btnSendMsgCode;
+
     @Bind(R.id.textTel)
     EditText tel;
+
     @Bind(R.id.textVerify)
     EditText textVerify;
+
     @Bind(R.id.textPassword)
     EditText texrPassword;
 
@@ -42,15 +48,16 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     public void initPresenter() {
+        //初始化SSMDK ,并添加注册回调监听接口
         SMSSDK.initSDK(this, BaseApplication.APPKEY, BaseApplication.APPSECRET, true);
-        SMSSDK.registerEventHandler(eh);
+        //SMSSDK.registerEventHandler(eh);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         SMSSDK.registerEventHandler(eh);
-    }
+     }
 
     @Override
     public void onPause() {
@@ -70,47 +77,31 @@ public class RegisterActivity extends BaseActivity {
 
     };
 
+    //事件处理器
     Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
 
             super.handleMessage(msg);
-            int even = msg.arg1;
-            int result = msg.arg2;
+            int event = msg.arg1;   //获取事件类型
+            int result = msg.arg2;  //事件结果
             Object data = msg.obj;
 
-            Log.e("Event", "Event=" + even + "   result=" + result);
-            switch (even) {
-                case SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE:
-                    if (result == SMSSDK.RESULT_COMPLETE) {
-                        Utils.toast("验证成功");
-                        // 用户数据本地化
-                        Utils.saveStringData("usertel", tel.getText().toString().trim());
-                        Utils.saveStringData("userpass", texrPassword.getText().toString());
-                        Utils.saveBooleanData("loginde", true);
-                        //TODO 用户数据发送到服务器
+            Log.e("Event", "Event=" + event + "   result=" + result);
 
-                        if (GuideActivity.guideActivity != null)
-                            GuideActivity.guideActivity.finish();
-
-                        startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
-                        finish();
-                    } else {
-                        Utils.toast("验证失败");
-                    }
-                    break;
-
-                case SMSSDK.EVENT_GET_VERIFICATION_CODE:
-                    if (result == SMSSDK.RESULT_COMPLETE) {
-                        Utils.toast("获取验证码成功");
-                        //默认的智能验证是开启的
-                    } else {
-                        Utils.toast("获取验证码失败");
-                    }
-                    break;
-                default:
+            if (result == SMSSDK.RESULT_COMPLETE) {
+                if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {// 提交验证码成功
+                    Toast.makeText(getApplicationContext(), "提交验证码成功", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
+                } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
+                    Toast.makeText(getApplicationContext(), "验证码已经发送",  Toast.LENGTH_SHORT).show();
+                } else {
+                     Toast.makeText(getApplicationContext(), "验证码发送验证异常",  Toast.LENGTH_SHORT).show();
                     ((Throwable) data).printStackTrace();
+                }
             }
 
+            //有问题，总是验证不成功
+            startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
         }
     };
 
@@ -127,17 +118,14 @@ public class RegisterActivity extends BaseActivity {
         SMSSDK.unregisterAllEventHandler();
     }
 
-    @OnClick(R.id.btnNext)
-    public void btnNext_onClick() {
+    @OnClick(R.id.btn_do_register)
+    public void btnDoRegister_onClick() {
         if (checkFromData()) {
-            //86固定为中国了，根据以后需求更改
-            SMSSDK.submitVerificationCode("86", tel.getText().toString(), textVerify
-                    .getText().toString());
-        }else{
-            Utils.toast("测试主流程为先,进入用户编辑信息页");
-            startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
-            finish();
-         }
+            String phone = tel.getText().toString();
+            String inputCode = textVerify.getText().toString();
+            Log.e("Chenxi","phone "+phone+"   code is"+inputCode);
+            SMSSDK.submitVerificationCode("86",phone , inputCode);
+        }
         //finish();
     }
 

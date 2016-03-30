@@ -55,6 +55,10 @@
             android:name=".ui.activity.FeedbackActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ui.activity.UserInfoActivityNew"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"

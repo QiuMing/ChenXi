@@ -1,10 +1,9 @@
 package com.hunter.chenxi.ui.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.widget.RadioGroup;
 
 import com.hunter.chenxi.R;
@@ -101,10 +100,13 @@ public class MainActivity extends BaseActivity {
      * 判断是否启动引导页面
      */
     private void initGuide() {
-        if (Utils.getBooleanData("guide", true) || !Utils.getBooleanData("loginde", false)) {
+        // || !Utils.getBooleanData("loginde", false)
+        if (!Utils.getBooleanData("needGuide", false)) {
+            Log.e("Tag","跳到启动引导页面");
+            Utils.saveBooleanData("needGuide", true);
             startActivity(new Intent(this, GuideActivity.class));
         }
-            Utils.saveBooleanData("guide", false);
+
 
     }
 }

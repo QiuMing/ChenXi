@@ -88,7 +88,7 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
         Log.e("sharesdk use_token", db.getToken());//获取用户Token
         Log.e("sharesdk use_Gender", db.getUserGender());//获取用户性别
 
-//        Utils.toast("欢迎您");
+        //Utils.toast("欢迎您");
         Utils.saveBooleanData("loginde", true);
         startActivity(new Intent(Utils.getContext(), UserInfoActivity.class));
         finish();
@@ -113,6 +113,7 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
         String nameStr = name.getText().toString();
         String passStr = pass.getText().toString();
         Utils.toast("请求服务器-登录");
+<<<<<<< HEAD
         //测试-跳转
         Utils.toast("测试需要-跳转");
         Utils.saveBooleanData("loginde", true);
@@ -120,6 +121,9 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
         finish();
         if (GuideActivity.guideActivity != null)
             GuideActivity.guideActivity.finish();
+=======
+        startActivity(new Intent(Utils.getContext(), UserInfoActivityNew.class));
+>>>>>>> 1c1ba6a410e14a974d2acdbe06217e6579c5902d
     }
 
     @OnClick(R.id.textForgetPass)
@@ -159,6 +163,6 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
         //pf.SSOSetting(true);
         pf.setPlatformActionListener(this);
         pf.showUser(null);
-//        pf.authorize();
+        //pf.authorize();
     }
 }
