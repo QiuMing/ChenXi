@@ -16,12 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hunter.chenxi.R;
-import com.hunter.chenxi.ui.activity.LoginActivity;
-import com.hunter.chenxi.ui.activity.RegisterActivity;
 import com.hunter.chenxi.ui.activity.StepCounterActivity;
 import com.hunter.chenxi.ui.activity.UserInfoActivity;
 import com.hunter.chenxi.ui.custom.pulltozoomview.PullToZoomScrollViewEx;
 import com.hunter.chenxi.utils.Utils;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Ming on 2016/2/18.
@@ -65,20 +67,32 @@ public class HomeFragment extends Fragment {
         //1、获取Preferences
         SharedPreferences settings = getActivity().getSharedPreferences("BMI", 0);
         //2、取出数据
-        String bmi = settings.getString("bmi","无");
+        String bmi = settings.getString("bmi","尚未检测BMI");
         //String url = setting.getString(“URL”,”default”);
 
-        TextView txt_register = (TextView) headView.findViewById(R.id.tv_register);
-        txt_register.setText("BMI is "+bmi);
-        headView.findViewById(R.id.tv_register).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, RegisterActivity.class);
-                context.startActivity(intent);
-            }
-        });
+        TextView txt_bmi = (TextView) headView.findViewById(R.id.header_txt_bmi);
+        txt_bmi.setText("BMI:" + bmi);
 
-        headView.findViewById(R.id.tv_login).setOnClickListener(new View.OnClickListener() {
+        Calendar cal= Calendar.getInstance();
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        TextView txt_day =(TextView)headView.findViewById(R.id.txt_day);
+        txt_day.setText(String.valueOf(day));
+
+        Date date=new Date();
+        SimpleDateFormat dateMonth = new SimpleDateFormat("MM");
+        String month = dateMonth.format(date);
+
+        TextView txt_month =(TextView)headView.findViewById(R.id.txt_month);
+        txt_month.setText(month+"月");
+
+
+        SimpleDateFormat dateFm = new SimpleDateFormat("EEEE");
+        String weekday = dateFm.format(date);
+
+        TextView txt_weekday =(TextView)headView.findViewById(R.id.txt_weekday);
+        txt_weekday.setText(weekday);
+
+      /*  headView.findViewById(R.id.tv_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Utils.toast("" + Utils.getBooleanData("loginde", false));
@@ -89,7 +103,7 @@ public class HomeFragment extends Fragment {
                     startActivity(new Intent(Utils.getContext(), UserInfoActivity.class));
                 }
             }
-        });
+        });*/
 
         imgUserHead = (ImageView)headView.findViewById(R.id.iv_user_head);
         UserInfoActivity.updatePhoto(imgUserHead);

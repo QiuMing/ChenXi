@@ -171,7 +171,7 @@
         android:layout_marginTop="25dp"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:text="@string/login"
+        android:text="@string/signin"
         android:textColor="@color/white"
         android:background="@drawable/shape_button"
         android:textSize="20sp" />
