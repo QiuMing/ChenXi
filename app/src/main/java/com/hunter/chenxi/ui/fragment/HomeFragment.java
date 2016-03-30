@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hunter.chenxi.R;
+import com.hunter.chenxi.ui.activity.StepCounterActivity2;
 import com.hunter.chenxi.ui.activity.UserInfoActivity;
 import com.hunter.chenxi.ui.custom.pulltozoomview.PullToZoomScrollViewEx;
 import com.hunter.chenxi.ui.activity.LoginActivity;

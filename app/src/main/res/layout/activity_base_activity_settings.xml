@@ -15,150 +15,195 @@
         android:textColor="@android:color/white"
         android:textSize="25sp" />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="灵敏度："
-        android:textColor="@android:color/white" />
-
-    <TextView
-        android:id="@+id/sensitivity_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dip"
-        android:textColor="@android:color/white" />
-
-
-    <SeekBar
-        android:id="@+id/seek_sensitivity"
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="35dip"
-        android:layout_marginRight="35dip"
-        android:max="10"
-        android:maxHeight="5dip"
-        android:minHeight="5dip"
-        android:progress="3" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="35dip"
-        android:layout_marginRight="35dip"
-        android:text="灵敏度越高,对身体的动作越敏感.请调节灵敏度来适应不同的体形,路面等因素."
-        android:textColor="@android:color/white" />
-
-
-    <TextView
-        android:id="@+id/step"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:text="步幅："
-        android:textColor="@android:color/white" />
-
-    <TextView
-        android:id="@+id/step_lenth_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/step"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="10dip"
-        android:textColor="@android:color/white" />
-
-
-    <SeekBar
-        android:id="@+id/seek_step_lenth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="35dip"
-        android:layout_marginRight="35dip"
-        android:max="12"
-        android:maxHeight="5dip"
-        android:minHeight="5dip"
-        android:progress="3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="35dip"
-        android:layout_marginRight="35dip"
-        android:text="为估算行走的距离和速度，请输入步长\n(得出的速度和距离较为粗略，仅供参考)"
-        android:textColor="@android:color/white" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="体重："
-        android:textColor="@android:color/white" />
-
-    <TextView
-        android:id="@+id/weight_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dip"
-        android:textColor="@android:color/white" />
-
-
-    <SeekBar
-        android:id="@+id/seek_weight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="35dip"
-        android:layout_marginRight="35dip"
-        android:max="50"
-        android:maxHeight="5dip"
-        android:minHeight="5dip"
-        android:progress="3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="35dip"
-        android:layout_marginRight="35dip"
-        android:text="为计算消耗的热量(卡路里)，请入体重。"
-        android:textColor="@android:color/white" />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="35dip"
-        android:layout_marginRight="35dip"
-        android:layout_marginTop="15dip"
-        android:paddingBottom="15dip"
-        android:paddingTop="15dip">
-
-        <Button
-            android:id="@+id/btn_ok_step_stting"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/btn_selected"
-            android:paddingBottom="5dip"
-            android:paddingLeft="25dip"
-            android:paddingRight="25dip"
-            android:paddingTop="5dip"
-            android:text="确定"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
+            android:text="灵敏度："
+            android:textColor="@android:color/white" />
 
-        <Button
-            android:id="@+id/btn_cancel_step_stting"
+        <TextView
+            android:id="@+id/sensitivity_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/btn_selected"
-            android:paddingBottom="5dip"
-            android:paddingLeft="25dip"
-            android:paddingRight="25dip"
-            android:paddingTop="5dip"
-            android:text="取消"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-    </RelativeLayout>
+            android:layout_marginLeft="10dip"
+            android:textColor="@android:color/white" />
 
+
+        <SeekBar
+            android:id="@+id/seek_sensitivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="35dip"
+            android:layout_marginRight="35dip"
+            android:max="10"
+            android:maxHeight="5dip"
+            android:minHeight="5dip"
+            android:progress="3" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dip"
+            android:layout_marginRight="35dip"
+            android:text="灵敏度越高,对身体的动作越敏感.请调节灵敏度来适应不同的体形,路面等因素."
+            android:textColor="@android:color/white" />
+
+
+        <TextView
+            android:id="@+id/step"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="步幅："
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/step_lenth_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/step"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            android:textColor="@android:color/white" />
+
+
+        <SeekBar
+            android:id="@+id/seek_step_lenth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dip"
+            android:layout_marginRight="35dip"
+            android:max="12"
+            android:maxHeight="5dip"
+            android:minHeight="5dip"
+            android:progress="3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dip"
+            android:layout_marginRight="35dip"
+            android:text="为估算行走的距离和速度，请输入步长\n(得出的速度和距离较为粗略，仅供参考)"
+            android:textColor="@android:color/white" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="体重："
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/weight_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:textColor="@android:color/white" />
+
+
+        <SeekBar
+            android:id="@+id/seek_weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dip"
+            android:layout_marginRight="35dip"
+            android:max="50"
+            android:maxHeight="5dip"
+            android:minHeight="5dip"
+            android:progress="3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dip"
+            android:layout_marginRight="35dip"
+            android:text="为计算消耗的热量(卡路里)，请入体重。"
+            android:textColor="@android:color/white" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="步数："
+            android:textColor="@android:color/white" />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dip"
+            android:layout_marginRight="35dip">
+
+            <EditText
+                android:id="@+id/et_target_num"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="目标步数"
+                android:textColorHint="@color/white" />
+        </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="时间："
+            android:textColor="@android:color/white" />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dip"
+            android:layout_marginRight="35dip">
+
+            <EditText
+                android:id="@+id/et_target_time"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="目标时间"
+                android:textColorHint="@color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dip"
+            android:layout_marginRight="35dip"
+            android:layout_marginTop="15dip"
+            android:paddingBottom="15dip"
+            android:paddingTop="15dip">
+
+            <Button
+                android:id="@+id/btn_ok_step_stting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_selected"
+                android:paddingBottom="5dip"
+                android:paddingLeft="25dip"
+                android:paddingRight="25dip"
+                android:paddingTop="5dip"
+                android:text="确定"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_cancel_step_stting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/btn_selected"
+                android:paddingBottom="5dip"
+                android:paddingLeft="25dip"
+                android:paddingRight="25dip"
+                android:paddingTop="5dip"
+                android:text="取消"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>
 </LinearLayout>

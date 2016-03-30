@@ -33,4 +33,15 @@
     <color name="guide_indicator_4">#FDBC7D</color>
     <color name="colorGuideIndicator">#607d8b</color>
     <color name="colorGuideText">#455a64</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="bg">#0099cc</color>
+    <color name="transparent">#00000000</color>
+    <color name="list_divider">#D3D3D3</color>
+    <color name="gray_dark">#808080</color>
+    <color name="gray_white">#ebebeb</color>
+    <color name="main_bg">#E8E6CD</color>
+    <color name="green">#0BC27A</color>
+    <color name="orange">#ff6200</color>
+    <color name="blue">#21AECC</color>
 </resources>

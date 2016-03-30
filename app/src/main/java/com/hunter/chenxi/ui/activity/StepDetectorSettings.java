@@ -3,6 +3,7 @@ package com.hunter.chenxi.ui.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -20,10 +21,12 @@ public class StepDetectorSettings extends BaseActivity {
     private Button btn_ok, btn_cancel;
     private TextView tv_sensitivity_vlaue, tv_step_length_vlaue, tv_weight_value;
     private SeekBar sb_sensitivity, sb_step_length, sb_weight;
+    private EditText target_num, target_time;
 
     private int sensitivity = 0;
     private int step_length = 0;
     private int weight = 0;
+    private int num, time;
 
     @Override
     public void initContentView() {
@@ -35,6 +38,8 @@ public class StepDetectorSettings extends BaseActivity {
         sensitivity = 10 - Utils.getIntData(SENSITIVITY_VALUE, 7);
         step_length = Utils.getIntData(STEP_LENGTH_VALUE, 70);
         weight = Utils.getIntData(WEIGHT_VALUE, 50);
+        num = Utils.getIntData("target_num", 6000);
+        time = Utils.getIntData("target_time", 30);
     }
 
     @Override
@@ -48,7 +53,8 @@ public class StepDetectorSettings extends BaseActivity {
         sb_sensitivity = (SeekBar) this.findViewById(R.id.seek_sensitivity);
         sb_step_length = (SeekBar) this.findViewById(R.id.seek_step_lenth);
         sb_weight = (SeekBar) this.findViewById(R.id.seek_weight);
-
+        target_num = (EditText) findViewById(R.id.et_target_num);
+        target_time = (EditText) findViewById(R.id.et_target_time);
 
         sb_sensitivity.setProgress(sensitivity);
         sb_step_length.setProgress((step_length - 40) / 5); //步长按钮在进度条上占得比例
@@ -120,6 +126,8 @@ public class StepDetectorSettings extends BaseActivity {
                     Utils.saveIntgData(SENSITIVITY_VALUE, 10 - sensitivity);
                     Utils.saveIntgData(STEP_LENGTH_VALUE, step_length);
                     Utils.saveIntgData(WEIGHT_VALUE, weight);
+                    Utils.saveIntgData("target_num", new Integer(target_num.getText().toString()));
+                    Utils.saveIntgData("target_time", new Integer(target_time.getText().toString()));
                     Utils.toast("保存成功！");
                     StepDetectorSettings.this.finish();
                     StepDetector.SENSITIVITY = 10 - sensitivity;

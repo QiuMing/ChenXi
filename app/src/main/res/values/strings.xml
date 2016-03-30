@@ -19,6 +19,21 @@
     <string name="signin">注册</string>
     <string name="ThirdPartyLogin">第三方登录</string>
     <string name="pleaseCheckTheNetwork">获取数据异常,请检查网络</string>
-    
+
+
+    <string name="step_content">计步器</string>
+
+    <string name="clear_button">重置</string>
+    <string name="list_button">历史</string>
+    <string name="setting_button">设置</string>
+
+    <string name="list_name">历史</string>
+
+    <string name="desktop_number0">0</string>
+    <string name="frequency_label">步</string>
+    <string name="calorie_label">卡路里</string>
+    <string name="distance_label">米</string>
+    <string name="pace_label">步/分</string>
+    <string name="speed_label">公里/小时</string>
 </resources>
 

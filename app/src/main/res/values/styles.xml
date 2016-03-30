@@ -5,6 +5,9 @@
         <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
         <!--<item name="android:windowBackground">@color/gray_button_background</item>-->
     <!--</style>-->
+    <style name="main_bg">
+        <item name="android:background">@color/main_bg</item>
+    </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->

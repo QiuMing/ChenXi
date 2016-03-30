@@ -88,6 +88,7 @@
 
         <activity android:name=".ui.activity.StepDetectorSettings"/>
         <activity android:name=".ui.activity.StepCounterActivity"/>
+        <activity android:name=".ui.activity.StepCounterActivity2"/>
         <service android:name=".base.StepCounterService" />
 
         <activity android:name=".ui.activity.GuideActivity" />
