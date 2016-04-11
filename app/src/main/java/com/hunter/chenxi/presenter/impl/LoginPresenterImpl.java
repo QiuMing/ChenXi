@@ -27,7 +27,7 @@ public class LoginPresenterImpl extends BasePresenter<ILoginView> implements ILo
 
     @Override
     public void login(LoginRequest loginRequest) {
-        if(TextUtils.isEmpty(loginRequest.userName)){
+        if(TextUtils.isEmpty(loginRequest.username)){
             mView.showToast("用户名不能为空");
             return;
         }
@@ -42,6 +42,11 @@ public class LoginPresenterImpl extends BasePresenter<ILoginView> implements ILo
             public void onSuccess(String data) {
                 UserInfo userInfo = CommonUtils.getGson().fromJson(data, UserInfo.class);
                 mView.loginCallback(userInfo);
+            }
+
+
+            public void  onFailure(){
+
             }
         });
     }

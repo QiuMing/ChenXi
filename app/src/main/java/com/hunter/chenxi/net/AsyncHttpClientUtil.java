@@ -1,29 +1,48 @@
 package com.hunter.chenxi.net;
 
 import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 /**
  * Created by Ming on 2016/3/13.
  */
-public class AsyncHttpClientUtil extends AsyncHttpClient {
+public class AsyncHttpClientUtil   {
 
-    private  static AsyncHttpClientUtil instance;
+    private  static AsyncHttpClient client;
 
-    public static AsyncHttpClientUtil getInstance(){
-        if(instance == null){
-            instance = new AsyncHttpClientUtil();
+    public static AsyncHttpClient getClient(){
+        if(client == null){
+            client = new  AsyncHttpClient();
             // 设置连接超时时间
-            instance.setConnectTimeout(BaseNetCenter.CONNECT_TIMEOUT);
+            client.setConnectTimeout(BaseNetCenter.CONNECT_TIMEOUT);
             // 设置最大连接数
-            instance.setMaxConnections(BaseNetCenter.MAX_CONNECTIONS);
+            client.setMaxConnections(BaseNetCenter.MAX_CONNECTIONS);
             // 设置重连次数以及间隔时间
-            instance.setMaxRetriesAndTimeout(BaseNetCenter.MAX_RETRIES, BaseNetCenter.RETRIES_TIMEOUT);
+            client.setMaxRetriesAndTimeout(BaseNetCenter.MAX_RETRIES, BaseNetCenter.RETRIES_TIMEOUT);
             // 设置响应超时时间
-            instance.setResponseTimeout(BaseNetCenter.RESPONSE_TIMEOUT);
+            client.setResponseTimeout(BaseNetCenter.RESPONSE_TIMEOUT);
 
         }
-        return instance;
+        return client;
     }
 
+
+    public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+        client.get(url, params, responseHandler);
+    }
+
+    public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+        client.post(url, params, responseHandler);
+    }
+
+
+     static class LoginResponse {
+        public String token;
+
+        public LoginResponse(final String token) {
+            this.token = token;
+        }
+    }
 
 }

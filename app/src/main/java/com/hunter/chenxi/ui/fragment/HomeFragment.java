@@ -16,11 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hunter.chenxi.R;
-<<<<<<< HEAD
-import com.hunter.chenxi.ui.activity.StepCounterActivity2;
-=======
 import com.hunter.chenxi.ui.activity.StepCounterActivity;
->>>>>>> 1c1ba6a410e14a974d2acdbe06217e6579c5902d
 import com.hunter.chenxi.ui.activity.UserInfoActivity;
 import com.hunter.chenxi.ui.custom.pulltozoomview.PullToZoomScrollViewEx;
 import com.hunter.chenxi.utils.Utils;

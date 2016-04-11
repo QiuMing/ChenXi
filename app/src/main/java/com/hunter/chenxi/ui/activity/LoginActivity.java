@@ -6,10 +6,19 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.base.BaseActivity;
+import com.hunter.chenxi.net.AsyncHttpClientUtil;
 import com.hunter.chenxi.utils.Utils;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import org.apache.http.Header;
+import org.apache.http.entity.StringEntity;
+
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
 import butterknife.Bind;
@@ -47,7 +56,7 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
 
     private Platform pf;//第三方登录平台
 
-    Intent intent;
+    private String LOGIN_URL = "http://chenxi.ngrok.cc/user/login";
 
     @Override
     public void initContentView() {
@@ -67,6 +76,54 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
             Utils.getStringData("userpass", "userpass is null");
             Utils.getStringData("usertel", "usertel is null");
 
+            AsyncHttpClient myClient = AsyncHttpClientUtil.getClient();
+
+            //RequestParams params = new RequestParams();
+
+            JSONObject params = new JSONObject();
+            params.put("name", "sally");
+            params.put("password", "data");
+
+            Utils.toast("这里测试发送请求");
+            /*myClient.post(LOGIN_URL, params,new  AsyncHttpResponseHandler(){
+                        @Override
+                        public void onSuccess(int i, Header[] headers, byte[] responseBody) {
+                            JSONObject object = JSON.parseObject(new String(responseBody));
+                            Log.e("ChenXi",JSON.toJSONString(object));
+                        }
+
+                        @Override
+                        public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                            Log.e("ChenXi","error");
+                        }
+                    }
+            );
+
+             JSONObject jsonParams = new JSONObject();
+        jsonParams.put("notes", "Test api support");
+
+        client.post(context, restApiUrl, entity, "application/json",
+                responseHandler);
+
+            */
+            StringEntity entity = null;
+            try {
+                entity = new StringEntity(params.toString());
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            myClient.post(getApplicationContext(), LOGIN_URL, entity, "application/json", new  AsyncHttpResponseHandler(){
+                @Override
+                public void onSuccess(int i, Header[] headers, byte[] responseBody) {
+                    JSONObject object = JSON.parseObject(new String(responseBody));
+                    Log.e("ChenXi",JSON.toJSONString(object));
+                }
+
+                @Override
+                public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                    Log.e("ChenXi","error");
+                }
+            });
             //跳转
             startActivity(new Intent(Utils.getContext(), MainActivity.class));
         }
@@ -113,7 +170,6 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
         String nameStr = name.getText().toString();
         String passStr = pass.getText().toString();
         Utils.toast("请求服务器-登录");
-<<<<<<< HEAD
         //测试-跳转
         Utils.toast("测试需要-跳转");
         Utils.saveBooleanData("loginde", true);
@@ -121,9 +177,7 @@ public class LoginActivity extends BaseActivity implements PlatformActionListene
         finish();
         if (GuideActivity.guideActivity != null)
             GuideActivity.guideActivity.finish();
-=======
-        startActivity(new Intent(Utils.getContext(), UserInfoActivityNew.class));
->>>>>>> 1c1ba6a410e14a974d2acdbe06217e6579c5902d
+       // startActivity(new Intent(Utils.getContext(), UserInfoActivityNew.class));
     }
 
     @OnClick(R.id.textForgetPass)

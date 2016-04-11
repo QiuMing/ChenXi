@@ -14,4 +14,10 @@ public class Constants {
     ;
 
     public static int LIST_ITEM_NUMBERS = 20;
+
+    public static String A = "http://127.0.0.1:8080";
+
+    public static String LOGIN_URL = A + "/user/login";
+
+    public static String REGISTER_URL =A + "/user/register";
 }

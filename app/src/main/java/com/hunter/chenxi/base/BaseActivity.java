@@ -49,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         // 初始化View注入
         ButterKnife.bind(this);
         initPresenter();
-        initView();
+             initView();
     }
 
     @Override

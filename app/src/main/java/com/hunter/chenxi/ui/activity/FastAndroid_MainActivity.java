@@ -1,17 +1,12 @@
 package com.hunter.chenxi.ui.activity;
 
-import android.widget.TextView;
-
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.base.BaseActivity;
 import com.hunter.chenxi.presenter.impl.LoginPresenterImpl;
 import com.hunter.chenxi.presenter.interfaces.ILoginPresenter;
-import com.hunter.chenxi.ui.custom.TitleBar;
 import com.hunter.chenxi.ui.view.interfaces.ILoginView;
 import com.hunter.chenxi.vo.request.LoginRequest;
 import com.hunter.chenxi.vo.response.UserInfo;
-
-import butterknife.Bind;
 
 /*
  * FastAndroid 自带例子，先不删除，以便参考学习
@@ -35,7 +30,7 @@ public class FastAndroid_MainActivity extends BaseActivity implements ILoginView
        // titleBar.setTitle("测试页面");
        // tvContent.setText("登录中...");
         LoginRequest loginRequest = new LoginRequest();
-        loginRequest.userName = "";
+        loginRequest.username = "";
         loginRequest.password = "";
         loginPresenter.login(loginRequest);
     }

@@ -108,7 +108,7 @@
                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/icon_me_collect"
                 android:drawableRight="@drawable/right"
-                android:text="collection" />
+                android:text="注册测试item" />
             <View
                 android:background="#ffeeeeee"
                 android:layout_width="fill_parent"
@@ -145,7 +145,7 @@
                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/icon_me_card"
                 android:drawableRight="@drawable/right"
-                android:text="card_bag" />
+                android:text="登陆测试item" />
             <View
                 android:background="#ffeeeeee"
                 android:layout_width="fill_parent"
@@ -210,21 +210,5 @@
             android:layout_width="fill_parent"
             android:layout_height="40.0dip"
             android:text="退出登录" />
-
-        <Button
-            android:textColor="#ffffff"
-            android:id="@+id/btn_test_login"
-            android:padding="10.0dip"
-            android:layout_height="40.0dp"
-            android:layout_width="fill_parent"
-            android:text="测试登录" />
-
-        <Button
-            android:textColor="#ffffff"
-            android:id="@+id/btn_test_register"
-            android:padding="10.0dip"
-            android:layout_width="fill_parent"
-            android:layout_height="40.0dip"
-            android:text="测试注册 button" />
     </LinearLayout>
 </LinearLayout>

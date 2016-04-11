@@ -1,10 +1,10 @@
 package com.hunter.chenxi.app;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
+import android.support.multidex.MultiDexApplication;
 import android.util.DisplayMetrics;
 
 import com.instabug.library.IBGInvocationEvent;
@@ -29,7 +29,7 @@ import cn.sharesdk.framework.ShareSDK;
  *
  * @author Ht
  */
-public class BaseApplication extends Application {
+public class BaseApplication extends MultiDexApplication {
     private static BaseApplication mInstance;
 
     /**

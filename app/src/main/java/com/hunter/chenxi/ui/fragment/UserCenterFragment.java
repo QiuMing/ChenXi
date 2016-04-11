@@ -50,12 +50,6 @@ public class UserCenterFragment extends Fragment {
     @Bind(R.id.head)
     ImageView imgUserHead;
 
-    @Bind(R.id.btn_test_login)
-    Button btn_test_login;
-
-    @Bind(R.id.btn_test_register)
-    Button btn_test_register;
-
     public static final int REQUEST_CODE_USER_PROFILE = 2001;
 
     @Override
@@ -71,7 +65,7 @@ public class UserCenterFragment extends Fragment {
 
 
     @OnClick({R.id.view_user,R.id.txt_card,R.id.txt_money,R.id.txt_collect,R.id.txt_setting,R.id.btn_logout
-    ,R.id.btn_test_register,R.id.btn_test_login
+    ,
     })
     public void onClick(View view) {
         switch (view.getId()) {
@@ -79,29 +73,29 @@ public class UserCenterFragment extends Fragment {
                 startActivityForResult(new Intent(getActivity(), UserInfoActivity.class), REQUEST_CODE_USER_PROFILE);
                 break;
             case R.id.txt_card:
-                Utils.toast("待开发...1");
+                Utils.start_Activity(getActivity(), LoginActivity.class);
                 break;
             case R.id.txt_money:
                 Utils.start_Activity(getActivity(), UserInfoActivityNew.class);
                 Utils.toast("待开发...3");
                 break;
             case R.id.txt_collect:
-                Utils.toast("待开发...");
+                Utils.start_Activity(getActivity(), RegisterActivity.class);
                 break;
             case R.id.txt_setting:
                 Utils.start_Activity(getActivity(), AboutUsActivity.class);
-                Utils.toast("开始跳转");
                 break;
             case R.id.btn_logout:
                         Utils.saveBooleanData("loginde", false);
-                Utils.toast("退出成功");
+               // Utils.toast("退出成功");
+                Utils.start_Activity(getActivity(), LoginActivity.class);
                 break;
-            case R.id.btn_test_register:
+            /*case R.id.btn_test_register:
                 Utils.start_Activity(getActivity(), LoginActivity.class);
                 break;
             case R.id.btn_test_login:
-                Utils.start_Activity(getActivity(), RegisterActivity.class);
-                break;
+
+                break;*/
             default:
                 break;
 

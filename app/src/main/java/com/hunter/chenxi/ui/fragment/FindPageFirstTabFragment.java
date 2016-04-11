@@ -24,6 +24,7 @@ import com.hunter.chenxi.ui.activity.NewsActivity;
 import com.hunter.chenxi.ui.custom.LoadMoreListView;
 import com.joanzapata.android.BaseAdapterHelper;
 import com.joanzapata.android.QuickAdapter;
+import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.squareup.picasso.Picasso;
 
@@ -156,7 +157,7 @@ public class FindPageFirstTabFragment extends Fragment {
 
 
     public void  loadData(){
-        AsyncHttpClientUtil myClient = AsyncHttpClientUtil.getInstance();
+        AsyncHttpClient myClient = AsyncHttpClientUtil.getClient();
         com.loopj.android.http.PersistentCookieStore myCookieStore = new com.loopj.android.http.PersistentCookieStore(getActivity());
         myClient.setCookieStore(myCookieStore);
 

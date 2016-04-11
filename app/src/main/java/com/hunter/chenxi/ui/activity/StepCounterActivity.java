@@ -50,11 +50,6 @@ public class StepCounterActivity extends BaseActivity {
 
     @Override
     public void initContentView() {
-<<<<<<< HEAD
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-=======
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
->>>>>>> 1c1ba6a410e14a974d2acdbe06217e6579c5902d
         setContentView(R.layout.activity_step);
     }
 
@@ -162,13 +157,13 @@ public class StepCounterActivity extends BaseActivity {
                 }
                 break;
 
-            case R.id.stop:
+            /*case R.id.stop:
                 if (StepCounterService.FLAG) {
                     StepDetector.CURRENT_SETP = 0;
                     StepCounterService.serviceFLAG = false;
                     stopService(service);
                 }
-                break;
+                break;*/
 
 
         }

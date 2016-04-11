@@ -8,4 +8,5 @@ import com.hunter.chenxi.vo.request.LoginRequest;
  */
 public interface IUserModel {
     void login(LoginRequest loginRequest, TransactionListener transactionListener);
+    void register(LoginRequest loginRequest, TransactionListener transactionListener);
 }
