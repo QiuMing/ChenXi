@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- padding设置内间距 -->
+   <!-- <padding
+        android:bottom="4dp"
+        android:left="4dp"
+        android:right="4dp"
+        android:top="4dp" />
+    &lt;!&ndash; size设置形状的大小 &ndash;&gt;
+    <size
+        android:width="40dp"
+        android:height="40dp" />-->
+
+    <!-- gradient设置渐变 -->
+    <!--&lt;!&ndash;<gradient-->
+        <!--android:endColor="#f50707"-->
+        <!--android:gradientRadius="40dp"-->
+        <!--android:startColor="#f9f9f9"-->
+        <!--android:type="radial" />&ndash;&gt;-->
+
+    <!--<item android:state_pressed="true"
+        android:drawable="@drawable/eat" />-->
+    <!-- 获取焦点时的背景图 -->
+    <item android:state_focused="true"
+        android:drawable="@drawable/eat_p" />
+    <!-- 默认的背景图 -->
+    <item android:drawable="@drawable/eat" />
+</selector>

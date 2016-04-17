@@ -5,22 +5,8 @@
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:background="@drawable/guide_bg_1"
+    android:background="@drawable/info_bg"
     android:orientation="vertical">
-
-    <!--<include layout="@layout/layout_main_header" />-->
-  <!--  <include layout="@layout/view_toolbar_with_title_view" />-->
-    <!--圆形头像-->
-   <!-- <com.hunter.chenxi.ui.custom.CircleImageView
-        android:id="@+id/txt_user_picture"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/profile_small"
-        app:civ_border_color="#fdfcfc"
-        app:civ_border_width="2dp" />-->
 
     <TextView
         android:id="@+id/tv"
@@ -36,55 +22,79 @@
         android:layout_gravity="center_horizontal"
         android:singleLine="true">
     </TextView>
-<!-- 头像
-    <com.hunter.chenxi.ui.custom.CircleImageView
-        android:id="@+id/circleHead"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/txt_user_logo"
-        app:civ_border_color="#fdfcfc"
-        app:civ_border_width="2dp" />
 
-    -->
-    <RadioGroup android:id="@+id/radioGroup"
-        android:contentDescription="性别"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-             <RadioButton
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/radioMale"
-                 android:text="男"
-                 android:layout_marginLeft="30dp"
-                 android:checked="true">
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:paddingRight="40dp"
+        android:paddingLeft="43dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#ffffff"
+            android:text="性别"
+            android:textSize="17dp"
+            android:typeface="serif"
+            android:gravity="center"
+            android:singleLine="true">
+        </TextView>
 
-             </RadioButton>
-             <RadioButton
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/radioFemale"
-                 android:layout_marginLeft="70dp"
-                 android:text="女">
-             </RadioButton>
-
-        <RadioButton
+        <RadioGroup android:id="@+id/radioGroup"
+            android:contentDescription="性别"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/radioUnKnow"
-            android:layout_marginLeft="70dp"
-            android:text="未知">
-             </RadioButton>
-    </RadioGroup>
+            android:orientation="horizontal">
+                 <RadioButton
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/radioMale"
+                     android:text="男"
+                     android:layout_marginLeft="30dp"
+                     android:checked="true">
+
+                 </RadioButton>
+                 <RadioButton
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/radioFemale"
+                     android:layout_marginLeft="70dp"
+                     android:text="女">
+                 </RadioButton>
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
+        android:layout_marginBottom="8dp">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/txt_user_nick_name"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/white"
+            android:textColor="@color/white"
+            android:hint="昵称"
+         />
+    </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linear_user_height"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
         android:layout_marginBottom="8dp">
 
         <android.support.design.widget.TextInputLayout
@@ -123,9 +133,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
         android:layout_marginBottom="8dp">
 
-        <!--     app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout"-->
         <android.support.design.widget.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -162,6 +173,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
         android:layout_marginBottom="8dp">
 
         <android.support.design.widget.TextInputLayout
@@ -196,7 +209,7 @@
 
     <Button
         android:id="@+id/btn_submit_user_info"
-        android:layout_width="match_parent"
+        android:layout_width="192dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
@@ -207,5 +220,6 @@
         android:text="提交"
         android:textColor="@color/white"
         android:background="@drawable/shape_button"
+        android:layout_gravity="center"
         android:textSize="20sp" />
 </LinearLayout>

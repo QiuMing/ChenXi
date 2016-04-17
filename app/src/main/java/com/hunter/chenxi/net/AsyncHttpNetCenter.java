@@ -182,7 +182,7 @@ public class AsyncHttpNetCenter extends BaseNetCenter {
      * 发起带参数post请求
      *
      * @param url             请求路径
-     * @param params          以map形式存储的参数
+     * @param params          以RequestParams对象作为的参数
      * @param responseHandler 响应回调
      */
     public void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
@@ -217,7 +217,17 @@ public class AsyncHttpNetCenter extends BaseNetCenter {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+        sendRequest(POST, url, stringEntity, DEFAULT_CONTENT_TYPE, responseHandler);
+    }
 
+    /**
+     * 发起带请求体的post请求
+     *
+     * @param url             请求路径
+     * @param stringEntity    以stringEntity作为参数
+     * @param responseHandler 响应回调
+     */
+    public void post(String url, StringEntity stringEntity, AsyncHttpResponseHandler responseHandler) {
         sendRequest(POST, url, stringEntity, DEFAULT_CONTENT_TYPE, responseHandler);
     }
 
@@ -229,8 +239,7 @@ public class AsyncHttpNetCenter extends BaseNetCenter {
      * @param requestParams   请求参数
      * @param responseHandler 响应回调
      */
-    void sendRequest(int type,
-                     String url, RequestParams requestParams, AsyncHttpResponseHandler responseHandler) {
+    void sendRequest(int type,String url, RequestParams requestParams, AsyncHttpResponseHandler responseHandler) {
         // 获取当前页面的Context
         Context context = AppManager.getAppManager().currentActivity();
 
@@ -276,8 +285,7 @@ public class AsyncHttpNetCenter extends BaseNetCenter {
      * @param params          请求参数
      * @param responseHandler 响应回调
      */
-    void sendRequest(int type,
-                     String url, Map<String, String> params, AsyncHttpResponseHandler responseHandler) {
+    void sendRequest(int type,  String url, Map<String, String> params, AsyncHttpResponseHandler responseHandler) {
         // 将Map转换成请求参数
         RequestParams requestParams = new RequestParams(params);
         requestParams.setContentEncoding(CONTENT_ENCODING);
@@ -293,8 +301,7 @@ public class AsyncHttpNetCenter extends BaseNetCenter {
      * @param entity          请求体
      * @param responseHandler 响应回调
      */
-    void sendRequest(int type,
-                     String url, HttpEntity entity, String contentType, AsyncHttpResponseHandler responseHandler) {
+    void sendRequest(int type,  String url, HttpEntity entity, String contentType, AsyncHttpResponseHandler responseHandler) {
         // 获取当前页面的Context
         Context context = AppManager.getAppManager().currentActivity();
 

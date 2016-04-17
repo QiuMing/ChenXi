@@ -12,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hunter.chenxi.R;
-import com.hunter.chenxi.ui.activity.AboutUsActivity;
+import com.hunter.chenxi.app.Constants;
+import com.hunter.chenxi.ui.activity.FeedbackActivity;
+import com.hunter.chenxi.ui.activity.GuideActivity;
 import com.hunter.chenxi.ui.activity.LoginActivity;
 import com.hunter.chenxi.ui.activity.RegisterActivity;
 import com.hunter.chenxi.ui.activity.UserInfoActivity;
@@ -32,17 +34,23 @@ public class UserCenterFragment extends Fragment {
     private Activity context;
     private View view;
 
-    @Bind(R.id.txt_card)
+    @Bind(R.id.txt_login_test)
     TextView txt_card;
 
-    @Bind(R.id.txt_money)
+    @Bind(R.id.txt_user_info_test)
     TextView txt_money;
 
-    @Bind(R.id.txt_collect)
+    @Bind(R.id.txt_register_test)
     TextView txt_collect;
 
     @Bind(R.id.txt_setting)
     TextView txt_setting;
+
+    @Bind(R.id.txt_about_us)
+    TextView txt_about;
+
+    @Bind(R.id.txt_guide_test)
+    TextView txt_guide;
 
     @Bind(R.id.btn_logout)
     Button btnLogout;
@@ -55,47 +63,49 @@ public class UserCenterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_user_center,container,false);
-
         ButterKnife.bind(this,view);
-
         UserInfoActivity.updatePhoto(imgUserHead);
         return view;
     }
 
-
-
-    @OnClick({R.id.view_user,R.id.txt_card,R.id.txt_money,R.id.txt_collect,R.id.txt_setting,R.id.btn_logout
-    ,
+    @OnClick({R.id.view_user,
+            R.id.txt_login_test,
+            R.id.txt_user_info_test,
+            R.id.txt_register_test,
+            R.id.txt_setting,
+            R.id.btn_logout,
+            R.id.txt_guide_test,
+            R.id.txt_about_us
     })
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.view_user:
                 startActivityForResult(new Intent(getActivity(), UserInfoActivity.class), REQUEST_CODE_USER_PROFILE);
                 break;
-            case R.id.txt_card:
+            case R.id.txt_login_test:
                 Utils.start_Activity(getActivity(), LoginActivity.class);
                 break;
-            case R.id.txt_money:
+            case R.id.txt_user_info_test:
                 Utils.start_Activity(getActivity(), UserInfoActivityNew.class);
-                Utils.toast("待开发...3");
                 break;
-            case R.id.txt_collect:
+            case R.id.txt_register_test:
                 Utils.start_Activity(getActivity(), RegisterActivity.class);
                 break;
+            case R.id.txt_guide_test:
+                Utils.start_Activity(getActivity(), GuideActivity.class);
+                break;
             case R.id.txt_setting:
-                Utils.start_Activity(getActivity(), AboutUsActivity.class);
+                Utils.toast(Constants.TOAST_STRING);
+                break;
+            case R.id.txt_about_us:
+                Utils.toast("跳转到测试的页面");
+                Utils.start_Activity(getActivity(), FeedbackActivity.class);
                 break;
             case R.id.btn_logout:
-                        Utils.saveBooleanData("loginde", false);
-               // Utils.toast("退出成功");
+                //Utils.saveBooleanData("loginde", false);
+                Utils.clearUserData();
                 Utils.start_Activity(getActivity(), LoginActivity.class);
                 break;
-            /*case R.id.btn_test_register:
-                Utils.start_Activity(getActivity(), LoginActivity.class);
-                break;
-            case R.id.btn_test_login:
-
-                break;*/
             default:
                 break;
 

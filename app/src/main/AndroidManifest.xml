@@ -28,11 +28,9 @@
         android:theme="@style/AppTheme.WithoutActionBar">
         <activity
             android:name=".ui.activity.MainActivity"
-
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -66,9 +64,7 @@
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
                 <data android:scheme="tencent1104942999" />
-
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -82,21 +78,16 @@
         </activity>
 
         <!-- 微信分享回调 -->
-
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
         <activity android:name=".ui.activity.StepDetectorSettings"/>
         <activity android:name=".ui.activity.StepCounterActivity"/>
-        <!--<activity android:name=".ui.activity.StepCounterActivity2"/>-->
         <service android:name=".base.StepCounterService" />
-
         <activity android:name=".ui.activity.GuideActivity" />
-
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
     </application>

@@ -251,7 +251,7 @@ public class Utils {
      * @param key
      * @return
      */
-    public static int getIntData(    String key,int def){
+    public static int getIntData(String key,int def){
         return sharedPreferences.getInt(key, def);
     }
 
@@ -275,4 +275,12 @@ public class Utils {
         return sharedPreferences.getBoolean(key, def);
     }
 
+    /**
+     *
+      * @return
+     */
+    public static void clearUserData(){
+        edit.clear();
+        edit.commit();
+    }
 }

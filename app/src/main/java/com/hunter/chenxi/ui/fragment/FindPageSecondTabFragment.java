@@ -13,15 +13,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import com.google.gson.reflect.TypeToken;
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.app.Constants;
 import com.hunter.chenxi.bean.NewsBean;
 import com.hunter.chenxi.net.AsyncHttpClientUtil;
 import com.hunter.chenxi.ui.activity.NewsActivity;
 import com.hunter.chenxi.ui.custom.LoadMoreListView;
+import com.hunter.chenxi.utils.CommonUtils;
+import com.hunter.chenxi.utils.Logger;
 import com.joanzapata.android.BaseAdapterHelper;
 import com.joanzapata.android.QuickAdapter;
 import com.loopj.android.http.AsyncHttpClient;
@@ -33,6 +33,8 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.protocol.HTTP;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -165,16 +167,21 @@ public class FindPageSecondTabFragment extends Fragment{
 		myClient.post(null,requestUrl,entity,"application/json",new AsyncHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+				JSONObject object = null;
+				try {
+					object = new JSONObject(new String(responseBody));
+					//Logger.i("----------The JSON is  " + CommonUtils.jsonObjectToSting(object));
+					List<NewsBean> list =   CommonUtils.getGson().fromJson(object.getString("result"), new TypeToken<List<NewsBean>>(){}.getType());
+					listView.updateLoadMoreViewText(list);
+					pageNumbers++;
+					adapter.addAll(list);
 
-				JSONObject object = JSON.parseObject(new String(responseBody));
+					mPtrFrame.refreshComplete();
+					Logger.i("The pageNumbers is  " + pageNumbers);
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
 
-				List<NewsBean> list = JSONArray.parseArray(object.getString("result"), NewsBean.class);
-				listView.updateLoadMoreViewText(list);
-				pageNumbers++;
-				adapter.addAll(list);
-
-				mPtrFrame.refreshComplete();
-				Log.i("TAG", "The pageNumbers is  " +pageNumbers);
 			}
 
 			@Override

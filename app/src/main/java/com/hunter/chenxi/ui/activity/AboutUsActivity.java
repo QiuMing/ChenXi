@@ -25,7 +25,7 @@ public class AboutUsActivity extends BaseActivity{
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mToolbar.setTitle("Rocko");// 标题的文字需在setSupportActionBar之前，不然会无效
+        mToolbar.setTitle("ChenXi");// 标题的文字需在setSupportActionBar之前，不然会无效
         setSupportActionBar(mToolbar);
     }
 

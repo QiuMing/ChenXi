@@ -69,6 +69,16 @@ public class CommonUtils {
     }
 
     /**
+     * 将对象转换为json字符串
+     *
+     * @param object
+     * @return Json 字符串
+     */
+    public static String jsonObjectToSting(Object object){
+        return CommonUtils.getGson().toJson(object);
+    }
+
+    /**
      * 格式化日期
      *
      * @param date
@@ -337,5 +347,4 @@ public class CommonUtils {
         }
         return phoneResult;
     }
-
 }

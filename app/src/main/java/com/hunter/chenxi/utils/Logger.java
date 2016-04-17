@@ -20,6 +20,8 @@ public class Logger {
      */
     private static boolean mDebug = true;
 
+    public static String LOG_PREFIX = "ChenXi_";
+
     private Logger() {
     }
 
@@ -31,7 +33,7 @@ public class Logger {
     public static void i(String msg) {
         if (mDebug) {
             Activity activity = AppManager.getAppManager().currentActivity();
-            Log.i("*** CurrentPage：" + activity.getClass().getSimpleName() + "  Log", msg);
+            Log.i(Logger.LOG_PREFIX+"__CurrentPage：" + activity.getClass().getSimpleName() + "  Log", msg);
         }
     }
 
@@ -43,7 +45,7 @@ public class Logger {
     public static void e(String msg) {
         if (mDebug) {
             Activity activity = AppManager.getAppManager().currentActivity();
-            Log.e("*** CurrentPage：" + activity.getClass().getSimpleName() + "  Log", msg);
+            Log.e(Logger.LOG_PREFIX+"__CurrentPage：" + activity.getClass().getSimpleName() + "  Log", msg);
         }
     }
 }

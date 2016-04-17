@@ -6,7 +6,7 @@
     <!-- 页面名称 -->
     <string name="main_navigation_home">首页</string>
     <string name="main_navigation_im">伙伴</string>
-    <string name="main_navigation_interest">工具</string>
+    <string name="main_navigation_interest">资讯</string>
     <string name="main_navigation_user">我</string>
 
 
@@ -20,15 +20,11 @@
     <string name="ThirdPartyLogin">第三方登录</string>
     <string name="pleaseCheckTheNetwork">获取数据异常,请检查网络</string>
 
-
     <string name="step_content">计步器</string>
-
     <string name="clear_button">重置</string>
     <string name="list_button">历史</string>
     <string name="setting_button">设置</string>
-
     <string name="list_name">历史</string>
-
     <string name="desktop_number0">0</string>
     <string name="frequency_label">步</string>
     <string name="calorie_label">卡路里</string>

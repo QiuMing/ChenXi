@@ -52,7 +52,7 @@
                     android:text="头像" />
 
                 <TextView
-                    android:id="@+id/textName"
+                    android:id="@+id/textPhone"
                     android:layout_width="match_parent"
                     android:gravity="right"
                     android:layout_height="wrap_content"

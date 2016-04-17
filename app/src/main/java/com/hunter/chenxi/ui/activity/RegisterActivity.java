@@ -13,8 +13,14 @@ import android.widget.Toast;
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.app.BaseApplication;
 import com.hunter.chenxi.base.BaseActivity;
+import com.hunter.chenxi.presenter.impl.RegisterPresenterImpl;
+import com.hunter.chenxi.presenter.interfaces.IRegisterPresenter;
+import com.hunter.chenxi.ui.view.interfaces.IRegisterView;
+import com.hunter.chenxi.utils.Logger;
 import com.hunter.chenxi.utils.NumberUtils;
 import com.hunter.chenxi.utils.Utils;
+import com.hunter.chenxi.vo.request.UserRequest;
+import com.hunter.chenxi.vo.response.UserInfo;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -22,7 +28,7 @@ import butterknife.OnClick;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity implements  IRegisterView {
 
     @Bind(R.id.btn_do_register)
     Button btnDoregiser;
@@ -37,10 +43,11 @@ public class RegisterActivity extends BaseActivity {
     EditText textVerify;
 
     @Bind(R.id.textPassword)
-    EditText texrPassword;
+    EditText txtPassword;
 
     private boolean isGetVerification = false;
 
+    private IRegisterPresenter registerPresenter;
     @Override
     public void initContentView() {
         setContentView(R.layout.activity_register);
@@ -51,6 +58,8 @@ public class RegisterActivity extends BaseActivity {
         //初始化SSMDK ,并添加注册回调监听接口
         SMSSDK.initSDK(this, BaseApplication.APPKEY, BaseApplication.APPSECRET, true);
         //SMSSDK.registerEventHandler(eh);
+
+        registerPresenter = new RegisterPresenterImpl(this);
     }
 
     @Override
@@ -99,9 +108,14 @@ public class RegisterActivity extends BaseActivity {
                     ((Throwable) data).printStackTrace();
                 }
             }
+            String phone = tel.getText().toString();
+            String paswd =txtPassword.getText().toString();
+            Logger.i("请求 后台登陆");
+            showProgress("正在注册  ");
+            registerPresenter.register(new UserRequest(phone, paswd));
 
             //有问题，总是验证不成功
-            startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
+           // startActivity(new Intent(RegisterActivity.this, UserInfoActivity.class));
         }
     };
 
@@ -126,6 +140,7 @@ public class RegisterActivity extends BaseActivity {
             Log.e("Chenxi","phone "+phone+"   code is"+inputCode);
             SMSSDK.submitVerificationCode("86",phone , inputCode);
         }
+
         //finish();
     }
 
@@ -174,8 +189,8 @@ public class RegisterActivity extends BaseActivity {
      */
     private boolean checkFromData() {
         boolean notNull = !TextUtils.isEmpty(tel.getText().toString()) &&
-                !TextUtils.isEmpty(texrPassword.getText().toString()) &&
-                !TextUtils.isEmpty(textVerify.getText().toString()) && isGetVerification;
+                !TextUtils.isEmpty(txtPassword.getText().toString());
+                //&& !TextUtils.isEmpty(textVerify.getText().toString()) && isGetVerification;
 
         if (notNull) {
             if (new NumberUtils(tel.getText().toString()).getFacilitatorType() == -1) {
@@ -184,7 +199,7 @@ public class RegisterActivity extends BaseActivity {
             }
 
             //根据需求预留的功能：检测密码级别是否过低  这里简单判断下
-            if (texrPassword.getText().toString().length() < 6) {
+            if (txtPassword.getText().toString().length() < 6) {
                 Utils.toast("密码不能少于6位");
                 return false;
             }
@@ -192,5 +207,13 @@ public class RegisterActivity extends BaseActivity {
         }
         Utils.toast("请输入完整");
         return false;
+    }
+
+    @Override
+    public void registerCallBack(UserInfo userInfo) {
+        Utils.toast("登陆成功");
+        startActivity(new Intent(Utils.getContext(), UserInfoActivity.class));
+        hideProgress();
+        finish();
     }
 }

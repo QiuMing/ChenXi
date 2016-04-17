@@ -40,6 +40,10 @@ public abstract class BaseModel {
         AsyncHttpNetCenter.getInstance().post(url, params, new TransactionAsyncHttpStringHandler(transactionListener));
     }
 
+    public void post(String url, String json, TransactionListener transactionListener) {
+        AsyncHttpNetCenter.getInstance().post(url, json, new TransactionAsyncHttpStringHandler(transactionListener));
+    }
+
     public void setHeader(String header, String value) {
         AsyncHttpNetCenter.getInstance().setHeader(header, value);
     }

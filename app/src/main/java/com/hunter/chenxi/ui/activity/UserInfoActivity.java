@@ -32,7 +32,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
 
     @Bind(R.id.imgHead)
     ImageView imgHead;
-    @Bind(R.id.textName)
+    @Bind(R.id.textPhone)
     TextView textName;
     @Bind(R.id.textSex)
     TextView textSex;
@@ -97,7 +97,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
 //                intent1.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
 //                startActivityForResult(intent1, REQUEST_CODE_IMAGE_SELECT);
                 break;
-            case R.id.textName:
+            case R.id.textPhone:
                 Utils.toast("textName");
                 break;
             case R.id.textSex:

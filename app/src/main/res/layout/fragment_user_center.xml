@@ -71,32 +71,13 @@
                     android:layout_marginLeft="5dp"
                     android:src="@drawable/ic_sex_female" />
             </RelativeLayout>
-            <!--<View
-                android:background="#ffeeeeee"
-                android:layout_width="fill_parent"
-                android:layout_height="1.0dip" />
 
-            <TextView
-                android:id="@+id/txt_album"
-                style="@style/TxtTitle"
-                android:textSize="16sp"
-                android:gravity="center_vertical"
-                android:background="@drawable/setting_item_selector"
-                android:layout_width="fill_parent"
-                android:layout_height="50dp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:layout_marginTop="20dp"
-                android:drawablePadding="10dp"
-                android:drawableLeft="@drawable/icon_me_photo"
-                android:drawableRight="@drawable/right"
-                android:text="my_posts" />-->
             <View
                 android:background="#ffeeeeee"
                 android:layout_width="fill_parent"
                 android:layout_height="1.0dip" />
             <TextView
-                android:id="@+id/txt_collect"
+                android:id="@+id/txt_register_test"
                 style="@style/TxtTitle"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
@@ -108,32 +89,14 @@
                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/icon_me_collect"
                 android:drawableRight="@drawable/right"
-                android:text="注册测试item" />
+                android:text="注册页测试" />
             <View
                 android:background="#ffeeeeee"
                 android:layout_width="fill_parent"
                 android:layout_height="1.0dip" />
 
             <TextView
-                android:id="@+id/txt_money"
-                style="@style/TxtTitle"
-                android:textSize="16sp"
-                android:gravity="center_vertical"
-                android:background="@drawable/setting_item_selector"
-                android:layout_width="fill_parent"
-                android:layout_height="50dp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:drawablePadding="10dp"
-                android:drawableLeft="@drawable/icon_me_money"
-                android:drawableRight="@drawable/right"
-                android:text="用户信息页面" />
-            <View
-                android:background="#ffeeeeee"
-                android:layout_width="fill_parent"
-                android:layout_height="1.0dip" />
-            <TextView
-                android:id="@+id/txt_card"
+                android:id="@+id/txt_login_test"
                 style="@style/TxtTitle"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
@@ -145,15 +108,14 @@
                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/icon_me_card"
                 android:drawableRight="@drawable/right"
-                android:text="登陆测试item" />
+                android:text="登陆测试" />
             <View
                 android:background="#ffeeeeee"
                 android:layout_width="fill_parent"
                 android:layout_height="1.0dip" />
 
-
             <TextView
-                android:id="@+id/txt_smail"
+                android:id="@+id/txt_user_info_test"
                 style="@style/TxtTitle"
                 android:textSize="16sp"
                 android:gravity="center_vertical"
@@ -162,11 +124,29 @@
                 android:layout_height="50dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:layout_marginTop="20dp"
                 android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon_me_money"
+                android:drawableRight="@drawable/right"
+                android:text="用户信息页面测试" />
+            <View
+                android:background="#ffeeeeee"
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip" />
+
+            <TextView
+                android:id="@+id/txt_guide_test"
+                style="@style/TxtTitle"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:background="@drawable/setting_item_selector"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/icon_me_smail"
                 android:drawableRight="@drawable/right"
-                android:text="expression2" />
+                android:text="引导页面测试" />
             <View
                 android:background="#ffeeeeee"
                 android:layout_width="fill_parent"
@@ -182,15 +162,29 @@
                 android:layout_height="50dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="10dp"
-                android:layout_marginTop="20dp"
+                android:text="设置"
                 android:drawablePadding="10dp"
                 android:drawableLeft="@drawable/icon_me_setting"
-                android:drawableRight="@drawable/right"
-                android:text="settings" />
+                android:drawableRight="@drawable/right"/>
             <View
                 android:background="#ffeeeeee"
                 android:layout_width="fill_parent"
                 android:layout_height="1.0dip" />
+
+            <TextView
+                android:id="@+id/txt_about_us"
+                style="@style/TxtTitle"
+                android:textSize="16sp"
+                android:gravity="center_vertical"
+                android:background="@drawable/setting_item_selector"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="10dp"
+                android:text="关于"
+                 android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/icon_me_collect"
+                android:drawableRight="@drawable/right"/>
         </LinearLayout>
 
     </com.hunter.chenxi.ui.custom.BounceScrollView>
@@ -199,15 +193,14 @@
         android:gravity="center"
          android:layout_width="fill_parent"
         android:orientation = "vertical"
-        android:layout_height="fill_parent"
+        android:layout_height="98dp"
         >
-
         <Button
             android:textColor="#ffffff"
             android:id="@+id/btn_logout"
             android:background="@drawable/btn_bg_red2"
             android:padding="10.0dip"
-            android:layout_width="fill_parent"
+            android:layout_width="282dp"
             android:layout_height="40.0dip"
             android:text="退出登录" />
     </LinearLayout>

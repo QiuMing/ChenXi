@@ -49,14 +49,11 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.loopj.android:android-async-http:1.4.7'
 
-/*    compile 'com.google.android.gms:play-services-gcm:8.4.0'
-    compile 'com.google.android.gms:play-services-location:8.4.0'*/
     compile 'io.jsonwebtoken:jjwt:0.6.0'
     //9
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'de.hdodenhof:circleimageview:1.3.0'
-    //compile 'com.makeramen:roundedimageview:2.0.1'
-    compile 'com.google.code.gson:gson:2.3.1'
+     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:support-v4:22.2.1'
     compile 'com.android.support:design:22.2.1'
@@ -64,23 +61,20 @@ dependencies {
     compile('com.instabug.library:instabug:2.2.1') {
         exclude group: 'com.android.support'
     }
-    compile 'com.alibaba:fastjson:1.1.34.android'
+
     //Tab 选项切换组件
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     //快速适配
     compile 'com.joanzapata.android:base-adapter-helper:1.1.11'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'in.srain.cube:ultra-ptr:1.0.11'
-    //头像下拉缩放
-
-    // compile 'com.github.frank-zhu:pullzoomview:1.0.0'
 
     //启动页
     compile 'com.github.chenupt.android:springindicator:1.0.2@aar'
     compile name: 'multiplemodel-1.1.0', ext: 'aar'
     compile 'com.google.guava:guava:18.0'
     compile 'com.daimajia.numberprogressbar:library:1.2@aar'
-    //  'com.instabug.library:instabugsupport:1.7'
+
     compile files('libs/MobCommons.jar')
     compile files('libs/MobTools.jar')
     compile files('libs/SMSSDK-2.0.0.jar')

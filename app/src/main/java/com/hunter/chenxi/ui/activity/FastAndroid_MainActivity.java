@@ -5,7 +5,7 @@ import com.hunter.chenxi.base.BaseActivity;
 import com.hunter.chenxi.presenter.impl.LoginPresenterImpl;
 import com.hunter.chenxi.presenter.interfaces.ILoginPresenter;
 import com.hunter.chenxi.ui.view.interfaces.ILoginView;
-import com.hunter.chenxi.vo.request.LoginRequest;
+import com.hunter.chenxi.vo.request.UserRequest;
 import com.hunter.chenxi.vo.response.UserInfo;
 
 /*
@@ -17,7 +17,7 @@ public class FastAndroid_MainActivity extends BaseActivity implements ILoginView
     @Bind(R.id.tv_content)
     TextView tvContent;*/
 
-    ILoginPresenter loginPresenter;
+    ILoginPresenter loginAndRegisterPresenter;
 
     @Override
     public void initContentView() {
@@ -29,15 +29,15 @@ public class FastAndroid_MainActivity extends BaseActivity implements ILoginView
     public void initView() {
        // titleBar.setTitle("测试页面");
        // tvContent.setText("登录中...");
-        LoginRequest loginRequest = new LoginRequest();
-        loginRequest.username = "";
+        UserRequest loginRequest = new UserRequest("","");
+        loginRequest.phone = "";
         loginRequest.password = "";
-        loginPresenter.login(loginRequest);
+        loginAndRegisterPresenter.login(loginRequest);
     }
 
     @Override
     public void initPresenter() {
-        loginPresenter = new LoginPresenterImpl(this);
+        loginAndRegisterPresenter = new LoginPresenterImpl(this);
     }
 
     @Override

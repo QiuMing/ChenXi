@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Ming on 2016/3/5.
  */
-public class SearchShopBean implements Serializable{
+public class SearchShopBean implements Serializable {
 
     public static final int TYPE_OUTSIDE = 0;  // 外部商家
     public static final int TYPE_INSIDE = 1; // 内部商家

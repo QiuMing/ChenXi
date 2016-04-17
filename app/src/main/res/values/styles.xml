@@ -57,7 +57,10 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">14sp</item>
     </style>
-
+    <style name="CollapsingToolbarTitleStyle"
+        parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
 
     <!--底部导航样式-->
     <style name="footbar">

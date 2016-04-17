@@ -8,9 +8,9 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_img_user_default"
+        android:src="@drawable/user_logo"
         android:contentDescription="@string/app_name"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="80dp"
          />
 
     <TextView
@@ -18,11 +18,11 @@
         android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:paddingBottom="80dp"
         android:layout_below="@id/iv_user_head"
         android:layout_centerHorizontal="true"
-        android:text="13521468432"
+        android:text="xq明"
         android:textColor="#ffffff" />
 
     <LinearLayout
@@ -30,20 +30,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#70841f1f"
-        android:layout_margin="0dp"
-        android:padding="0dp"
-        android:layout_alignParentBottom="true">
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+      >
 
         <TextView
             android:id="@+id/txt_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="0dp"
             android:text="35"
-            android:layout_weight="0.4"
             android:textSize="39sp"
-            android:gravity="center"
-            android:layout_gravity="center"
+            android:paddingLeft="5dp"
+            android:layout_marginRight="3dp"
             android:textColor="#ffffff"
             />
 
@@ -51,39 +49,33 @@
             android:id="@+id/ll_action_button1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_margin="0dp"
-            android:padding="0dp"
             android:orientation="vertical"
+             android:gravity="center_vertical"
              >
             <TextView
                 android:id="@+id/txt_month"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="6dp"
-                android:paddingBottom="2dp"
                 android:text="03月"
                 android:textSize="11sp"
-                android:gravity="left"
-                android:textColor="#ffffff"
-                android:layout_margin="0dp"
-                android:layout_marginTop="3dp" />
-
+                android:layout_gravity="top"
+                android:textColor="#ffffff" />
             <TextView
+                android:paddingTop="4.3dp"
                 android:id="@+id/txt_weekday"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingTop="4dp"
+                android:layout_height="wrap_content"
                 android:text="星期一"
                 android:textSize="11sp"
-                android:gravity="left"
-                android:layout_gravity="left"
-                android:textColor="#ffffff"
-                android:layout_margin="0dp" />
+                android:layout_gravity="bottom"
+                android:textColor="#ffffff" />
+
         </LinearLayout>
+
         <TextView
             android:id="@+id/header_txt_bmi"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="13dp"
             android:text="BMi"
             android:layout_weight="7"

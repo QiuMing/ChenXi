@@ -5,12 +5,10 @@
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:background="@drawable/guide_bg_2"
+    android:background="@drawable/login_register_bk"
     android:orientation="vertical">
 
-    <!--<include layout="@layout/layout_main_header" />-->
-  <!--  <include layout="@layout/view_toolbar_with_title_view" />-->
-    <!--圆形头像-->
+
     <com.hunter.chenxi.ui.custom.CircleImageView
         android:id="@+id/circleHead"
         android:layout_width="120dp"
@@ -27,10 +25,11 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/textName"
+            android:id="@+id/textPhone"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:hint="@string/login_User" />
+            android:hint="@string/login_User"
+            />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout

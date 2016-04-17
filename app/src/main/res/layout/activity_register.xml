@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/guide_bg_2"
+    android:background="@drawable/login_register_bk"
     >
     <!--android:padding="20dp">-->
 

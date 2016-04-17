@@ -172,7 +172,7 @@ public class HomeFragment extends Fragment {
         });
 
         //动
-        scrollView.getPullRootView().findViewById(R.id.btn_exercise).setOnClickListener(new View.OnClickListener() {
+        scrollView.getPullRootView().findViewById(R.id.btn_run).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Utils.getContext(), StepCounterActivity.class));

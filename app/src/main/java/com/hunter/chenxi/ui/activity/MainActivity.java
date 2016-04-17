@@ -3,15 +3,14 @@ package com.hunter.chenxi.ui.activity;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.widget.RadioGroup;
 
 import com.hunter.chenxi.R;
 import com.hunter.chenxi.base.BaseActivity;
 import com.hunter.chenxi.ui.fragment.FindPageFragment;
 import com.hunter.chenxi.ui.fragment.HomeFragment;
-import com.hunter.chenxi.ui.fragment.PartnerView;
 import com.hunter.chenxi.ui.fragment.UserCenterFragment;
+import com.hunter.chenxi.utils.Logger;
 import com.hunter.chenxi.utils.Utils;
 
 import java.util.Arrays;
@@ -31,7 +30,6 @@ public class MainActivity extends BaseActivity {
     RadioGroup group;
 
     private Fragment homeFragment = new HomeFragment();
-    private Fragment partnerFragment = new PartnerView();
     private Fragment findPageFrament = new FindPageFragment();
     private Fragment userCenterFragment = new UserCenterFragment();
     private List<Fragment> fragmentList = Arrays.asList(homeFragment, findPageFrament, userCenterFragment);
@@ -102,7 +100,7 @@ public class MainActivity extends BaseActivity {
     private void initGuide() {
         // || !Utils.getBooleanData("loginde", false)
         if (!Utils.getBooleanData("needGuide", false)) {
-            Log.e("Tag","跳到启动引导页面");
+            Logger.e("需要启动引导页");
             Utils.saveBooleanData("needGuide", true);
             startActivity(new Intent(this, GuideActivity.class));
         }

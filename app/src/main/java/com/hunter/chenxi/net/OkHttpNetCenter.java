@@ -2,12 +2,11 @@ package com.hunter.chenxi.net;
 
 import android.content.Context;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import com.google.gson.reflect.TypeToken;
 import com.hunter.chenxi.app.AppManager;
 import com.hunter.chenxi.base.BaseRequest;
 import com.hunter.chenxi.bean.SearchShopBean;
+import com.hunter.chenxi.utils.CommonUtils;
 import com.hunter.chenxi.utils.Logger;
 import com.hunter.chenxi.utils.NetUtils;
 import com.squareup.okhttp.Callback;
@@ -15,12 +14,12 @@ import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.Headers;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
-import java.net.CookieManager;
-import java.net.CookiePolicy;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -59,56 +58,6 @@ public class OkHttpNetCenter extends BaseNetCenter {
     @Override
     void removeAllHeaders() {
         baseHeader.clear();
-    }
-
-    public static void main(String[] args) throws IOException {
-        RequestBody formBody = new FormEncodingBuilder()
-                .add("appid","health")
-                .add("cend","30")
-                .add("channel_id","2230739234")
-                .add("cstart","0")
-                .add("cv","3.2.2")
-                .add("fields", "image")
-                .add("fields","down")
-                .add("fields", "image_urls")
-                .add("fields","date")
-                .add("fields","docid")
-                .add("fields","up")
-                .add("fields","like")
-                .add("fields","title")
-                .add("fields","source")
-                .add("fields","comment_count")
-                .add("fields","url")
-                .add("infinite","true")
-                .add("net","wifi")
-                .add("platform","1")
-                .add("refresh", "0")
-                .add("version", "010911").build();
-
-
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                // .url("http://lxming.pub/boot/getUserListData?pageSize=10&pageNumber=2")
-                .url("http://sye.zhongsou.com/ent/rest?m=dpSearch.recommendShop&p=eyJjaXR5IjoiYmVpamluZyIsImxhdCI6MzkuOTgyMzE0LCJsbmciOjExNi40MDk2NzEsInBubyI6%0AMSwicHNpemUiOjMwLCJzaWQiOjB9%0A?m=dpSearch.recommendShop&p=eyJjaXR5IjoiYmVpamluZyIsImxhdCI6MzkuOTgyMzE0LCJsbmciOjExNi40MDk2NzEsInBubyI6%0AMSwicHNpemUiOjMwLCJzaWQiOjB9%0A")
-
-                        //.post(formBody)
-                .build();
-
-        CookieManager cookieManager = new CookieManager();
-        cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
-        client.setCookieHandler(cookieManager);
-
-        Response response = client.newCall(request).execute();
-        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-       // System.out.println("-----------"+response.body().string());
-
-      //  String s = response.body().string();
-     //   System.out.printf(s);
-
-        JSONObject object = JSON.parseObject(response.body().string());
-
-        List<SearchShopBean> list = JSONArray.parseArray(object.getString("body"), SearchShopBean.class);
-        System.out.println(JSON.toJSONString(list));
     }
 
     /**
@@ -281,4 +230,22 @@ public class OkHttpNetCenter extends BaseNetCenter {
         mOkHttpClient.cancel(context);
     }
 
+    public static void main(String[] args) throws IOException {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                 .url("http://sye.zhongsou.com/ent/rest?m=dpSearch.recommendShop&p=eyJjaXR5IjoiYmVpamluZyIsImxhdCI6MzkuOTgyMzE0LCJsbmciOjExNi40MDk2NzEsInBubyI6%0AMSwicHNpemUiOjMwLCJzaWQiOjB9%0A?m=dpSearch.recommendShop&p=eyJjaXR5IjoiYmVpamluZyIsImxhdCI6MzkuOTgyMzE0LCJsbmciOjExNi40MDk2NzEsInBubyI6%0AMSwicHNpemUiOjMwLCJzaWQiOjB9%0A")
+                .build();
+
+        Response response = client.newCall(request).execute();
+        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+        try {
+            String data = response.body().string();
+            JSONObject json = new JSONObject(data);
+            List<SearchShopBean> list  = CommonUtils.getGson().fromJson(json.getString("body").toString(), new TypeToken<List<SearchShopBean>>(){}.getType());
+            System.out.println(CommonUtils.getGson().toJson( list));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }
